@@ -1,0 +1,322 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%}
+  <title>My Orders - Rent Station</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/manage_account.css' %}">
+    <style>
+        #active_manage2{
+            color:darkblue;
+        }
+        .header{
+          background: #fff;
+          box-shadow:0 5px 6px 0 #ddd;
+        }
+        .menus ul a{
+          color:#000 !important;
+        }
+        #text2 a{
+          color:#000;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="manage_main_banner">
+            <div class="container">
+                <div class="manage_banner1">
+                    <div class="col col-xl-2 col-lg-2" style="padding:0px;">
+                        {% include 'account/manage_account_menu.html' %}
+                    </div>
+                    <div class="col col-xl-10 col-lg-10" style="padding:0px;">
+                        <div class="sub_manage2">
+                            <div class="manage_head2">
+                                <h6>MY ORDERS</h6>
+                            </div>
+                            <div class="manage_content">
+                                {% if order_d %}
+                                <div class="content1">
+                                    <span class="content_sub_head">Recent Order Overview</span>
+                                    <span id="sub_content1">
+                                        <span>Order Number: {{order_d.order_number}}</span><br>
+                                        <span>Placed On {{order_d.ordered_date}}</span>
+                                    </span>
+                                    <span id="sub_content2">
+                                        <span>{{order_d.total_items}} items</span><br>
+                                        <span>Total: Rs. {{order_d.grand_total}}</span>
+                                    </span>
+                                    <hr style="float:left; width:100%;">
+                                </div>
+                                <div class="content_progress">
+                                    <span id="content_delivery">Delivery Date: {{order_d.delivery_date}}</span>
+                                    <div class="progress_wrapper">
+                                        {% if order_s == 'Processing' %}
+                                        <ol class="progress_status">
+                                            <li style="margin-left:0px;">
+                                                <span class="heading head_active">Processing</span>
+                                                <span class="bubble bubble_active" data-toggle="tooltip" data-placement="bottom" data-type="primary" title="{{order_d.order_status_date}} Your order is placed and is processing.">&#10004;</span><span class="divider"></span>
+                                            </li>
+                                            <li>
+                                                <span class="heading">Shipping</span>
+                                                <span class="bubble">&#10004;</span><span class="divider"></span>
+                                            </li>
+                                            <li>
+                                                <span class="heading">Delivered</span>
+                                                <span class="bubble">&#10004;</span><span class="divider"></span>
+                                            </li>
+                                            <li>
+                                                <span class="heading">Returned</span>
+                                                <span class="bubble">&#10004;</span>
+                                            </li>
+                                        </ol><br>
+                                        {% endif %}
+                                        {% if order_s == 'Shipping' %}
+                                        <ol class="progress_status">
+                                            <li style="margin-left:5px;">
+                                                <span class="heading head_active">Processing</span>
+                                                <span class="bubble bubble_active">&#10004;</span><span class="divider divider_active"></span>
+                                            </li>
+                                            <li>
+                                                <span class="heading head_active">Shipping</span>
+                                                <span class="bubble bubble_active" data-toggle="tooltip" data-placement="bottom" data-type="primary" title="{{order_d.order_status_date}} Your order is on the way.">&#10004;</span><span class="divider"></span>
+                                            </li>
+                                            <li>
+                                                <span class="heading">Delivered</span>
+                                                <span class="bubble">&#10004;</span><span class="divider"></span>
+                                            </li>
+                                            <li>
+                                                <span class="heading">Returned</span>
+                                                <span class="bubble">&#10004;</span>
+                                            </li>
+                                        </ol><br>
+                                        {% endif %}
+                                        {% if order_s == 'Delivered' %}
+                                        <ol class="progress_status">
+                                            <li style="margin-left:5px;">
+                                                <span class="heading head_active">Processing</span>
+                                                <span class="bubble bubble_active">&#10004;</span><span class="divider divider_active"></span>
+                                            </li>
+                                            <li>
+                                                <span class="heading head_active">Shipping</span>
+                                                <span class="bubble bubble_active">&#10004;</span><span class="divider divider_active"></span>
+                                            </li>
+                                            <li>
+                                                <span class="heading head_active">Delivered</span>
+                                                <span class="bubble bubble_active" data-toggle="tooltip" data-placement="bottom" data-type="primary" title="{{order_d.order_status_date}} Your rentals were delivered to your address.">&#10004;</span><span class="divider"></span>
+                                            </li>
+                                            <li>
+                                                <span class="heading">Returned</span>
+                                                <span class="bubble">&#10004;</span>
+                                            </li>
+                                        </ol>
+                                        {% endif %}
+                                        {% if order_s == 'Returned' %}
+                                        <ol class="progress_status">
+                                            <li style="margin-left:5px;">
+                                                <span class="heading head_active">Processing</span>
+                                                <span class="bubble bubble_active">&#10004;</span><span class="divider divider_active"></span>
+                                            </li>
+                                            <li>
+                                                <span class="heading head_active">Shipping</span>
+                                                <span class="bubble bubble_active">&#10004;</span><span class="divider divider_active"></span>
+                                            </li>
+                                            <li>
+                                                <span class="heading head_active">Delivered</span>
+                                                <span class="bubble bubble_active">&#10004;</span><span class="divider divider_active"></span>
+                                            </li>
+                                            <li>
+                                                <span class="heading head_active">Returned</span>
+                                                <span class="bubble bubble_active" data-toggle="tooltip" data-placement="bottom" data-type="primary" title="{{order_d.order_status_date}} You returned the renatals.">&#10004;</span>
+                                            </li>
+                                        </ol>
+                                        {% endif %}
+                                    </div>
+                                    <div class="order_content">
+                                        <div class="container">
+                                            {% if messages %}
+                                            <span class="message_order">
+                                                {% for message in messages %}
+                                                    {{message}}
+                                                {% endfor %}
+                                            </span>
+                                            {% endif %}
+                                            {% for order in orders %}
+                                            <div class="order_items">
+                                                <span class="content_img">
+                                                    <img src="/static/{{order.prod_image}}" id="content_img">
+                                                </span>
+                                                    <span class="content_text">
+                                                    <span>{{order.product_name}}</span><br>
+                                                    <span>Qty: {{order.quantity}}</span><br>
+                                                    <span>Refund: Rs. {{order.refund}}</span>
+                                                </span>
+                                                {% if order.order_status == 'Rental Reserved' %}
+                                                <span class="content_date" style="text-transform:none;">
+                                                    Return on: {{order.returning_date}}
+                                                </span><br>
+                                                <span class="order_status">
+                                                    <i class="fa fa-check-circle fa-lg px-1"></i>
+                                                    {{order.order_status}}
+                                                </span><br>
+                                                {% else %}
+                                                <span class="content_date" style="text-transform:none;">
+                                                    Returned on: {{order.returning_date}}
+                                                </span><br>
+                                                <span class="order_status">
+                                                    <i class="fa fa-check-circle fa-lg px-1"></i>
+                                                    {{order.order_status}}
+                                                </span><br>
+                                                {% endif %}
+                                                {% if cancel_expire < 7200 %}
+                                                <span class="cancel">
+                                                    <i class="fa fa-spinner fa-pulse mx-1 spinner3" id="spin{{order.id}}"></i>
+                                                    <a href="/shop/account/cancel/{{order.product_id}}/{{order.order_number}}/{{order.product_size}}/{{order.quantity}}/" class="cancel" id="{{order.id}}">Cancel</a><br>
+                                                </span><br>
+                                                <span class="cancel_info" style="text-transform:none;">
+                                                    ( cancel is available only untill 2hrs of order time )
+                                                </span>
+                                                {% else %}
+                                                <span class="cancel_info" style="text-transform:none;">
+                                                    ( cancellation period has expired. )
+                                                </span>
+                                                {% endif %}
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+
+                                        <div class="col col-xl-6 col-lg-6 col-md-6">
+                                            <div class="content_shipping">
+                                                <span id="content_ship_head">Shipping Address</span>
+                                                <span id="content_ship_detail">
+                                                    <span style="text-transform:capitalize;">{{order_d.user_full_name}}</span><br>
+                                                    <span>{{order_d.shipping_address}}</span><br>
+                                                    <span>{{order_d.user_contact}}</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col col-xl-6 col-lg-6 col-md-6">
+                                            <div class="content_total">
+                                                <span id="content_total_head">Rental Summary</span>
+                                                <span class="content_total_detail1">
+                                                    <span class="sub_detail1">Subtotal</span>
+                                                    <span class="sub_detail2">Rs. {{order_d.sub_total_amount}}</span>
+                                                </span>
+                                                <span class="content_total_detail1">
+                                                    <span class="sub_detail1">Total Refund</span>
+                                                    <span class="sub_detail2">Rs. {{order_d.total_refund}}</span>
+                                                </span>
+                                                <span class="content_total_detail1">
+                                                    <span class="sub_detail1">Shipping</span>
+                                                    <span class="sub_detail2">Rs. {{order_d.shipping_charge}}</span>
+                                                </span>
+                                                <hr style="float:left; width:100%;">
+                                                <span class="content_total_detail1">
+                                                    <span class="sub_detail1">Total</span>
+                                                    <span class="sub_detail3">Rs. {{order_d.grand_total}}</span>
+                                                </span>
+                                                <span class="payment_info" style="color:green;">{{order_d.payment_status}}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class="content1 content1_wrapper">
+                                    <span class="content_sub_head">Recent Order Overview</span>
+                                    <div class="content_wrapper">
+                                        <h6>You have no recent rental processing orders</h6>
+                                        <a href="{% url 'rent_dress' %}"><button type="button" class="content_btn">CONTINUE RENTING</button></a>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+
+                            <div class="manage_content2">
+                                <span class="manage_head3">Order History</span>
+                                <hr style="float:left; width:100%; margin-top:0px;">
+                                <div class="container">
+                                    {% for rentals, range in all_order %}
+                                    {% if rentals %}
+                                    {% for order in rentals %}
+                                    <div class="order_items">
+                                        <span class="content_img">
+                                            <img src="/static/{{order.prod_image}}" id="content_img">
+                                        </span>
+                                        <span class="content_text">
+                                            <span>{{order.product_name}}</span><br>
+                                        </span>
+                                        <span class="content_date" style="text-transform:none;">
+                                            Returned on: {{order.returning_date}}
+                                        </span><br>
+                                        <span class="order_status">
+                                            <i class="fa fa-check-circle fa-lg px-1"></i>
+                                            {{order.order_status}}
+                                        </span>
+                                    </div>
+                                    {% endfor %}
+                                    <span id="page_numbers">
+                                        {% if rentals.has_other_pages %}
+                                          <ul class="pagination">
+                                            {% if rentals.has_previous %}
+                                              <li><a href="?page={{ rentals.previous_page_number }}">&laquo;</a></li>
+                                            {% else %}
+                                              <li class="prev_disabled">&laquo;</li>
+                                            {% endif %}
+                                            {% for i in rentals.paginator.page_range %}
+                                              {% if rentals.number == i %}
+                                                <li class="">{{ i }}</li>
+                                              {% else %}
+                                                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                              {% endif %}
+                                            {% endfor %}
+                                            {% if rentals.has_next %}
+                                              <li><a href="?page={{ rentals.next_page_number }}">&raquo;</a></li>
+                                            {% else %}
+                                              <li class="next_disabled">&raquo;</li>
+                                            {% endif %}
+                                          </ul>
+                                        {% endif %}
+                                        </span>
+                                        {% else %}
+                                        <div class="return_wrapper">
+                                            <h6>You have no order history</h6>
+                                        </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+{% block js %}
+
+
+<script>
+$('.bubble_active').tooltip('show');
+$('.bubble_active').mouseout(function() {
+    $(this).tooltip('show');
+});
+
+$('.cancel').on('click', function(){
+    var idp = this.id;
+    $('#spin'+idp).show();
+});
+</script>
+
+<!--[data-toggle="tooltip"]-->
+{% endblock %}

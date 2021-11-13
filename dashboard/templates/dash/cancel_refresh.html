@@ -1,0 +1,26 @@
+{% load static %}
+{% if cancels %}
+          {% for c in cancels %}
+          <div class="order_list">
+            <span class="o_list1">
+              <img src="/static/{{c.image}}" class="cancel_img">
+            </span>
+            <span class="o_list2" style="padding: 0px 0px 0px 20px;">
+              <span class="o_sublist1" style="text-transform: capitalize;">
+                {{c.product_name}}
+              </span>
+              <span class="o_sublist2" style="text-transform: capitalize;">
+                {{c.product_dress_type}}
+              </span>
+              <span class="o_sublist2">
+                User: {{c.user_name}}
+              </span>
+            </span>
+          </div>
+          {% endfor %}
+          {% else %}
+          <div class="d_not_found">
+              There are no cancellations
+          </div>
+          {% endif %}
+          <script src="{% static '/js/dashboard/order_dash.js' %}"></script>

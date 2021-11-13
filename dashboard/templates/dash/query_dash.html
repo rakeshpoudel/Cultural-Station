@@ -1,0 +1,43 @@
+{% load static %}
+{% if all_queries_front %}
+        {% for r in all_queries_front %}
+        <div class="contain_list">
+          <span class="list11">
+            <a href="/static/{{r.image}}" data-lightbox="que_q_r{{r.id}}">
+              <img src="/static/{{r.image}}" class="contain_img2">
+            </a>
+          </span>
+          <span class="list21">
+            <span class="sublist1">
+              <i class="fas fa-user"></i>{{r.user_name}}
+            </span>
+            <span class="sublist4">
+              <span class="subques">
+                QUE
+              </span>
+              <span class="subquestext">
+                {{r.question}}
+              </span>
+            </span>
+            <span class="sublist5">
+              {% if r.answer %}
+              <span class="subans">
+                ANS
+              </span>
+              <span class="subanstext">
+                {{r.answer}}
+              </span>
+              {% endif %}
+            </span>
+            <span class="sublist3">
+              {{r.publish_date}}
+            </span>
+          </span>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="re_not_found">
+          No reviews avaiable from last 1 month
+        </div>
+        {% endif %}
+        <script src="{% static '/js/dashboard/review_dash.js' %}"></script>

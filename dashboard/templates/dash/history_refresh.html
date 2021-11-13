@@ -1,0 +1,26 @@
+{% load static %}
+{% if order_history %}
+          {% for o in order_history %}
+          <div class="order_list" data="{{o.order_number}}">
+            <span class="o_list1" style="width:10%;">
+              <i class="fas fa-shopping-bag" style="font-size:15px;"></i>
+            </span>
+            <span class="o_list2" style="padding-left:8px;">
+              <span class="o_sublist1">
+                Order Number: {{o.order_number}}
+              </span>
+              <span class="o_sublist2">
+                Customer Name: {{o.user_full_name}}
+              </span>
+              <span class="o_sublist3">
+                {{o.ordered_date}}
+              </span>
+            </span>
+          </div>
+          {% endfor %}
+          {% else %}
+          <div class="d_not_found">
+              There are no order history
+          </div>
+          {% endif %}
+          <script src="{% static '/js/dashboard/order_dash.js' %}"></script>

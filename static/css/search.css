@@ -1,0 +1,30 @@
+.search-product-banner{
+	height: inherit;
+	width: 100%;
+	float:left;
+	padding: 50px 0px;
+}
+.search_head{
+	height: inherit;
+	width:100%;
+	float:left;
+	text-align:left;
+}
+.search_head h4{
+	color:#008ECC;
+	font-family:PlayfairDisplay-Regular;
+	padding: 20px 0px;
+}
+.products_cover a{
+	text-decoration: none;
+}
+.product_not_found{
+	width:100%;
+	height:inherit;
+	float:left;
+	padding: 100px 0px;
+	text-align:center;
+}
+.product_not_found h6{
+	color:#008ECC;
+}

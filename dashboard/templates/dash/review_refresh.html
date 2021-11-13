@@ -1,0 +1,26 @@
+{% if recent_reviews %}
+          {% for r in recent_reviews %}
+          <div class="d_review">
+            <span class="d_review_img">
+              <a href="/static/{{r.image}}" data-lightbox="dash_r_r{{r.id}}">
+                <img src="/static/{{r.image}}" class="d_r_img">
+              </a>
+            </span>
+            <span class="d_review_text">
+              <span class="d_text1">
+                {{r.user_name}}
+              </span>
+              <span class="d_text2">
+                {{r.review}}
+              </span>
+              <span class="d_text3">
+                {{r.posted_date}}
+              </span>
+            </span>
+          </div>
+          {% endfor %}
+          {% else %}
+          <div class="d_not_found">
+            There are no reviews from last 1 month
+          </div>
+          {% endif %}

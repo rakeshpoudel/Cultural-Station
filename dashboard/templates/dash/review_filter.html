@@ -1,0 +1,74 @@
+{% load static %}
+{% if all_reviews %}
+        {% for rr, range in all_reviews %}
+        {% for r in rr %}
+          <div class="show_cover re{{r.product_id}}">
+            <span class="show_head">
+              <a href="/static/{{r.image}}" data-lightbox="fil_r_r{{r.id}}">
+                <img src="/static/{{r.image}}" class="pop_p_img">
+              </a>
+            </span>
+            <div class="review_pop_contain">
+              <span class="r_pop_list1">
+               {{r.user_name}}
+              </span>
+              <span class="r_pop_list2">
+                {{r.review}}
+              </span>
+              <span class="sublist3">
+              {% for r_cal, ids in review_rates %}
+              {% if r.id == ids %}
+              <div class="rate_details">
+                <input type="hidden" id="rate1{{r.id}}" value="{{r_cal}}">
+                <span class="rate_stars" id="rate_stars{{r.id}}">
+                  <i class="fas fa-star" id="star_avg1{{r.id}}"></i>
+                  <i class="fas fa-star-half-alt star_avg1half" id="star_avg1half{{r.id}}"></i>
+                  <i class="fas fa-star" id="star_avg2{{r.id}}"></i>
+                  <i class="fas fa-star-half-alt star_avg1half" id="star_avg2half{{r.id}}"></i>
+                  <i class="fas fa-star" id="star_avg3{{r.id}}"></i>
+                  <i class="fas fa-star-half-alt star_avg1half" id="star_avg3half{{r.id}}"></i>
+                  <i class="fas fa-star" id="star_avg4{{r.id}}"></i>
+                  <i class="fas fa-star-half-alt star_avg1half" id="star_avg4half{{r.id}}"></i>
+                  <i class="fas fa-star" id="star_avg5{{r.id}}"></i>
+                </span>
+              </div>
+              {% endif %}
+              {% endfor %}
+            </span>
+              <span class="r_pop_list3">
+               {{r.posted_date}}
+              </span>
+            </div>
+          </div>
+          {% endfor %}
+          <div class="avg_rates">
+              {% for rating, rrid in avg_rating %}
+              {% if rr.0.product_id == rrid %}
+              <div class="rate_details r_det">
+                <span class="r_text">Product Rating</span><br>
+                <input type="hidden" id="rate1{{rr.0.id}}" value="{{rating.average_rates}}">
+                <span class="rate_stars" id="rate_stars{{rr.0.id}}">
+                  <i class="fas fa-star" id="star_avg1{{rr.0.id}}"></i>
+                  <i class="fas fa-star-half-alt star_avg1half" id="star_avg1half{{rr.0.id}}"></i>
+                  <i class="fas fa-star" id="star_avg2{{rr.0.id}}"></i>
+                  <i class="fas fa-star-half-alt star_avg1half" id="star_avg2half{{rr.0.id}}"></i>
+                  <i class="fas fa-star" id="star_avg3{{rr.0.id}}"></i>
+                  <i class="fas fa-star-half-alt star_avg1half" id="star_avg3half{{rr.0.id}}"></i>
+                  <i class="fas fa-star" id="star_avg4{{rr.0.id}}"></i>
+                  <i class="fas fa-star-half-alt star_avg1half" id="star_avg4half{{rr.0.id}}"></i>
+                  <i class="fas fa-star" id="star_avg5{{rr.0.id}}"></i>
+                </span>
+              </div>
+              {% endif %}
+              {% endfor %}
+            </div>
+          {% endfor %}
+          <div class="empty">
+            There are no reviews for this product
+          </div>
+        {% else %}
+        <div class="re_not_found">
+          No reviews avaiable from last 1 month
+        </div>
+        {% endif %}
+        <script src="{% static '/js/dashboard/review_dash.js' %}"></script>

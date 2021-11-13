@@ -1,0 +1,46 @@
+{% load static %}
+ {% if all_queries %}
+        {% for r in all_queries %}
+          <div class="show_cover qu{{r.product_id}}">
+            <span class="show_head">
+              <a href="/static/{{r.image}}" data-lightbox="fil_q_r{{r.id}}">
+                <img src="/static/{{r.image}}" class="pop_p_img">
+              </a>
+            </span>
+            <div class="review_pop_contain">
+              <span class="r_pop_list1">
+                {{r.user_name}}
+              </span>
+              <span class="sublist4">
+                <span class="subques">
+                  QUE
+                </span>
+                <span class="subquestext">
+                  {{r.question}}
+                </span>
+              </span>
+              <span class="sublist5">
+                {% if r.answer %}
+                <span class="subans">
+                  ANS
+                </span>
+                <span class="subanstext">
+                  {{r.answer}}
+                </span>
+                {% endif %}
+              </span>
+              <span class="r_pop_list3">
+                {{r.publish_date}}
+              </span>
+            </div>
+          </div>
+          {% endfor %}
+          <div class="empty">
+            There are no queries for this product
+          </div>
+        {% else %}
+        <div class="re_not_found">
+          No queries avaiable from last 1 month
+        </div>
+        {% endif %}
+        <script src="{% static '/js/dashboard/review_dash.js' %}"></script>

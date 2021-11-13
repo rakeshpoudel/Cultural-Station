@@ -1,0 +1,390 @@
+.cart_product_banner{
+    height:auto;
+    width:100%;
+    float:left;
+    background:rgba(0,0,0,.05);
+}
+.cart_products{
+    height:inherit;
+    width:100%;
+    background:#fff;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+.cart_products h6{
+    font-size:85%;
+    padding:10px 15px 0px 15px;
+    color:;
+    text-transform:uppercase;
+    text-align:left;
+}
+.cart_table{
+    width:100%;
+}
+.cart_table tr{
+    width:100%;
+    background:;
+    float:left;
+    margin-bottom:20px;
+}
+#cart_rows{
+    margin-bottom:0px !important;
+    border-bottom:1px solid rgba(0,0,0,.1);
+    background:;
+}
+.cart_table tr td{
+    padding:10px 20px;
+    float:left;
+}
+.prod_check{
+    height:20px;
+    width:20px;
+}
+.prod_check[type='checkbox']:after{
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  top: 0px;
+  left: 0px;
+  position: relative;
+  background-color: #fff;
+  content: '';
+  display: inline-block;
+  visibility: visible;
+  border: 1px solid gray;
+}
+
+.prod_check[type='checkbox']:checked:after{
+  text-align:center;
+  font-weight:bold;
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+  top: 0px;
+  left: 0px;
+  position: relative;
+  background-color: #fff4e8;
+  color:#fa8005;
+  content: '\2713';
+  display: inline-block;
+  visibility: visible;
+  border: 1px solid #fa8005;
+}
+
+
+
+#prod_arrival{
+    width:100%;
+    font-size:14px;
+    height:inherit;
+    float:left;
+    color:#008ECC;
+}
+#prod_arrival{
+    padding-left:10px;
+}
+#cart_img{
+    height:100px;
+    width:80px;
+}
+#prod_name{
+    text-transform:capitalize;
+    font-size:18px;
+
+}
+#prod_category{
+    text-transform:capitalize;
+    font-size:14px;
+    color:#4c5454;
+
+}
+#refund{
+    font-size: 14px;
+    color:#4c5454;
+}
+#prod_rent_way{
+    text-transform:capitalize;
+    font-size:14px;
+    color:#4c5454;
+
+}
+#prod_size,
+#prod_count,
+#prod_count span{
+    font-size:13px;
+    color:#fc7730;
+}
+#prod_return{
+    padding-left:10px;
+    font-size:13px;
+    color:#008ECC;
+}
+
+#price_td{
+    float:right !important;
+    height:;
+    background:#fa8005;
+}
+.prod_rent_price,
+.prod_rent_price span{
+    font-size:15px;
+    color:azure;
+
+}
+#op_td{
+    position:absolute;
+    bottom:0px;
+    right:0px;
+}
+#op_clicks i{
+    color:#bbb;
+    font-size:19px;
+    cursor:pointer;
+    float:right;
+}
+.spinner1{
+    display:none;
+}
+.wish_form{
+    float:right;
+}
+.wish_btn_add{
+    border:none;
+    background:none;
+    float:right;
+}
+.wished{
+    display:none;
+}
+
+.cart_total_banner{
+    height:auto;
+    float:left;
+    width:100%;
+    background:#fff;
+    margin-top:50px;
+    padding-bottom:20px;
+}
+.total1,
+.total2,
+.total3,
+.total4,
+.total5{
+    float:left;
+    width:100%;
+    height:inherit;
+    padding:10px 15px 0px 15px;
+}
+.total3{
+    display:none;
+}
+.total4{
+    margin-top:10px;
+}
+#sub_total1,
+#refund1{
+    color:#4c5454;
+    font-size:15px;
+    float:left;
+}
+#summary_items{
+    color:#4c5454;
+    font-size:15px !important;
+    width:15px;
+    padding:0px !important;
+    border:none;
+    background:none;
+}
+#sub_total2,
+#refund2,
+#total_amount_text{
+    font-size:15px;
+    float:right;
+}
+#total_amount_text{
+    color:#fa8005;
+}
+#sub_total_amount,
+#refund_amount{
+    font-size: 17px !important;
+    border:none;
+    background:none;
+    width:70px;
+
+}
+#total_amount{
+    font-size: 17px !important;
+    border:none;
+    background:none;
+    width:70px;
+    color:#fa8005;
+}
+#proceed_checkout_btn{
+    width:100%;
+    height:45px;
+    border:none;
+    background:#fc9730;
+    font-size:14px;
+    color:#fff;
+    cursor:pointer;
+    transition:all .4s ease;
+}
+#proceed_checkout_btn_dis{
+    width:100%;
+    height:45px;
+    border:none;
+    background:#aaa;
+    font-size:14px;
+    color:#000;
+    transition:all .4s ease;
+}
+#proceed_checkout_btn:hover{
+    background:#fa8005;
+}
+#proceed_checkout_btn:disabled:hover{
+  background: ;
+  color: gray;
+  cursor:not-allowed;
+}
+#proceed_checkout_btn:disabled,
+#proceed_checkout_btn[disabled]{
+  background: lightgray;
+  color: gray;
+}
+
+
+.cart_error{
+    height:inherit;
+    margin:0px auto 10px auto;
+    width:60%;
+    background:;
+    padding:20px 20px;
+    text-align:center;
+    border:1px solid #ccc;
+    display:none;
+}
+.cart_error2{
+    display:none;
+    height:inherit;
+    margin:10px 20%;
+    float:left;
+    width:60%;
+    background:;
+    padding:20px 20px;
+    text-align:center;
+    border:1px solid #ccc;
+}
+.cart_error p,
+.cart_error2 p{
+    margin:0px;
+    font-size:14px;
+    color:#aaa;
+}
+.cart_error i{
+    color:#ccc;
+    font-size:25px;
+}
+.cart_text{
+    float:left;
+    height:inherit;
+    width:70%;
+    border:1px solid #ddd;
+    padding:0px 10px;
+    margin-left:15px;
+}
+.text{
+    float:left;
+    padding:;
+    font-size:14px;
+    width:70%;
+    height:inherit;
+    background:;
+    padding:10px 0px;
+}
+.text_sub{
+    color:#aaa;
+    float:left;
+    width:40%;
+}
+.text_sub2{
+    color:#aaa;
+    float:left;
+    width:60%;
+    display:none;
+}
+.text_sub1{
+    float:left;
+    color:red;
+    display:none;
+    padding: 0px 50px 0px 0px;
+}
+.text_icon{
+    float:left;
+    width:10%;
+    height:inherit;
+    background:;
+    padding:19px 0px;
+    margin-right:;
+}
+.icon{
+    color:#d69f67;
+}
+#error{
+    color:#d69f67;
+    display:none;
+}
+
+.no_products_banner{
+    height:inherit;
+    width:100%;
+    float:left;
+    background:;
+    text-align:center;
+    padding:200px 0px;
+}
+.no_products_banner p{
+    color:#4c5454;
+}
+#home_link_btn{
+    height:50px;
+    width:200px;
+    background:#fc9730;
+    border:none;
+    cursor:pointer;
+    color:#fff;
+    font-size:14px;
+}
+
+.item_error{
+    height:auto;
+    float:left;
+    width:100%;
+    background:#ddd;
+    margin-top:10px;
+    padding:20px 20px;
+    text-align:center;
+    display:none;
+}
+.rental_error{
+    height:auto;
+    float:left;
+    width:100%;
+    background:#fff;
+    margin-top:10px;
+    padding:20px 20px;
+    text-align:center;
+}
+.item_error p,
+.item_error p span{
+    font-size:13px;
+    color:#fa2f2f;
+    margin:0px;
+}
+.rental_error p{
+    font-size:13px;
+    color:#fa2f2f;
+    margin:0px;
+}
+#hidden_inputs{
+    display:none;
+}

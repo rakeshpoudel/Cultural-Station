@@ -1,0 +1,459 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%}
+  <title>Proceed to Pay - Rent Station</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/proceed_pay.css' %}">
+    <style>
+        .header{
+          background: #fff;
+          box-shadow:0 5px 6px 0 #ddd;
+        }
+        .menus ul a{
+          color:#000 !important;
+        }
+        #text2 a{
+          color:#000;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="pay_main_banner">
+            <div class="container">
+                <div class="pay_submain_banner">
+                    <div class="pay_main_text">
+                        <h6>Choose way to pay</h6>
+                    </div>
+
+                    <div class="col col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12">
+                        <div class="pay_container1">
+                            <div class="sub_pay_container">
+                                <button type="button" class="pay_button" id="cash_btn1">
+                                    <i class="far fa-money-bill-alt fa-lg cash1"></i><br>
+                                    Cash On Delivery
+                                </button>
+                            </div>
+                            <!-- <div class="sub_pay_container">
+                                <button type="button" class="pay_button" id="cash_btn2">
+                                    <i class="far fa-credit-card fa-lg cash2"></i><br>
+                                    Credit/Debit Card
+                                </button>
+                            </div> -->
+                            <div class="sub_pay_container">
+                                <a href="{% url 'payment' %}"><button type="button" class="pay_button">
+                                    <i class="fas fa-wallet fa-lg cash3"></i><br>
+                                    CREDIT/DEBIT CARD
+                                </button></a>
+                            </div>
+                            <div class="sub_pay_container">
+                                <button type="button" class="pay_button" id="payment-button">
+                                    <i class="fas fa-wallet fa-lg"></i><br>
+                                    PAY WITH KHALTI
+                                </button>
+                            </div>
+                            <div class="sub_pay_container">
+                                <!--id: 9806800004 pas: test@123-->
+                                <form action="https://uat.esewa.com.np/epay/main" method="POST">
+                                <input value="100" name="tAmt" type="hidden">
+                                <input value="90" name="amt" type="hidden">
+                                <input value="0" name="txAmt" type="hidden">
+                                <input value="0" name="psc" type="hidden">
+                                <input value="10" name="pdc" type="hidden">
+                                <input value="epay_payment" name="scd" type="hidden">
+                                <input value="pid8569" name="pid" type="hidden">
+                                <input value="http://merchant.com.np/page/esewa_payment_success?q=su" type="hidden" name="su">
+                                <input value="http://merchant.com.np/page/esewa_payment_failed?q=fu" type="hidden" name="fu">
+                                <button type="submit" name="submit" class="pay_button" style="height: 80px;">
+                                    <i class="fas fa-wallet fa-lg"></i><br>
+                                    PAY WITH ESEWA
+                                </button>
+                                </form>
+                            </div>
+                            <!-- <div class="sub_pay_container">
+                                <button type="button" class="pay_button" id="cash_btn3">
+                                    <i class="fas fa-wallet fa-lg cash3"></i><br>
+                                    KHALTI PAYMENT
+                                </button>
+                            </div>
+                            <div class="sub_pay_container">
+                                <button type="button" class="pay_button" id="cash_btn4">
+                                    <i class="fas fa-wallet fa-lg cash5"></i><br>
+                                    ESEWA PAYMENT
+                                </button>
+                            </div> -->
+                        </div>
+                    </div>
+                    <div class="col col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                        <div class="pay_container2">
+                            <div class="sub_pay_container2" id="pay_contain1">
+                                <p>You can pay your total amount when rentals are delivered to you in your shipping location</p>
+                                
+                                <span>
+                                    <i class="fas fa-map-marker-alt px-1 fa-lg"></i>
+                                    <span id="shipping">{{user_d.shipping_address}}, {{user_d.shipping_area}}, {{user_d.shipping_city}}</span>
+                                </span>
+                                <span style="margin-top:40px;">
+                                        <a href="{% url 'order_update' %}"><button type="submit" name="submit" id="order_confirm_btn">CONFIRM ORDER</button></a>
+                                        <i class="fa fa-spinner fa-pulse mx-1 spinner4"></i>
+                                </span>
+                            </div>
+                            <div class="sub_pay_container2" id="pay_contain2">
+                                <span id="icon_head">
+                                    <i class="fab fa-cc-visa mx-1"></i>
+                                    <i class="fab fa-cc-mastercard mx-4"></i>
+                                </span>
+                                <span id="pay_field1">
+                                    <label><a id="astrick">*</a> Card number</label><br>
+                                    <input type="text" name="card_number" placeholder="Card number">
+                                </span>
+                                <span id="pay_field2">
+                                    <label><a id="astrick">*</a> Name on card</label><br>
+                                    <input type="text" name="card_name" placeholder="Name on card">
+                                </span>
+                                <span id="pay_field3">
+                                    <label><a id="astrick">*</a> Expiration date</label><br>
+                                    <input type="text" name="card_number" placeholder="MM/YY">
+                                </span>
+                                <span id="pay_field4">
+                                    <label><a id="astrick">*</a> CVV</label><br>
+                                    <input type="text" name="card_number" placeholder="CVV">
+                                </span>
+                                <span id="pay_btn_wrapper">
+                                    <button type="submit" name="submit" class="pay_now_btn">PAY NOW</button>
+                                </span>
+                            </div>
+                            <div class="sub_pay_container2" id="pay_contain3">
+                                <span id="icon_head">
+                                    <img src="{% static 'img/icon_img/khalti-logo.png' %}" class="khalti_icon">
+                                </span>
+                                <span id="pay_field1">
+                                    <label><a id="astrick">*</a> Mobile</label><br>
+                                    <input type="text" name="mobile_number" placeholder="Khalti number">
+                                </span>
+                                <span id="pay_field2">
+                                    <label><a id="astrick">*</a> KHALTI PIN</label><br>
+                                    <input type="text" name="card_name" placeholder="Khalti pin">
+                                </span>
+                                <span id="pay_btn_wrapper">
+                                    <button type="submit" name="submit" class="pay_now_btn" id="khalti_pay_btn">PAY NOW</button>
+                                </span>
+                            </div>
+                            <div class="sub_pay_container2" id="pay_contain4">
+                                <span id="icon_head_config">
+                                    Client Side Config Success
+                                </span>
+                                <div class="config-info-ban">
+                                    <span class="config_head">Send Info</span>
+                                    <span class="config-info">
+                                        "publicKey": <font style="color:blue;">"test_public_key_dc74e0fd57cb46cd93832aee0a390234"</font>
+                                    </span>
+                                    <span class="config-info">
+                                        "productIdentity": "6582"
+                                    </span>
+                                    <span class="config-info">
+                                        "productName": "bluster neck maxi"
+                                    </span>
+                                    <span class="config-info">
+                                        "productUrl": "http://rentstaion.com/product_view/bluster-neck-maxi/"
+                                    </span>
+                                </div>
+                                <div class="config-info-ban">
+                                    <span class="config_head">Get Info</span>
+                                    <span class="config-info">
+                                        amount: 1000 (in paisa)
+                                    </span>
+                                    <span class="config-info">
+                                        <font style="color:blue;">idx: 'MyDpaupshWksY2oooYu'</font>
+                                    </span>
+                                    <span class="config-info">
+                                        <span style="width:15%;float:left; color:rgba(0,0,0,.7)">mobile:</span> <span id="mobile_khalti" style="width:10%; float:left; color:rgba(0,0,0,.7)">986516554</span>
+                                    </span>
+                                    <span class="config-info">
+                                        product_identity: '6582'
+                                    </span>
+                                    <span class="config-info">
+                                        product_name: 'bluster neck maxi'
+                                    </span>
+                                    <span class="config-info">
+                                        product_url: 'http://rentstaion.com/product_view/bluster-neck-maxi/'
+                                    </span>
+                                    <span class="config-info">
+                                        <font style="color:blue;">token: '056kajsdbfiDu7kabsd8'</font>
+                                    </span>
+                                    <span class="config-info">
+                                        <font style="color:blue;">widget_id: 'khalti-widget-65351864'</font>
+                                    </span>
+                                </div>
+                                <span id="pay_btn_wrapper">
+                                    <button type="button" name="submit" class="pay_now_btn" id="khalti_pay_btn2">NEXT</button>
+                                </span>
+                            </div>
+                            <div class="sub_pay_container2" id="pay_contain5">
+                                <span id="icon_head_config">
+                                    Server Side Config Success
+                                </span>
+                                <div class="config-info-ban">
+                                    <span class="config_head">Send Info</span>
+                                    <span class="config-info">
+                                        <font style="color:blue;">url = "https://khalti.com/api/v2/payment/verify/"</font>
+                                    </span>
+                                    <span class="config-info">
+                                        payload = {
+                                    </span>
+                                    <span class="config-info">
+                                        <font style="color:blue;">"token": "QUao9cqFzxPgvWJNi9aKac",</font>
+                                    </span>
+                                    <span class="config-info">
+                                        <font style="color:blue;">"amount": 1000</font>
+                                    </span>
+                                    <span class="config-info">
+                                        }
+                                    </span>
+                                    <span class="config-info">
+                                        headers = {
+                                    </span>
+                                    <span class="config-info">
+                                        <font style="color:blue;">"Authorization": "Key test_secret_key_f59e8b7d18b4499ca40f68195a846e9b"</font>
+                                    </span>
+                                    <span class="config-info">
+                                        }
+                                    </span>
+                                    <span class="config-info">
+                                        response = requests.post(url, payload, headers = headers)
+                                    </span>
+                                </div>
+                                <div class="config-info-ban">
+                                    <span class="config_head">Get Info</span>
+                                    <span class="config-info">
+                                        { "idx": "8xmeJnNXfoVjCvGcZiiGe7",
+                                    </span>
+                                    <span class="config-info">
+                                        "type": {
+                                    </span>
+                                    <span class="config-info">
+                                        "idx": "e476BL6jt9kgagEmsakyTL",
+                                    </span>
+                                    <span class="config-info">
+                                        "name": "Wallet payment"
+                                    </span>
+                                    <span class="config-info">
+                                        },
+                                    </span>
+                                    <span class="config-info">
+                                        "state": {
+                                    </span>
+                                    <span class="config-info">
+                                        "idx": "DhvMj9hdRufLqkP8ZY4d8g",
+                                    </span>
+                                    <span class="config-info">
+                                        "template": "is complete"
+                                    </span>
+                                    <span class="config-info">
+                                        },
+                                    </span>
+                                    <span class="config-info">
+                                        "amount": 1000,
+                                    </span>
+                                    <span class="config-info">
+                                        "fee_amount": 30,
+                                    </span>
+                                    <span class="config-info">
+                                        "refunded": false,
+                                    </span>
+                                    <span class="config-info">
+                                        "created_on": "2018-06-20T14:48:08.867125+05:45",
+                                    </span>
+                                    <span class="config-info">
+                                        "ebanker": null,
+                                    </span>
+                                    <span class="config-info">
+                                        "user": {
+                                    </span>
+                                    <span class="config-info">
+                                        "idx": "cCaPkRPQGn5D8StkiqqMJg",
+                                    </span>
+                                    <span class="config-info">
+                                        "name": "Test User",
+                                    </span>
+                                    <span class="config-info">
+                                        "mobile": "98XXXXXXX9"
+                                    </span>
+                                    <span class="config-info">
+                                         },
+                                    </span>
+                                    <span class="config-info">
+                                        "merchant": {
+                                    </span>
+                                    <span class="config-info">
+                                        "idx": "UM75Gm2gWmZvA4TPwkwZye",
+                                    </span>
+                                    <span class="config-info">
+                                        "name": "Test Merchant",
+                                    </span>
+                                    <span class="config-info">
+                                        "mobile": "testmerchant@khalti.com"
+                                    </span>
+                                    <span class="config-info">
+                                        }
+                                    </span>
+                                    <span class="config-info">
+                                       }
+                                    </span>
+                                </div>
+                                <span id="pay_btn_wrapper">
+                                    <a href="{% url 'paid_khalti' %}">
+                                    <button type="submit" name="submit" class="pay_now_btn" id="khalti_pay_btn3">REDIRECT</button></a>
+                                    <i class="fa fa-spinner fa-pulse mx-1 spinner5"></i>
+                                </span>
+                            </div>
+                            <div class="sub_pay_container2" id="pay_contain6">
+                                <span id="icon_head_config">
+                                    Verification Process
+                                </span>
+                                <div class="config-info-ban">
+                                    <span class="config_head">Send Info</span>
+                                    <span class="config-info">
+                                        total amount: 100 (suppose)
+                                    </span>
+                                    <span class="config-info">
+                                        amount : 90
+                                    </span>
+                                    <span class="config-info">
+                                        tax amount: 5
+                                    </span>
+                                    <span class="config-info">
+                                        psc(Service charge): 2
+                                    </span>
+                                    <span class="config-info">
+                                        pdc(delivery charge): 3
+                                    </span>
+                                    <span class="config-info">
+                                        pdc(product id): 456
+                                    </span>
+                                    <span class="config-info">
+                                        <font style="color:blue;">scd(merchant code provided by esewa): 456</font>
+                                    </span>
+                                    <span class="config-info">
+                                        <font style="color:blue;">success link: "http://merchant.com.np/page/esewa_payment_success?q=su"</font>
+                                    </span>
+                                    <span class="config-info">
+                                        <font style="color:blue;">failure link: "http://merchant.com.np/page/esewa_payment_failed?q=fu"</font>
+                                    </span>
+                                </div>
+                                <div class="config-info-ban">
+                                    <span class="config_head">Verify info</span>
+                                    <span class="config-info">
+                                        <font style="color:blue;">url ="https://uat.esewa.com.np/epay/transrec"</font>
+                                    </span>
+                                    <span class="config-info">
+                                        d = {
+                                    </span>
+                                    <span class="config-info">
+                                        'amt': 100,
+                                    </span>
+                                    <span class="config-info">
+                                        'scd': 'epay_payment',
+                                    </span>
+                                    <span class="config-info">
+                                        <font style="color:blue;">'rid': '000AE01',</font>
+                                    </span>
+                                    <span class="config-info">
+                                        'pid':'ee2c3ca1-696b-4cc5-a6be-2c40d929d453',
+                                    </span>
+                                    <span class="config-info">
+                                        }
+                                    </span>
+                                    <span class="config-info">
+                                        resp = req.post(url, d)
+                                    </span>
+                                </div>
+                                <span id="pay_btn_wrapper">
+                                    <a href="{% url 'paid_esewa' %}">
+                                    <button type="button" name="submit" class="pay_now_btn" id="esewa_pay_btn">REDIRECT</button></a>
+                                    <i class="fa fa-spinner fa-pulse mx-1 spinner6"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+                        <div class="pay_container3">
+                            <div class="pay_rental_summary">
+                                <span id="sub_pay_head">Rental Summary</span>
+                                <div id="pay_sub">
+                                    <span id="pay_sub_text">Subtotal ({{items}} items refund included)</span>
+                                    <span id="pay_sub_amt">RS. {{t_amount}}</span>
+                                </div>
+                                <div id="pay_sub">
+                                    <span id="pay_sub_text">Shipping Fee</span>
+                                    <span id="pay_sub_amt">RS. {{ship_charge.shipping_charge}}</span>
+                                </div>
+                                <div id="pay_sub">
+                                    <span id="pay_sub_text1">Total Amount</span>
+                                    <span id="pay_sub_amt1">RS. {{g_total}}</span>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+{% block js %}
+    <script src="{% static '/js/proceed_pay.js' %}"></script>
+    <script src="https://unpkg.com/khalti-checkout-web@latest/dist/khalti-checkout.iffe.js"></script>
+
+    <script>
+        var config = {
+            // replace the publicKey with yours
+            "publicKey": "test_public_key_dc74e0fd57cb46cd93832aee0a390234",
+            "productIdentity": "1234567890",
+            "productName": "Dragon",
+            "productUrl": "http://gameofthrones.wikia.com/wiki/Dragons",
+            "paymentPreference": [
+            "MOBILE_BANKING",
+            "KHALTI",
+            "EBANKING",
+            "CONNECT_IPS",
+            "SCT",
+            ],
+            "eventHandler": {
+                onSuccess (payload) {
+                    // hit merchant api for initiating verfication
+                    console.log(payload);
+                },
+                onError (error) {
+                    console.log(error);
+                },
+                onClose () {
+                    console.log('widget is closing');
+                }
+            }
+        };
+
+        var checkout = new KhaltiCheckout(config);
+        var btn = document.getElementById("payment-button");
+        btn.onclick = function () {
+            // minimum transaction amount must be 10, i.e 1000 in paisa.
+            checkout.show({amount: 1000});
+        }
+    </script>
+
+
+{% endblock %}
+
+

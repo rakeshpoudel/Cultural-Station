@@ -1,0 +1,181 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%}
+  <title>Confirm Order - Rent Station</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/confirm_order.css' %}">
+    <style>
+        .header{
+          background: #fff;
+          box-shadow:0 5px 6px 0 #ddd;
+        }
+        .menus ul a{
+          color:#000 !important;
+        }
+        #text2 a{
+          color:#000;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="confirm_main_banner">
+            <div class="container">
+                <div class="col col-12">
+                    <div class="confirm_wrapper">
+                        <div class="confirm_head">
+                            <h4><i class="far fa-smile fa-lg smile_icon"></i>Thank You For Renting</h4>
+                        </div>
+                        <div class="confirm_subbanner1">
+                            <span>Check out your order details</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-xl-8 col-lg-8 col-md-8">
+                    <div class="confirm_banner1">
+                        <div class="confirm_subbanner2">
+                            <div class="confirm_sub">
+                                <span id="order_head">Order Details</span>
+                                <span id="order_number">
+                                    Order Number: {{order_num}}
+                                </span>
+                                <div class="confirm_sub1">
+                                    {% for item in list %}
+                                    <div class="confirm_sub2">
+                                        <span id="image_sub">
+                                            <img src="/static/{{item.prod_image}}/" id="confirm_prod_image">
+                                        </span>
+                                        <div class="part1">
+                                            <span id="prod_sub_name">
+                                                {{item.product_name}}
+                                            </span><br>
+                                            <span id="prod_sub_rent_type">
+                                                {{item.renting_way}} ({{item.renting_days}})
+                                            </span><br>
+                                            <span id="prod_sub_refund">
+                                                Refund amount : Rs. {{item.refund}}
+                                            </span>
+                                        </div>
+                                        <div class="part2">
+                                            <span id="prod_sub_date1">
+                                                Arrival: {{item.delivery_date}}
+                                            </span><br>
+                                            <span id="prod_sub_date2">
+                                                Return: {{item.returning_date}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                    <hr style="float:left; width:100%;">
+                                    <span id="track_info">
+                                        You can track you order status under My Account > My Order >
+                                        <a href="{% url 'my_order' %}"><button type="button" id="view_order_btn">View Order</button></a>
+                                    </span>
+                                </div>
+                                <div class="mail_info">
+                                    <p><i class="fas fa-envelope fa-lg mail_icon"></i>Check you email. We have sent order confirmation with order details.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="confirm_subbanner3">
+                            <a href="{% url 'rent_dress' %}"><button type="button" id="continue_rent_btn">CONTINUE RENTING</button></a>
+                        </div>
+                        <div class="confirm_recommend_banner">
+                            <div class="recommend_confirm">
+                                <span id="recommend_head">
+                                    You may also rent
+                                </span>
+                                <div class="rentals">
+                                    {% for rentals, range in recommend_rentals %}
+                                    {% for rental in rentals %}
+                                    <div class="col col-xl-4 col-lg-4 col-md-4">
+                                        <a href="{{rental.get_absolute_url}}">
+                                        <div class="card card_rental">
+                                            <div class="card-images">
+                                                <img src="/static/{{rental.main_image}}" class="rental_img"
+                                                     alt="...">
+                                            </div>
+                                            <div class="card-body">
+                                                <p class="rental-name">{{rental.name}}</p>
+                                                <p class="rental-price">Rs {{rental.rent_price}}</p>
+                                            </div>
+                                        </div>
+                                        </a>
+                                    </div>
+                                    {% endfor %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-xl-4 col-lg-4 col-md-4">
+                    <div class="confirm_banner2">
+                        <span id="order_head2">Order Summary</span>
+                        <hr style="float:left; width:100%; margin-top:0px;">
+                        <div id="order_detail1">
+                            <span id="order_text">Subtotal</span>
+                            <span id="order_amt">RS. {{sub_total}}</span>
+                        </div>
+                        <div id="order_detail1">
+                            <span id="order_text">Total Refund</span>
+                            <span id="order_amt">RS. {{refund}}</span>
+                        </div>
+                        <div id="order_detail1">
+                            <span id="order_text">Shipping Fee</span>
+                            <span id="order_amt">RS. {{charge.shipping_charge}}</span>
+                        </div>
+                        <div id="order_detail1">
+                            <span id="order_text1">Total Amount</span>
+                            <span id="order_amt1">RS. {{g_total}}</span>
+                        </div>
+                        <div id="order_detail1">
+                            <span id="order_text">Payment Method</span>
+                            <span id="order_amt" style="color:green;">{{payment}}</span>
+                        </div>  
+                        <div id="order_detail1">
+                            <span id="refund_info"><i class="fas fa-info-circle fa-xl"></i> You will get your refund after examination of rentals on return.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-xl-4 col-lg-4 col-md-4">
+                    <div class="confirm_banner3">
+                        <span id="ship_head">
+                            Shipping Details
+                        </span>
+                        <hr style="float:left; width:100%; margin-top:0px;">
+                        <span id="ship_info">
+                            <i class="fas fa-map-marker-alt px-1 fa-lg ship_icon"></i>
+                            {{user_d.shipping_address}}, {{user_d.shipping_area}}, {{user_d.shipping_city}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+
+{% block js %}
+    <script src="{% static '/js/confirm_order.js' %}"></script>
+
+
+<script>
+<!--function disableF5(e) { if ((e.which || e.keyCode) == 116) e.preventDefault(); };-->
+<!--$(document).on("keydown", disableF5);-->
+</script>
+
+
+{% endblock %}

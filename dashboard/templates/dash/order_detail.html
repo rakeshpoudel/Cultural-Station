@@ -1,0 +1,220 @@
+  {% load static %}
+        {% for order_list, order_list_sum, range in all_order_details %}
+          <div class="invoice_banner" id="invoice{{order_list_sum.0.id}}">
+            <span class="order_head" style="font-size: 17px;">
+              Invoice
+              <i class="far fa-times-circle close2"></i>
+            </span>
+            <hr style="width: 100%; float: left;">
+            <div class="invoice">
+              <span class="invoice_head">
+                INV-010{{order_list_sum.0.id}}
+              </span>
+              <span class="subinvoice">
+                <span class="sinv1">
+                  Sub Total ({{order_list_sum.0.total_items}} item(s)) :
+                </span>
+                <span class="sinv2">
+                  Rs {{order_list_sum.0.sub_total_amount}}
+                </span>
+              </span>
+              <span class="subinvoice">
+                <span class="sinv1">
+                  Total Refund : 
+                </span>
+                <span class="sinv2">
+                  Rs {{order_list_sum.0.total_refund}}
+                </span>
+              </span>
+              <span class="subinvoice">
+                <span class="sinv1">
+                  Delivery Charge : 
+                </span>
+                <span class="sinv2">
+                  Rs {{order_list_sum.0.shipping_charge}}
+                </span>
+              </span>
+              <hr style="float:left; width:100%;">
+              <span class="subinvoice">
+                <span class="sinv3">
+                  Grand Total : 
+                </span>
+                <span class="sinv4">
+                  Rs {{order_list_sum.0.grand_total}}
+                </span>
+              </span>
+              <span class="payment_info">
+                {% if order_list_sum.0.payment_status == 'Pending' %}
+                {{order_list_sum.0.payment_status}}
+                {% endif %}
+                {% if order_list_sum.0.payment_status == 'Paid On Delivery' or 'Paid With Esewa' or 'Paid with Khalti' %}
+                {{order_list_sum.0.payment_status}}<i class="fas fa-check-circle mx-2"></i>
+                {% endif %}
+              </span>
+            </div>
+          </div>
+          <div class="history_content" id="o{{order_list.0.order_number}}">
+            <span class="history1">
+              <span class="h_number">
+                <i class="fas fa-gem"></i>Order Number: {{order_list.0.order_number}}
+              </span>
+              <span class="h_date">
+                <i class="fas fa-shipping-fast"></i>Arrival on: {{order_list.0.delivery_date}}
+              </span>
+            </span>
+            <div class="history2">
+              <div class="history_cover">
+                {% for o in order_list %}
+                <div class="subhistory1">
+                  <div class="prod_history">
+                    <span class="h_image_contain">
+                      <a href="/static/{{o.prod_image}}" data-lightbox="order_de{{o.id}}">
+                        <img src="/static/{{o.prod_image}}" class="h_prod_img">
+                      </a>
+                    </span>
+                    <span class="h_detail">
+                      <span class="h_detail_name">
+                        {{o.product_name}}
+                      </span>
+                      <span class="h_detail_quantity">
+                        Size: {{o.product_size}}, Qty: {{o.quantity}}
+                      </span>
+                      <span class="h_detail_price">
+                        Price: RS {{o.amount}} | Refund: RS {{o.refund}}
+                      </span>
+                      <span class="h_detail_rentway">
+                        <span style="color:rgba(0,0,0,.9);">{{o.renting_way}}</span>
+                        <span style="color:rgba(0,0,0,.7);">({{o.renting_days}})</span>
+                      </span>
+                      <span class="h_detail_order_date">
+                        Ordered on: {{o.ordered_date}}
+                      </span>
+                      <span class="h_detail_date">
+                        Return on: {{o.returning_date}}
+                      </span>
+                      <span class="h_detail_date stat_dis" id="st{{o.id}}">
+                        {% if o.order_status != 'Rental Returned' %}
+                        {% if order_list_sum.0.order_status != 'Delivered' %}
+                        <span class="stat">{{o.order_status}}<i class="fas fa-check-circle"></i></span>
+                        {% else %}
+                        <span class="stat">{{o.order_status}}</span>
+                        <span class="change_stat" id="{{o.id}}">CHANGE</span>
+                        {% endif %}
+                        {% else %}
+                        <span class="stat">{{o.order_status}}<i class="fas fa-check-circle"></i></span>
+                        {% endif %}
+                      </span>
+                      <span class="status_date1">
+                        {{o.order_status_date}}
+                      </span>
+                      <span class="change_stat_contain" id="sac{{o.id}}">
+                        <input type="hidden" id="link_o_number{{o.id}}" value="{{o.order_number}}">
+                        <input type="hidden" id="link_p_id{{o.id}}" value="{{o.product_id}}">
+                        <input type="hidden" id="link_p_size{{o.id}}" value="{{o.product_size}}">
+                        <form method="POST" action="">
+                          {% csrf_token %}
+                          <input type="hidden" id="link_p_qty{{o.id}}" value="{{o.quantity}}">
+                          <input type="hidden" name="status" id="in{{o.id}}" value="Rental Returned">
+                          <button type="button" class="dis_btn" disabled>Reserved</button>
+                          <button type="submit" class="cng_btn" id="{{o.id}}">Returned</button>
+                          <i class="fa fa-spinner fa-pulse mx-2 change_spin" id="sp{{o.id}}"></i>
+                        </form>
+                      </span>
+                    </span>
+                  </div>
+                </div>
+              {% endfor %}
+              </div>
+              <div class="subhistory2">
+                <span class="h_user_head">
+                  <i class="fas fa-user"></i>
+                  {{order_list.0.customer_name}}
+                </span>
+                <div class="user_detail">
+                  <span class="h_u_detail">
+                    Username: {{order_list.0.customer_user_name}}
+                  </span>
+                  <span class="h_u_detail">
+                    Email: {{order_list.0.customer_email}}
+                  </span>
+                  <span class="h_u_detail">
+                    Contact: +977{{order_list.0.customer_contact}}
+                  </span>
+                  <span class="h_u_detail">
+                    Address: {{order_list.0.customer_address}}
+                  </span>
+                  <span class="h_u_detail">
+                    Delivery Address: {{order_list.0.shipping_address}}
+                  </span>
+                  <span class="h_detail_invoice">
+                    <button type="button" class="invoice_btn" id="{{order_list_sum.0.id}}">INVOICE#</button>
+                  </span>
+                </div>
+              </div>
+              <div class="action_banner">
+                <span class="o_error" id="er{{order_list_sum.0.id}}">
+                  {{error}}
+                </span>
+                <span class="action_text1">
+                  Order Status
+                </span>
+                <span class="action_text2" id="ac{{order_list_sum.0.id}}">
+                  {{order_list_sum.0.order_status}}<i class="fas fa-check-circle"></i>
+                </span>
+                <span class="status_date2">
+                  {{order_list_sum.0.order_status_date}}
+                </span>
+                <span class="action_text3" id="up{{order_list_sum.0.id}}">
+                  {% if order_list_sum.0.order_status != 'Returned' %}
+                  <span class="stat_update" id="{{order_list_sum.0.id}}">
+                    UPDATE STATUS
+                  </span>
+                  {% endif %}
+                </span>
+                <span class="actions" id="act{{order_list_sum.0.id}}">
+                  <form method="POST" action="">
+                    <input type="hidden" id="acin{{order_list_sum.0.id}}">
+                    <input type="hidden" id="on{{order_list_sum.0.id}}" value="{{order_list_sum.0.order_number}}">
+                    <span class="action_group">
+                      <button type="submit" name="Returned" class="action_update_btn action_btn3" data="{{order_list_sum.0.id}}">Returned</button>
+                      <span class="action_cover" id="cret{{order_list_sum.0.id}}">
+                        <i class="fa fa-spinner fa-pulse mx-2"></i>
+                      </span>
+                    </span>
+                    <span class="action_group">
+                      {% if order_list_sum.0.order_status == 'Delivered' %}
+                        <button type="button" class="act_dis" disabled>Delivered</button>
+                      {% else %}
+                        <button type="submit" name="Delivered" class="action_update_btn action_btn2" data="{{order_list_sum.0.id}}">Delivered</button>
+                        <span class="action_cover" id="cdel{{order_list_sum.0.id}}">
+                          <i class="fa fa-spinner fa-pulse mx-2"></i>
+                        </span>
+                      {% endif %}
+                    </span>
+                    <span class="action_group">
+                      {% if order_list_sum.0.order_status == 'Shipping' or order_list_sum.0.order_status == 'Delivered' %}
+                      <button type="button" class="act_dis" disabled>Shipping</button>
+                      {% else %}
+                      <button type="submit" name="Shipping" class="action_update_btn action_btn1" data="{{order_list_sum.0.id}}">Shipping</button>
+                      <span class="action_cover" id="cship{{order_list_sum.0.id}}">
+                        <i class="fa fa-spinner fa-pulse mx-2"></i>
+                      </span>
+                      {% endif %}
+                    </span>
+                    <span class="action_group">
+                      {% if order_list_sum.0.order_status == 'Processing' or order_list_sum.0.order_status == 'Shipping' or order_list_sum.0.order_status == 'Delivered' %}
+                        <button type="button" class="act_dis" disabled>Processing</button>
+                      {% endif %}
+                    </span>
+                    
+                  </form>
+                </span>
+                
+              </div>
+            </div>
+          </div>
+          {% endfor %} 
+             <script src="{% static '/js/dashboard/order_dash.js' %}"></script>
+          <script>
+            $('#o{{on}}').show();
+          </script>

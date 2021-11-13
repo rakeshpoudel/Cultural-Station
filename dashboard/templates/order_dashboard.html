@@ -1,0 +1,164 @@
+{% extends 'dash_base.html' %}
+{% load static %}
+
+{% block title%}
+  <title>Dashboard - Rent Station</title>
+{% endblock %}
+{% block css %}
+  <style>
+    #dashboard_link2{
+      background: #2b2e4a;
+    }
+  </style>
+  <link rel="stylesheet" href="{% static '/css/dashboard/order_dash.css' %}">
+{% endblock %}
+
+
+{% block head_title %}
+Manage Orders
+{% endblock %}
+{% block content %}
+  
+  <div class="col col-12">
+    <div class="search_main_banner">
+      <span class="search1">
+        Search Orders
+      </span>
+      <div class="search_filter">
+        <div class="filter_buttons">
+          <button type="button" class="filters" id="process_filter">PROCESSING</button>
+          <button type="button" class="filters" id="complete_filter">COMPLETED</button>
+        </div>
+      </div>
+      <div class="search_banner" id="process_banner">
+          <div class="search_field1">
+            <input type="text" name="order_search" id="order_search" class="search_dash_input" placeholder="Search processing orders" autocomplete="off">
+          </div>
+          <div class="search_field2">
+            <div class="search_icon"><i class="fas fa-search"></i></div>
+          </div>
+          <div class="search_field3">
+            *Enter username or email or contact or order number to search
+          </div>
+      </div>
+      <div class="search_banner" id="complete_banner">
+          <div class="search_field1">
+            <input type="text" name="order_search_com" id="order_search_com" class="search_dash_input" placeholder="Search completed orders" autocomplete="off">
+          </div>
+          <div class="search_field2">
+            <div class="search_icon"><i class="fas fa-search"></i></div>
+          </div>
+          <div class="search_field3">
+            *Enter username or email or contact or order number to search
+          </div>
+      </div>
+      <div class="result_order">
+        <div class="result_cover">
+            {% include 'dash/order_result.html' %}
+        </div>
+      </div>
+      <div class="result_order2">
+        <div class="result_cover2">
+            {% include 'dash/order_result.html' %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content2">
+    <div class="col col-md-8">
+      <div class="order_banner1">
+        <div class="foot_cover"></div>
+        <span class="order_head">
+          Processing Orders
+          <i class="fas fa-redo process_refresh"></i>
+        </span>
+        <div class="order_history_content">
+          {% include 'dash/processing_order.html' %}
+        </div>
+      </div>
+    </div>
+    <div class="col col-md-4">
+      <div class="order_banner2">
+        <div class="foot_cover"></div>
+        <span class="order_head">
+          Recent Orders
+          <i class="fas fa-redo recent_o_refresh"></i>
+        </span>
+        <div class="order_subbanner2">
+          {% include 'dash/recent_order_dash.html' %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content2">
+    <div class="col col-md-3">
+      <div class="order_banner3">
+        <div class="foot_cover"></div>
+        <span class="order_head">
+          Cancellations
+          <i class="fas fa-redo cancel_refresh"></i>
+        </span>
+        <div class="order_subbanner3">
+          {% include 'dash/cancel_refresh.html' %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col col-md-6">
+      <div class="order_banner3">
+        <div class="foot_cover"></div>
+        <span class="order_head">
+          Recent Returns
+          <i class="fas fa-redo returns_refresh"></i>
+        </span>
+        <div class="order_subbanner4">
+          {% include 'dash/recent_returns.html' %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col col-md-3">
+      <div class="order_banner3">
+        <div class="foot_cover"></div>
+        <span class="order_head">
+          Order History
+          <i class="fas fa-redo history_refresh"></i>
+        </span>
+        <div class="order_subbanner5">
+          {% include 'dash/history_refresh.html' %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!------pop ups-------------------------->
+
+  <div class="detail_popup_banner">
+    <div class="col col-md-4"></div>
+    <div class="col col-md-6">
+      <div class="details_pop">
+        <div class="foot_cover"></div>
+        <span class="order_head">
+          Order Details
+          <i class="far fa-times-circle close1"></i>
+        </span>
+        <div class="refresh_cover">
+          {% include 'dash/order_detail.html' %}
+        </div>
+      </div>
+    </div>
+    <div class="col col-md-2"></div>
+  </div>
+
+
+  <!--=================================-->
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static '/js/dashboard/order_dash.js' %}"></script>
+<script src="{% static '/js/dashboard/order_search.js' %}"></script>
+{% endblock %}

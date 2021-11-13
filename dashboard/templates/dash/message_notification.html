@@ -1,0 +1,13 @@
+
+	<button type="button" id="msg-dropdown" data-toggle="dropdown" aria-haspopup="true"
+	aria-expanded="false">
+	<span id="message"><i class="far fa-envelope"></i></span>
+	<span class="badge" id="badge1">
+		{% include 'dash/message_noti_count.html' %}
+	</span>
+</button>
+<div class="dropdown-menu" id="message_dropdown">
+	
+	{% include 'dash/m_notification.html' %}
+</div>
+

@@ -1,0 +1,185 @@
+/* font family for Culture Station */
+
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../../fonts/Poppins/Poppins-Regular.ttf');
+}
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('../../fonts/Poppins/Poppins-Medium.ttf');
+}
+@font-face {
+  font-family: Raleway-Regular;
+  src: url('../../fonts/Raleway/Raleway-Regular.ttf');
+}
+@font-face {
+  font-family: PlayfairDisplay-Regular;
+  src: url('../../fonts/PlayfairDisplay/PlayfairDisplay-Regular.ttf');
+}
+@font-face {
+  font-family: PlayfairDisplay-Black;
+  src: url('../../fonts/PlayfairDisplay/PlayfairDisplay-Black.ttf');
+}
+@font-face {
+  font-family: Merriweather-Regular;
+  src: url('../../fonts/Merriweather/Merriweather-Regular.ttf');
+}
+
+/* ------------------------------------- */
+
+*{
+  font-family:Poppins-Regular;
+  color:#000;
+  padding:0px;
+  margin:0px;
+}
+body{
+    padding: 0px;
+    margin: 0px;
+    overflow-x: hidden;
+}
+
+input{
+    padding-left:10px !important;
+    font-size:13px !important;
+    font-family:Merriweather-Regular;
+}
+textarea:focus, input:focus, select:focus{
+    outline-width:0px !important;
+    outline:none !important;
+    box-shadow:none !important;
+}
+button:focus{
+    outline-width:0px !important;
+}
+
+.col{
+  float:left;
+}
+.panel_log_banner{
+  width:100%;
+  float:left;
+  background: rgba(0,0,0,.05);
+}
+.log_msg{
+  height:inherit;
+  width:100%;
+  float:left;
+  font-size: 15px;
+  color: red;
+  text-align:center;
+  background: ;
+  margin-top: 105px; 
+  padding: 10px 10px;
+}
+#log_img{
+  height: 150px;
+  width: 150px;
+}
+.log_msg_temp{
+  height:inherit;
+  width:90%;
+  float:left;
+  font-size: 15px;
+  color: red;
+  text-align:center;
+  background: #fff;
+  margin-bottom: 10px; 
+  padding: 20px 0px;
+  position: absolute;
+  top:0px;
+  left:20px;
+  display:;
+}
+.log_msg_temp span{
+  width:100%;
+  float:left;
+  color: rgba(0,0,0,.8);
+  text-align: left;
+  padding: 2px 30px;
+}
+.panel_log{
+  height:inherit;
+  width:100%;
+  float:left;
+  padding: 40px 40px 70px 40px;
+  background: #fff;
+  box-shadow: 0px 0px 10px 0px #ddd;
+}
+.log_ban{
+  height: inherit;
+  width:100%;
+  float:left;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.log_ban_text{
+  width:100%;
+  float:left;
+  font-size: 18px;
+  font-family: PlayfairDisplay-Regular;
+  color:#ff8000;
+  margin-top:-50px;
+}
+.log_field{
+  width:100%;
+  float:left;
+  height: inherit;
+  margin-bottom: 15px;
+}
+.log_field label{
+  font-size: 15px;
+  color: rgba(0,0,0,.8);
+}
+.log_field input{
+  font-size: 15px;
+}
+#log_pan_btn{
+  height: 35px;
+  width: 110px;
+  color: #fff;
+  background: #d69f67;
+  border:none;
+  font-size: 14px;
+  cursor: pointer;
+
+}
+
+.label {
+  line-height:0.1;
+}
+.label span {
+  display: inline-block;
+  position: relative;
+  left:20px;
+  color:#ff8000;
+    font-size:15px;
+    padding:0px;
+}
+.label span:before{
+    content: "";
+  position: absolute;
+  height: 10px;
+  border-top: 1px solid #d69f67;
+  border-left: 1px solid #d69f67;
+  border-top-left-radius:5px;
+  top: 4px;
+  left:-25px;
+  width: 18px;
+}
+.label span:after{
+    content: "";
+  position: absolute;
+  height: 5px;
+  border-top: 1px solid #d69f67;
+  top: 4px;
+  width: 80%;
+}
+.label span:before {
+  right: 100%;
+  margin-right: 15px;
+}
+.label span:after {
+  left: 100%;
+  margin-left: 15px;
+}

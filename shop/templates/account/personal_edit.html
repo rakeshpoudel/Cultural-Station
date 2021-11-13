@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%}
+  <title>Update Personal Information - Rent Station</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/manage_account.css' %}">
+    <style>
+        .btn_p{
+            background:#eee;
+            cursor:pointer;
+        }
+        .btn_s{
+            background:#eee;
+            cursor:pointer;
+        }
+        .btn_s:hover{
+            background:#ddd;
+        }
+        .btn_p:hover{
+            background:#ddd;
+        }
+        #active_manage1{
+            color:darkblue;
+        }
+        .header{
+          background: #fff;
+          box-shadow:0 5px 6px 0 #ddd;
+        }
+        .menus ul a{
+          color:#000 !important;
+        }
+        #text2 a{
+          color:#000;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="manage_main_banner">
+            <div class="container">
+                <div class="manage_banner1">
+                    <div class="col col-xl-2 col-lg-2 col-md-3" style="padding:0px;">
+                        {% include 'account/manage_account_menu.html' %}
+                    </div>
+                    <div class="col col-xl-10 col-lg-10 col-md-10" style="padding:0px;">
+                        <div class="sub_manage2">
+                            <div class="manage_head2">
+                                <h6>MANAGE ACCOUNT</h6>
+                            </div>
+                            <div class="manage_content">
+                                <div class="manage_account">
+                                    <div class="col col-xl-6 col-lg-6 col-md-6">
+                                        <a href="{% url 'manage_account_personal' %}"><button type="button" class="manage_btn btn_p">
+                                            <span class="btn_div1">
+                                                <i class="fas fa-user-shield mx-2 content_icon"></i>
+                                            </span>
+                                            <span class="btn_div2">
+                                                <span class="account_p">Personal Information</span><br>
+                                                <span class="account_t">Update your personal information</span>
+                                            </span>
+
+                                        </button></a>
+                                    </div>
+                                    <div class="col col-xl-6 col-lg-6 col-md-6">
+                                        <a href="{% url 'manage_account_shipping' %}"><button type="button" class="manage_btn btn_s">
+                                            <span class="btn_div1">
+                                                <i class="fas fa-shipping-fast mx-2 content_icon"></i>
+                                            </span>
+                                            <span class="btn_div2">
+                                                <span class="account_p">Shipping Information</span><br>
+                                                <span class="account_t">Update your shipping address</span>
+                                            </span>
+
+                                        </button></a>
+                                    </div>
+                                </div>
+                                <div class="personal_update_banner">
+                                    <span class="update_head">Personal Detail</span>
+                                    <div class="p_details">
+                                        {% if u_name %}
+                                        <form method="POST" action="{% url 'personal_update' %}">
+                                            {% csrf_token %}
+                                        <span class="p_info">
+                                            <label>First Name</label><span class="colon">:</span>
+                                            <input type="text" name="first_name" value="{{user_p.first_name}}">
+                                        </span>
+                                        <span class="p_info">
+                                            <label>Last Name</label><span class="colon">:</span>
+                                            <input type="text" name="last_name" value="{{user_p.last_name}}">
+                                        </span>
+                                        <span class="p_info">
+                                            <label>Contact</label><span class="colon">:</span>
+                                            <input type="number" name="contact" value="{{user_p.contact}}">
+                                        </span>
+                                        <span class="p_info">
+                                            <label>Address</label><span class="colon">:</span>
+                                            <input type="text" name="address" value="{{user_p.address}}">
+                                        </span>
+                                        <span class="p_info_btn">
+                                            {% for message in messages %}
+                                                <span class="p_error">{{message}}</span><br>
+                                            {% endfor %}
+                                            <input type="hidden" name="pathnext" value="{{pathnext}}">
+                                            <button type="submit" name="submit" class="p_button">SAVE</button>
+                                            <i class="fa fa-spinner fa-pulse spinner"></i>
+                                        </span>
+                                        </form>
+                                        {% else %}
+                                        <form method="POST" action="{% url 'personal_update' %}">
+                                            {% csrf_token %}
+                                        <span class="p_info">
+                                            <label>First Name</label><span class="colon">:</span>
+                                            <input type="text" name="first_name" value="">
+                                        </span>
+                                        <span class="p_info">
+                                            <label>Last Name</label><span class="colon">:</span>
+                                            <input type="text" name="last_name" value="">
+                                        </span>
+                                        <span class="p_info">
+                                            <label>Contact</label><span class="colon">:</span>
+                                            <input type="number" name="contact" value="">
+                                        </span>
+                                        <span class="p_info">
+                                            <label>Address</label><span class="colon">:</span>
+                                            <input type="text" name="address" value="">
+                                        </span>
+                                        <span class="p_info_btn">
+                                            {% for message in messages %}
+                                                <span class="p_error">{{message}}</span><br>
+                                            {% endfor %}
+                                            <input type="hidden" name="pathnext" value="{{pathnext}}">
+                                            <button type="submit" name="submit" class="p_button">SAVE</button>
+                                            <i class="fa fa-spinner fa-pulse spinner"></i>
+                                        </span>
+                                        </form>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+{% block js %}
+
+
+<script>
+$('.p_button').on('click', function(){
+    $('.spinner').show();
+});
+</script>
+
+
+{% endblock %}

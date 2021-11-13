@@ -1,0 +1,17 @@
+  {% for p in prodquery %}
+  <a href="{% url 'stock_session' p.id %}">
+    <div class="p_content">
+              <span class="pcontent1">
+                <img src="/static/{{p.main_image}}" class="p_img">
+              </span>
+              <span class="pcontent2">
+                <span class="p_name">
+                  {{p.name}}
+                </span>
+                <span class="p_type">
+                  {{p.dress_type}}
+                </span>
+              </span>
+          </div>
+      </a>
+  {% endfor %}

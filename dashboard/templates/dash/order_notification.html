@@ -1,0 +1,12 @@
+
+	<button type="button" id="notify-dropdown" data-toggle="dropdown" aria-haspopup="true"
+	aria-expanded="false">
+	<span id="notification"><i class="far fa-bell"></i></span>
+	<span class="badge" id="badge2">
+		{% include 'dash/order_noti_count.html' %}
+	</span>
+</button>
+<div class="dropdown-menu" id="notification_dropdown">
+	{% include 'dash/o_notification.html' %}
+</div>
+

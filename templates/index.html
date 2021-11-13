@@ -1,0 +1,706 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+<title>Rent Station</title>
+{% endblock %}
+{% block css %}
+  <style>
+    .d_event_content{
+      background:linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.2)),url(/static/{{event.event_image}});
+      background-position:center center;
+      background-size:cover;
+      background-repeat:no-repeat;
+    }
+    #slider-container {
+        margin: 0px auto;
+    }
+
+    #slider-container #slider {
+        -webkit-transform-style: preserve-3d;
+        -moz-transform-style: preserve-3d;
+        -o-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+
+    }
+
+    #slider-container .face {
+        position: absolute;
+        padding: 0px;
+    }
+  </style>
+{% endblock %}
+{% block content %}
+
+<div class="row">
+  <div class="col-xl-12" style="padding:0px;">
+    <div class="main-banner">
+      <div class="col col-xl-8 col-lg-8 col-md-10">
+        <div id="slider-container">
+          <div id="slider">
+             
+          </div>
+        </div>
+      </div>
+      <div class="col col-xl-4 col-lg-4 col-md-2">
+        <div class="container">
+          <div class="slidertext_banner">
+            <div class="slidertext_contain" id="slidetext1">
+              <span>
+                Rent your favourite look
+              </span>
+            </div>
+            <div class="slidertext_contain" id="slidetext2">
+              <span>
+                On every occassion
+              </span>
+            </div>
+            <div class="slidertext_contain" id="slidetext3">
+              <a href="{% url 'rent_dress' %}"><button type="button" id="slider_btn">RENT NOW</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="row">
+  <div class="col-xl-12" style="padding:0px;">
+    <div class="main-banner">
+      <div class="col col-xl-4 col-lg-4 col-md-4 " style="padding:0px;">
+        <div class="image-banner1">
+          <div class="image-sub1"></div>
+          <div class="image">
+
+          </div>
+          <div class="image-sub2"></div>
+        </div>
+      </div>
+      <div class="col col-xl-8 col-lg-8 col-md-8 " style="padding:0px;">
+        <div class="image-banner2">
+          <div class="image-sub3">
+            <div class="main-text1">
+              <span class="main-text-sub">Rent your favourite look with us</span>
+            </div>
+            <div class="main-button">
+              <a href="{% url 'rent_dress' %}"><button type="button" id="main_btn">RENT A DRESS</button></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="row">
+  <div class="col-xl-12" style="padding:0px;">
+    <div class="text-banner1" style="margin-bottom:50px;">
+      <div class="container">
+        <div class="col col-xl-6 col-lg-6 col-md-10">
+          <div class="text-subbanner1">
+            <p class="subtitle"><span>DRESS RENTAL SERVICE</span></p>
+            <h1>Rent For</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xl-12 col-lg-12" style="padding:0px;">
+    <div class="banner1">
+      <div class="container">
+        <div class="col col-xl-4 col-lg-4 col-md-4">
+          <div class="card big-card" style="margin-top:50px;">
+            <div class="col-12" style="padding:0px;">
+              <div class="img-banner1">
+                <div id="cover-div">
+
+                </div>
+                <div class="col col-4">
+
+                </div>
+                <div class="col col-4">
+                  <div id="link-box" style="margin-top:120%;">
+                    <a href="/shop/filter_product/men/"><i class="fas fa-link fa-sm"></i></a>
+                  </div>
+                </div>
+                <div class="col col-4">
+
+                </div>
+
+              </div>
+            </div>
+
+            <div id="caret2"></div>
+            <div class="card-body big-card-body">
+              <h5 class="card-title">Men</h5>
+              <p class="card-text">Men's wardrobe for their favourite collections.</p>
+              <a href="/shop/filter_product/men/">Visit Here &#x2192;</a>
+            </div>
+          </div>
+        </div>
+        <div class="col col-xl-8 col-lg-8 col-md-8">
+          <div class="card big-card mb-3" style="margin-top:50px;">
+            <div>
+              <div class="col col-4" style="padding:0px;">
+                <div class="card-body big-card-body" style="margin-top:50%;">
+                  <h5 class="card-title">Women</h5>
+                  <div id="caret3"></div>
+                  <p class="card-text">Women wardrobe for their favourite collections.</p>
+                  <a href="/shop/filter_product/women/">Visit Here &#x2192;</a>
+                </div>
+              </div>
+              <div class="col col-8" style="padding:0px;">
+                <div class="img-banner2">
+                  <div id="cover-div">
+
+                  </div>
+                  <div class="col col-4">
+
+                  </div>
+                  <div class="col col-4">
+                    <div id="link-box">
+                      <a href="/shop/filter_product/women/"><i class="fas fa-link fa-sm"></i></a>
+                    </div>
+                  </div>
+                  <div class="col col-4">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-12" style="padding:0px;">
+    <div class="banner3">
+      <div class="container">
+        <div class="col col-xl-8 col-lg-8 col-md-8">
+          <div class="card big-card mb-3" style="margin-bottom:50px;">
+            <div>
+              <div class="col col-4" style="padding:0px;">
+                <div class="card-body big-card-body" style="margin-top:50%;">
+                  <h5 class="card-title">Categories</h5>
+                  <div id="caret3"></div>
+                  <p class="card-text">Start Your first Renting with our different categories collections.</p>
+                  <a href="{% url 'rent_dress' %}">Visit Here &#x2192;</a>
+                </div>
+              </div>
+              <div class="col col-8" style="padding:0px;">
+                <div class="img-banner3">
+                  <div id="cover-div">
+
+                  </div>
+                  <div class="col col-4">
+
+                  </div>
+                  <div class="col col-4">
+                    <div id="link-box">
+                      <a href="{% url 'rent_dress' %}"><i class="fas fa-link fa-sm"></i></a>
+                    </div>
+                  </div>
+                  <div class="col col-4">
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col col-xl-4 col-lg-4 col-md-4">
+          <div class="card big-card" style="margin-bottom:50px;">
+            <div class="col-12" style="padding:0px;">
+              <div class="img-banner4">
+                <div id="cover-div">
+
+                </div>
+                <div class="col col-4">
+
+                </div>
+                <div class="col col-4">
+                  <div id="link-box" style="margin-top:120%;">
+                    <a href="/shop/filter_product_gender/men/traditional/"><i class="fas fa-link fa-sm"></i></a>
+                  </div>
+                </div>
+                <div class="col col-4">
+
+                </div>
+              </div>
+            </div>
+
+            <div id="caret2"></div>
+            <div class="card-body big-card-body">
+              <h5 class="card-title">Traditional</h5>
+              <p class="card-text">Looking for traditional look? Here find your favourite traditional look.</p>
+              <a href="/shop/filter_product_gender/men/traditional/">Visit Here &#x2192;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xl-12" style="padding:0px;">
+    <div class="text-banner1">
+      <div class="container">
+        <div class="col col-xl-6 col-lg-6 col-md-10">
+          <div class="text-subbanner1">
+            <p class="subtitle"><span>RENT A DRESS</span></p>
+            <h1>Product Overview</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xl-12" style="padding:0px;">
+    <div class="product-banner">
+      <div class="container">
+<!--        <div class="col-12">-->
+<!--          -->
+<!--        </div>-->
+        <div class="products_cover_main">
+        {% for prods, range in products %}
+        {% for product in prods %}
+          <div class="col col-xl-3 col-lg-3 col-md-4 col-6">
+          <div class="products_cover">
+            <a href="{{product.get_absolute_url}}">
+            <div class="card product-card">
+              <div class="col col-12" style="padding:0px">
+                <div class="card-images">
+                  <img src="/static/{{product.main_image}}" class="card-img1" alt="...">
+<!--                  <img src="/static/{{product.sub_image1}}" class="card-img2" alt="...">-->
+                </div>
+              </div>
+              <div class="col col-12" style="padding:0px">
+                <div class="card-body">
+                  <p class="product-name">{{product.name}}</p>
+                  {% if product.caste_category %}
+                  <p class="product-cat">{{product.caste_category}} {{product.dress_type}}</p>
+                  {% elif product.designer %}
+                  <p class="product-cat">{{product.designer}} {{product.dress_type}}</p>
+                  {% else %}
+                  <p class="product-cat">{{product.dress_type}}</p>
+                  {% endif %}
+                  <p class="product-price">Rs {{product.rent_price}}</p>
+                </div>
+              </div>
+            </div>
+          </a>
+          </div>
+        </div>
+          {% endfor %}
+        {% endfor %}
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xl-12" style="padding:0px;">
+    <div class="text-banner1">
+      <div class="container">
+        <div class="col col-xl-6 col-lg-6 col-md-10">
+          <div class="text-subbanner1">
+            <p class="subtitle"><span>WORK PLAN</span></p>
+            <h1>How it Works</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xl-12" style="padding:0px;">
+    <div class="how-main-banner">
+      <div class="container">
+        <div class="col col-xl-3 col-lg-3 col-md-3">
+          <div class="work-banner1">
+            <span class="work-icon">
+              <img src="{% static 'img/icon_img/hanger.png' %}" class="icon_images" style="height:60px; margin-top:25px; margin-bottom:20px;">
+            </span>
+            <span class="work-title">
+              Select a Style
+            </span>
+            <span class="work-text">
+              Pick your perfect style from our collection of outfits.
+            </span>
+          </div>
+        </div>
+        <div class="col col-xl-3 col-lg-3 col-md-3">
+          <div class="work-banner1">
+            <span class="work-icon">
+              <img src="{% static 'img/icon_img/check_icon.png' %}" class="icon_images" style="height:80px; width:80px; margin-bottom:15px; margin-top:15px;">
+            </span>
+            <span class="work-title">
+              Book your Outfit
+            </span>
+            <span class="work-text">
+              Book your look for 4 or 8 days. Outfit will be altered to your size and dry cleaned before delivery.
+            </span>
+          </div>
+        </div>
+        <div class="col col-xl-3 col-lg-3 col-md-3">
+          <div class="work-banner1">
+            <span class="work-icon">
+              <img src="{% static 'img/icon_img/suit_icon.png' %}" class="icon_images" style="width:40px;">
+            </span>
+            <span class="work-title">
+              Flaunt It
+            </span>
+            <span class="work-text">
+              Flaunt your look with that perfect outfit chosen by you and enjoy the compliments
+            </span>
+          </div>
+        </div>
+        <div class="col col-xl-3 col-lg-3 col-md-3">
+          <div class="work-banner1">
+            <span class="work-icon">
+              <img src="{% static 'img/icon_img/return.png' %}" class="icon_images">
+            </span>
+            <span class="work-title">
+              Return It
+            </span>
+            <span class="work-text">
+              Pack the outfit and return to our return center closet to you.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xl-12 col-lg-12 d-none d-lg-inline" style="padding:0px;">
+    <div class="work-progress-banner">
+      <div class="container">
+        <div class="work-progress">
+
+            <ol class="work-step">
+            <li><span class="work-circle">1</span></li>
+            <li><span class="work-line"></span></li>
+            <li><span class="work-circle">2</span></li>
+            <li><span class="work-line"></span></li>
+            <li><span class="work-circle">3</span></li>
+            <li><span class="work-line"></span></li>
+            <li><span class="work-circle">4</span></li>
+          </ol>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--rating popup------------->
+{% if prod_order.order_status == 'Delivered' %}
+{% if prod_order.review_status == 'pending' %}
+<div class="row">
+  <div class="col-12">
+    <div class="rating_popup_banner">
+      <div class="container">
+        <div class="col col-xl-3 col-lg-3 col-md-3 d-none d-md-inline"></div>
+        <div class="col col-xl-6 col-lg-6 col-md-6">
+          <div class="rating_pop">
+            <form method="POST" action="">
+              {% csrf_token %}
+            <div class="rate1">
+              <a href="{% url 'rating_refuse' %}"><i id="popup_close_review" class="far fa-times-circle"></i></a>
+              <i id="popup_close_review_rate" class="far fa-times-circle"></i>
+              <h4>REVIEW & RATINGS</h4>
+            </div>
+            <hr style="width:100%; float:left;">
+            <div class="rate1">
+              <span class="review_head">
+                <p>Please provide your review on the dress you rented and also rate our services.</p> 
+              </span>
+              <span class="review_content">
+                <label for="review" class="review_label"><span>Your Review</span></label>
+                <textarea name="review" class="form-control rounded-0" id="review" rows="3"></textarea>
+              </span>
+              <span id="rate_here">
+                  <fieldset class="rating">
+                    <input type="radio" id="star_check5" name="rating" value="5" /><i class="fas fa-star" id="star5"></i>
+                    <input type="radio" id="star_check4" name="rating" value="4" /><i class="fas fa-star" id="star4"></i>
+                    <input type="radio" id="star_check3" name="rating" value="3" /><i class="fas fa-star" id="star3"></i>
+                    <input type="radio" id="star_check2" name="rating" value="2" /><i class="fas fa-star" id="star2"></i>
+                    <input type="radio" id="star_check1" name="rating" value="1" /><i class="fas fa-star" id="star1"></i>
+                  </fieldset>
+              </span>
+              <span class="success_rate">
+                <h6><i class="far fa-smile fa-lg mx-2 rate_smile_icon"></i>Thank you for your reviews and ratings</h6>
+              </span>
+            </div>
+            <hr style="width:100%; float:left;">
+            <div class="rate1">
+              {% for p_list in prods_in_order %}
+              <input type="hidden" name="rate_prod" value="{{p_list.product_id}}">
+              {% endfor %}
+              <button type="submit" name="submit" id="review_btn">SUBMIT</button><i class="fa fa-spinner fa-pulse mx-2 my-2 review_spinner"></i>
+              <button type="submit" name="submit" id="rate_btn">SUBMIT</button><i class="fa fa-spinner fa-pulse mx-2 my-2 rate_spinner"></i>
+            </div>
+          </form>
+          </div>
+        </div>
+        <div class="col col-xl-3 col-lg-3 col-md-3 d-none d-md-inline"></div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endif %}
+
+{% if event_status == 'active' %}
+{% if expire != 1 %}
+<div class="row">
+  <div class="col-12">
+    <div class="event_main_banner">
+      <div class="col col-xl-3 col-lg-3 col-md-2 d-none d-md-inline">
+        
+      </div>
+      <div class="col col-xl-6 col-lg-6 col-md-8">
+        <div class="d_event_content">
+          <span>
+           {{event.event_text}}
+          </span>
+          <span>
+            <a href="{% url 'rent_dress' %}"><button type="button" class="event_btn">RENT NOW</button></a>
+          </span>
+          <i class="far fa-times-circle" id="event_close"></i>
+        </div>
+      </div>
+      <div class="col col-xl-3 col-lg-3 col-md-8 d-none d-md-inline">
+        
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endif %}
+
+<!---==============-->
+
+<!-- <div class="row" style="float:left">
+  <div class="container">
+  {% for product, range in allprods %}
+    <h1 class="my-4" style="">{{product.0.category}}</h1>
+    {% for i in product %}
+  <div class="card mx-4" style="width: 18rem; float:left;">
+    <img src="/static/{{i.image_url}}" class="card-img-top" alt="img" style="height:250px;">
+    <div class="card-body">
+      <h5 class="card-title" id="namepr{{i.id}}">{{i.name}}</h5>
+      <p class="card-text">Rs. <span id="pricepr{{i.id}}">{{i.rent_price}}</span></p>
+      <p class="card-text">{{i.desc|slice:"0:50"}}...</p>
+      <span id="divpr{{i.id}}" class="divpr">
+        <button id="pr{{i.id}}" class="btn btn-primary cart">Add To Cart</button>
+      </span>
+      <a href="/products/{{i.id}}"><button id="pd{{i.id}}" class="btn btn-primary cart">QuickView</button></a>
+    </div>
+  </div>
+{% endfor %}
+
+
+  {% endfor %}
+  </div>
+
+</div> -->
+
+
+{% endblock %}
+
+
+{% block js %}
+
+<script>
+
+  //-- slider functions------------
+$('#slider').impulseslider({
+    height: 400,
+    width: 400,
+    depth: 360,
+    perspective: 2000,
+    pauseTime: 1500,
+    transitionDuration: 1000,
+    transitionEffect: "ease-in-out",
+    autostart: true,
+    rightSelector: ".right",
+    leftSelector: ".left",
+    pauseSelector: ".pause",
+    directionRight: true,
+    containerSelector: "#slider-container",
+    spinnerSelector: "#slider",
+    images: ["{% static 'img/banner_img/circle4.jpg' %}","{% static 'img/banner_img/circle1.jpg' %}","{% static 'img/banner_img/carousel3.jpg' %}","{% static 'img/banner_img/suit5.jpg' %}","{% static 'img/banner_img/carousel5.jpg' %}"],
+    imageDivClasses: ["face"]
+});
+
+//===============================================
+
+  $('#rate_btn').on('click', function(event) {
+    $('.rate_spinner').show();
+    $('.rate_msg').empty();
+    var rating;
+    if($('#star_check1').is(':checked')){
+      rating = $('#star_check1').val();
+    }
+    if($('#star_check2').is(':checked')){
+      rating = $('#star_check2').val();
+    }
+    if($('#star_check3').is(':checked')){
+      rating = $('#star_check3').val();
+    }
+    if($('#star_check4').is(':checked')){
+      rating = $('#star_check4').val();
+    }
+    if($('#star_check5').is(':checked')){
+      rating = $('#star_check5').val();
+    }
+    var formData = {
+          'product_id': $('input[name=rate_prod]').val(),
+          'ratings': rating,
+          'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+      };
+      $.ajax({
+              type: 'POST',
+              url: '/shop/ratings/',
+              data: formData,
+              encode: true
+          })
+          .done(function(data) {
+
+            $('.review_content').hide();
+            $('#review_btn').hide();
+            $('#popup_close_review').hide();
+            $('#rate_here').hide();
+            $('.review_head').hide();
+            $('#rate_btn').hide();
+            $('#popup_close_review_rate').hide();
+            $('.success_rate').show();
+            $('.rate_spinner').hide();
+            setTimeout(function(){
+              $('.rating_pop').css({"transform": "translateY(0px)", "opacity": "0"});
+            }, 1000);
+            setTimeout(function(){
+              $('.rating_popup_banner').hide();
+            }, 1500);
+
+          });
+      event.preventDefault();
+
+  });
+
+  $('#review_btn').on('click', function(event) {
+    var prod = [];
+    $('.review_spinner').show;
+    $("input[name=rate_prod]").each(function(){
+      prod.push($(this).val());
+    });    var formData = {
+          'product_id': prod,
+          'review': $('textarea[name=review]').val(),
+          'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+      };
+      $.ajax({
+              type: 'POST',
+              url: '/shop/review-rate/',
+              data: formData,
+              encode: true
+          })
+          .done(function(data) {
+
+            $('.review_spinner').hide();
+            $('.review_content').hide();
+            $('#review_btn').hide();
+            $('#popup_close_review').hide();
+            $('#rate_here').show();
+            $('#rate_btn').show();
+            $('#popup_close_review_rate').show();
+
+
+          });
+      event.preventDefault();
+
+  });
+</script>
+
+{% endblock %}
+
+
+<!--<div class="plan-banner">-->
+<!--      <div class="container">-->
+<!--        <div class="col col-xl-4 col-lg-4 col-md-6">-->
+<!--          <div class="plans">-->
+<!--            <div class="sub-plan1">-->
+<!--              <div id="caret4"></div>-->
+<!--              <h3 class="px-2">Personal Rent</h3>-->
+<!--              <div class="circle-text">-->
+<!--                <p id="paisa">Rs100</p>-->
+<!--                <p id="per-paisa">/rental<p>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="sub-plan2">-->
+<!--              <h6 class="px-4"><span class="plan-points" style="margin-top:10px;"><span style="color:#d69f67;">&#x2714;</span> Rent a dress in Rs 100</span></h6>-->
+<!--              <h6 class="px-4"><span class="plan-points" style="margin-top:25px;"><span style="color:#d69f67;">&#x2714;</span> Rent for maximum of 8 days</span></h6>-->
+<!--              <h6 class="px-4"><span class="plan-points" style="margin-top:25px;"><span style="color:#d69f67;">&#x2714;</span> 80% refund on damage</span></h6>-->
+<!--              <h6 class="px-4"><span class="plan-points1" style="margin-top:25px;"><span style="color:#d69f67;">&#x2714;</span> Delivery/Reurn on given charge</span></h6>-->
+<!--            </div>-->
+<!--            <div class="sub-plan3">-->
+<!--              <a href="">RENT HERE &#x2192;</a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="col col-xl-4 col-lg-4 col-md-6">-->
+<!--          <div class="plans">-->
+<!--            <div class="sub-plan1">-->
+<!--              <div id="caret4"></div>-->
+<!--              <h3 class="px-2">Event Rent</h3>-->
+<!--              <div class="circle-text">-->
+<!--                <p id="paisa">Rs2000</p>-->
+<!--                <p id="per-paisa">/ 7 rentals<p>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="sub-plan2">-->
+<!--                <h6 class="px-4"><span class="plan-points" style="margin-top:10px;"><span style="color:#d69f67;">&#x2714;</span> Rent a dress for men women</span></h6>-->
+<!--                <h6 class="px-4"><span class="plan-points" style="margin-top:25px;"><span style="color:#d69f67;">&#x2714;</span> Choose period of time to rent</span></h6>-->
+<!--                <h6 class="px-4"><span class="plan-points" style="margin-top:25px;"><span style="color:#d69f67;">&#x2714;</span> 50% refund on damage</span></h6>-->
+<!--                <h6 class="px-4"><span class="plan-points1" style="margin-top:25px;"><span style="color:#d69f67;">&#x2714;</span> Delivery or pick yourself</span></h6>-->
+<!--              </div>-->
+<!--              <div class="sub-plan3">-->
+<!--                <a href="">RENT HERE &#x2192;</a>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <div class="col col-xl-4 col-lg-4 col-md-12">-->
+<!--          <div class="plans">-->
+<!--            <div class="sub-plan1">-->
+<!--              <div id="caret4"></div>-->
+<!--              <h3 class="px-2">Unlimited Rent</h3>-->
+<!--              <div class="circle-text">-->
+<!--                <p id="paisa">Rs1000</p>-->
+<!--                <p id="per-paisa">/rental<p>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="sub-plan2">-->
+<!--                <h6 class="px-4"><span class="plan-points" style="margin-top:10px;"><span style="color:#d69f67;">&#x2714;</span> Rent 3 different dress at a time</span></h6>-->
+<!--                <h6 class="px-4"><span class="plan-points" style="margin-top:25px;"><span style="color:#d69f67;">&#x2714;</span> Rent it for 1 month</span></h6>-->
+<!--                <h6 class="px-4"><span class="plan-points" style="margin-top:25px;"><span style="color:#d69f67;">&#x2714;</span> 100% refund on damage</span></h6>-->
+<!--                <h6 class="px-4"><span class="plan-points1" style="margin-top:25px;"><span style="color:#d69f67;">&#x2714;</span> Delivery/Return on given charge</span></h6>-->
+<!--              </div>-->
+<!--              <div class="sub-plan3">-->
+<!--                <a href="">RENT HERE &#x2192;</a>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->

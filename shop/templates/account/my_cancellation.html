@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%}
+  <title>My Cancellations - Rent Station</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/manage_account.css' %}">
+    <style>
+        #active_manage5{
+            color:darkblue;
+        }
+        .header{
+          background: #fff;
+          box-shadow:0 5px 6px 0 #ddd;
+        }
+        .menus ul a{
+          color:#000 !important;
+        }
+        #text2 a{
+          color:#000;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="manage_main_banner">
+            <div class="container">
+                <div class="manage_banner1">
+                    <div class="col col-xl-2 col-lg-2" style="padding:0px;">
+                        {% include 'account/manage_account_menu.html' %}
+                    </div>
+                    <div class="col col-xl-10 col-lg-10" style="padding:0px;">
+                        <div class="sub_manage2">
+                            <div class="manage_head2">
+                                <h6>MY Cancellations</h6>
+                            </div>
+                            <div class="manage_content notice_content">
+                                <span class="content_sub_head">Cancelled Rentals</span>
+                                <hr style="float:left; width:100%; margin-top:0px;">
+                                <div class="container">
+                                    {% for cancellation, range in all_cancels %}
+                                    {% if cancellation %}
+                                    {% for list in cancellation %}
+                                <div class="cancel_items">
+                                    <span class="content_img">
+                                        <a href="/shop/product-view/{{list.product_link}}/"><img src="/static/{{list.image}}" id="content_img"></a>
+                                    </span>
+                                    <span class="content_text">
+                                        <span style="color:#000;">{{list.product_name}}</span><br>
+                                        {% if list.product_category != 'none' %}
+                                        <span>{{list.product_category}} {{list.product_dress_type}}</span>
+                                        {% else %}
+                                        <span>{{list.product_dress_type}}</span>
+                                        {% endif %}
+                                    </span>
+                                    <span class="cancelled">
+                                        CANCELLED
+                                    </span>
+                                </div>
+                                 {% endfor %}
+                                    <span id="page_numbers">
+                                        {% if cancellation.has_other_pages %}
+                                          <ul class="pagination">
+                                            {% if cancellation.has_previous %}
+                                              <li><a href="?page={{ cancellation.previous_page_number }}">&laquo;</a></li>
+                                            {% else %}
+                                              <li class="prev_disabled">&laquo;</li>
+                                            {% endif %}
+                                            {% for i in cancellation.paginator.page_range %}
+                                              {% if cancellation.number == i %}
+                                                <li class="">{{ i }}</li>
+                                              {% else %}
+                                                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                              {% endif %}
+                                            {% endfor %}
+                                            {% if cancellation.has_next %}
+                                              <li><a href="?page={{ cancellation.next_page_number }}">&raquo;</a></li>
+                                            {% else %}
+                                              <li class="next_disabled">&raquo;</li>
+                                            {% endif %}
+                                          </ul>
+                                        {% endif %}
+                                        </span>
+
+                                    {% else %}
+                                    <div class="cancel_wrapper">
+                                        <h6>You have no cancellations</h6>
+                                    </div>
+                                    {% endif %}
+                                {% endfor %}
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+{% endblock %}
+
+
+{% block js %}
+
+
+<script>
+
+</script>
+
+
+{% endblock %}

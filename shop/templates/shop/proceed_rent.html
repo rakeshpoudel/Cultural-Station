@@ -1,0 +1,271 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%}
+  <title>Proceed to Rent - Rent Station</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/proceed_rent.css' %}">
+    <style>
+    .header{
+      background: #fff;
+      box-shadow:0 5px 6px 0 #ddd;
+    }
+    .menus ul a{
+      color:#000 !important;
+    }
+    #text2 a{
+      color:#000;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="proceed_banner">
+            <div class="container">
+                <div class="col col-xl-8 col-lg-8 col-md-7 col-sm-12 col-12">
+                    <div class="rentals_details">
+                        <div class="rental_product1">
+                            <h6>Rental Details</h6>
+                        </div>
+                        {% for list in list_items %}
+                        <div class="rental_product2">
+                            <div class="col col-xl-3 col-lg-3 col-md-5 col-sm-12 col-12">
+                                <div class="rental1">
+                                    <img src="{{list.image}}" id="rental_image">
+                                </div>
+                            </div>
+                            <div class="col col-xl-9 col-lg-9 col-md-7 col-sm-12 col-12">
+                                <div class="rental1">
+                                    <span id="rental_name">{{list.product_name}}</span>
+                                    <span id="rental_price">Rs {{list.amount}}</span>
+                                    {% if list.caste_type != 'none' %}
+                                    <span id="rental_cats">{{list.caste_type}} {{list.dress_type}}</span>
+                                    {% else %}
+                                    <span id="rental_cats">{{list.dress_type}}</span>
+                                    {% endif %}
+                                    <span id="rental_way">Renting For: {{list.renting_way}} ({{list.renting_days}})</span>
+                                    <span id="rental_size_qty">
+                                        {% if list.product_size != 'none' %}
+                                        <span id="rental_size">Size: {{list.product_size}}</span>
+                                        {% endif %}
+                                        <span id="rental_qty">Quantity: {{list.quantity}}</span>
+                                    </span>
+
+                                    <span id="rental_dates">
+                                        <span>Arrival: {{list.delivery_date}}</span>
+                                        <span>Return: {{list.returning_date}}</span>
+                                    </span>
+                                </div>
+                            </div>
+                            <hr style="float:left; width:100%;">
+                        </div>
+
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="col col-xl-4 col-lg-4 col-md-5 col-sm-12 col-12">
+                    <div class="rentals_summary">
+                        {% if u_first %}
+                        {% if u_verify == 'verified' %}
+                        {% if u_city %}
+                        <div class="proceed_pay_banner">
+                            <div class="pay_cover">
+                                <div class="pay-banner1">
+                                    <h6>Proceed to Pay</h6>
+                                </div>
+                            
+                                <div class="pay-banner2">
+                                    <span id="pay_head">Shipping & Details</span>
+                                    <span id="sub-pay1" style="padding:0px 0px;">
+                                        <i class="fas fa-map-marker-alt px-1 fa-sm pay_icon"></i>
+                                        <b>{{user_detail.first_name}} {{user_detail.last_name}}</b>
+                                    </span>
+                                    <span id="sub_pay2" style="padding:5px 20px">{{user_detail.shipping_address}}, {{user_detail.shipping_area}}, {{user_detail.shipping_city}}<a id="edit_link">Edit</a></span>
+                                    <span id="sub-pay1">
+                                        <i class="fa fa-mobile px-1 fa-sm pay_icon"></i>
+                                        {{user_detail.contact}}
+                                    </span>
+                                    <span id="sub-pay-email">
+                                        <i class="fas fa-envelope px-1 fa-sm pay_icon"></i>
+                                        {{user_detail.email}}
+                                    </span>
+                                </div>
+                                <div class="pay-banner3">
+                                    <span id="pay_head">Rental Summary</span>
+                                    <form method="POST" action="/shop/proceed-pay/">
+                                        {% csrf_token %}
+                                    <div id="sub_pay3">
+                                        <span id="sub_pay_text">Subtotal ({{total_items}} items)</span>
+                                        <span id="sub_pay_amt">RS. <span id="pay">{{total_amount}}</span></span>
+                                    </div>
+                                    <div id="sub_pay3">
+                                        <span id="sub_pay_text">Shipping Fee</span>
+                                        <span id="sub_pay_amt">RS. <span id="ship_charge">{{shipping_charge.shipping_charge}}</span></span>
+                                    </div>
+                                    <div id="sub_pay3">
+                                        <span id="sub_pay_total_text">Total</span>
+                                        <span id="sub_pay_total_amt">RS. <input type="text" name="grand_total" id="g_total" value="0" readonly></span>
+
+                                    </div>
+                                    <span id="help_refund_text">Rs. {{refund_amount}} refund included</span>
+                                    <div id="proceed_pay_click">
+                                        <button type="submit" name="submit" id="proceed_pay_btn">
+                                            PROCEED TO PAY
+                                        </button>
+                                    </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="shipping_form1">
+                                <span id="form_head">Shipping Detail<i class="far fa-times-circle ship_close"></i></span>
+
+                                <form method="POST" action="">
+                                    {% csrf_token %}
+                                    <div class="shipping_fields">
+                                        <p>Please enter your shipping details</p>
+                                        <span id="ship_field1" style="margin:0px;">
+                                            <label>City:</label>
+                                            <select class="city" name="city">
+                                                <option value="" disabled selected hidden id="disabled">Choose your city</option>
+                                            {% for city in city_list %}
+                                                <option value="{{city.city}}">{{city.city}}</option>
+                                            {% endfor %}
+                                            </select>
+                                        </span>
+                                        <span id="ship_field2">
+                                            <label>Area:</label>
+                                            {% include 'shop/shipping_area.html' %}
+                                        </span>
+                                        <span id="ship_field3">
+                                            <label>Address:</label>
+                                            <input type="text" name="ship_address1" placeholder="Your address">
+                                            <label class="help_label">Eg, imadol near krishna mandir</label>
+                                        </span>
+                                        <span>
+                                            <font class="p_error">All fields are required</font>
+                                            <button type="submit" name="submit" id="ship_btn1">NEXT</button>
+                                            <i class="fa fa-spinner fa-pulse spinner_proceed4"></i>
+                                        </span>
+                                        
+                                    </div>
+
+                                </form>
+                            </div>
+                        </div>
+                        {% else %}
+                        <div class="shipping_form">
+                            <span id="form_head">Shipping Detail</span>
+                            <form method="POST" action="">
+                                {% csrf_token %}
+                                <div class="shipping_fields">
+                                    <p>Please enter your shipping details</p>
+                                    <span id="ship_field1" style="margin:0px;">
+                                        <label>City:</label>
+                                        <select class="city" name="city">
+                                            <option value="" disabled selected hidden id="disabled">Choose your city</option>
+                                        {% for city in city_list %}
+                                            <option value="{{city.city}}">{{city.city}}</option>
+                                        {% endfor %}
+                                        </select>
+                                    </span>
+                                    <span id="ship_field2">
+                                        <label>Area:</label>
+                                        {% include 'shop/shipping_area.html' %}
+                                    </span>
+                                    <span id="ship_field3">
+                                        <label>Address:</label>
+                                        <input type="text" name="ship_address" placeholder="Your address">
+                                        <label class="help_label">Eg, imadol near krishna mandir</label>
+                                    </span>
+                                    <span>
+                                        <font class="p_error">All fields are required</font>
+                                        <button type="submit" name="submit" id="ship_btn">NEXT</button>
+                                        <i class="fa fa-spinner fa-pulse spinner_proceed1"></i>
+                                    </span>
+                                </div>
+
+                            </form>
+                        </div>
+                        {% endif %}
+                        {% else %}
+                        <div class="personal_form">
+                            <span id="form_head">Verification</span>
+                            <form method="POST" action="">
+                                {% csrf_token %}
+                                <div class="personal_fields">
+                                    <p>We have sent you verification code in your number. Please verify it below to continue</p>
+                                    <span id="form_field1" style="margin:0px;">
+                                        <label>Enter Code:</label>
+                                        <input type="text" name="code" class="code_verify">
+                                    </span>
+                                    <span>
+                                        <a id="p_error">Please enter the code</a>
+                                        <button type="submit" name="submit" id="verify_btn">VERIFY</button>
+                                        <i class="fa fa-spinner fa-pulse spinner_proceed3"></i>
+                                    </span>
+                                </div>
+
+                            </form>
+                        </div>
+                        {% endif %}
+                        {% else %}
+                        <div class="personal_form">
+                            <span id="form_head">Personal Detail</span>
+                            <form method="POST" action="">
+                                {% csrf_token %}
+                                <div class="personal_fields">
+                                    <p>Please enter your information to continue to proceed to rent</p>
+                                    <span id="form_field1" style="margin:0px;">
+                                        <label>First Name:</label>
+                                        <input type="text" name="first_name" placeholder="Enter first name">
+                                    </span>
+                                    <span id="form_field2">
+                                        <label>Last Name:</label>
+                                        <input type="text" name="last_name" placeholder="Enter last name">
+                                    </span>
+                                    <span id="form_field3">
+                                        <label>Address:</label>
+                                        <input type="text" name="address" placeholder="Enter your address">
+                                    </span>
+                                    <span id="form_field4">
+                                        <label class="n_label">Contact:</label>
+                                        <span class="c_code">+977</span>
+                                        <input type="number" name="contact" class="n_input" placeholder="Enter your number">
+                                    </span>
+                                    <span>
+                                        <a class="p_error">All fields are required!</a>
+                                        <button type="submit" name="submit" id="personal_btn">NEXT</button>
+                                        <i class="fa fa-spinner fa-pulse spinner_proceed2"></i>
+                                    </span>
+                                </div>
+
+                            </form>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+{% block js %}
+    <script src="{% static '/js/proceed_rent.js' %}"></script>
+
+
+<script>
+
+</script>
+
+
+{% endblock %}

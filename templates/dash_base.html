@@ -1,0 +1,130 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    {% block title%}
+
+    {% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static '/css/dashboard/dashboard.css' %}">
+    <link rel="stylesheet" href="{% static '/css/lightbox.min.css' %}">
+
+    {% block css %}
+
+    {% endblock %}
+
+
+  </head>
+  <body>
+
+
+    <div class="row">
+      <div class="col-xl-12 col-lg-12 col-md-12 d-none d-md-inline">
+        <div class="dashboard-main-banner">
+          <div class="col col-2" style="padding: 0px;">
+            <div class="dashboard-side-banner">
+              <div class="side-head">
+                <span class="text2">
+                  <a href="{% url 'dashboard' %}">
+                  <span class="sub_text1">
+                    RENT
+                  </span>
+                  <span class="sub_text2">
+                    STATION
+                  </span>
+                  </a>
+                </span>
+                <span class="text1">
+                  <a href="{% url 'dashboard' %}">DASHBOARD</a>
+                </span>
+              </div>
+              <div class="side-links">
+                <span class="link_head">
+                  GENERAL
+                </span>
+                <hr style="width:100%; float:left; border-color: #aaa; margin-top:10px;">
+                <div class="link_way">
+                  <a href="{% url 'dashboard' %}"><button type="button" class="links_btn" id="dashboard_link1"><i class="fas fa-warehouse dash_link_icon"></i>Dashboard</button></a>
+                  <a href="{% url 'order_dashboard' %}"><button type="button" class="links_btn" id="dashboard_link2"><i class="fas fa-shopping-cart dash_link_icon"></i>Orders</button></a>
+                  <a href="{% url 'stock_dashboard' %}"><button type="button" class="links_btn" id="dashboard_link6"><i class="fas fa-cubes dash_link_icon"></i></i>Stocks</button></a>
+                  <a href="{% url 'review_dashboard' %}"><button type="button" class="links_btn" id="dashboard_link3"><i class="fas fa-comment-alt dash_link_icon"></i>Reviews</button></a>
+                  <a href="{% url 'query_dashboard' %}"><button type="button" class="links_btn" id="dashboard_link4"><i class="fas fa-question-circle dash_link_icon"></i>Questions</button></a>
+                  <a href="{% url 'event_dashboard' %}"><button type="button" class="links_btn" id="dashboard_link5"><i class="far fa-calendar-alt dash_link_icon"></i>Events</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col col-10" style="padding: 0px;">
+            <div class="dashboard-head-banner">
+              <div class="col col-xl-6 col-lg-6 col-md-4">
+                <div class="head_title">
+                  {% block head_title %}
+                  
+                  {% endblock %}
+                </div>
+              </div>
+              <div class="col col-xl-6 col-xl-6 col-lg-6 col-md-8">
+                <div class="head_content">
+                  <span class="h_content1">
+                    <a href="{% url 'logout_dashboard' %}"><i class="fas fa-sign-out-alt"></i></a>
+                  </span>
+                  <div class="dropdown" id="d1">
+                    {% include 'dash/message_notification.html' %}
+                  </div>
+                  <div class="dropdown" id="d2">
+                    {% include 'dash/order_notification.html' %}
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col col-10" style="padding-right: 0px;">
+            <div class="scrollbar">
+            </div>
+            <div class="dashboard-banner">
+              {% block content %}
+
+              {% endblock %}
+              <div class="footer">
+    
+              </div>
+            </div>
+          </div>  
+        </div>
+      </div>
+    </div>
+
+
+
+   <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="{% static '/js/dashboard/dashboard.js' %}"></script>
+    <script src="{% static '/js/lightbox.min.js' %}"></script>
+
+
+    <!-- javascrpt block -->
+    <!-- <script>
+      setInterval(
+          function(){
+            $('#badge1').load('/dashboard/message-noti-count/')
+            $('#badge2').load('/dashboard/order-noti-count/')
+          }, 1000);
+    </script> -->
+    {% block js %}
+
+    {% endblock %}
+
+
+  </body>
+</html>

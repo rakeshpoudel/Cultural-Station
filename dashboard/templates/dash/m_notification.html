@@ -1,0 +1,147 @@
+<span class="noti1">
+		<span class="sub_noti1">
+			MESSAGES
+		</span>
+		<span class="sub_noti2">
+			<span id="msg1">{{total_noti}}</span> NEW
+		</span>
+	</span>
+	<hr style="float:left; width:100%; margin-bottom:4px;">
+	<div class="noti_area">
+		{% if noti_check_review or noti_check_query %}
+		{% for r in noti_check_review %}
+		<a href="{% url 'review_dashboard' %}">
+		<span class="noti2_check">
+			<span class="sub_noti3
+			">
+			<i class="fas fa-comment-alt icon_noti1"></i>
+		</span>
+		<span class="sub_noti4
+		">
+		<span class="sub_sub_noti4">{{r.user_name}}</span>
+		<span class="sub_sub_noti3">{{r.review}}</span>
+		<span class="sub_sub_noti2">{{r.posted_date}}</span>
+	</span>
+</span>
+</a>
+{% endfor %}
+{% for q in noti_check_query %}
+<a href="{% url 'query_dashboard' %}">
+<span class="noti2_check">
+	<span class="sub_noti3
+	">
+	<i class="far fa-question-circle icon_noti2"></i>
+</span>
+<span class="sub_noti4
+">
+<span class="sub_sub_noti4">{{q.user_name}}</span>
+<span class="sub_sub_noti3">
+	<span class="d_ques_noti">
+		QUE
+	</span>
+	<span class="d_ques_text_noti">
+		{{q.question}}
+	</span>
+</span>
+<span class="sub_sub_noti2">{{q.publish_date}}</span>
+</span>
+
+</span>
+</a>
+
+{% endfor %}
+{% endif %}
+{% if ll != 0 %}
+{% for r, q in zip_noti %}
+<a href="{% url 'review_dashboard' %}">
+<span class="noti2">
+	<span class="sub_noti3
+	">
+	<i class="fas fa-comment-alt icon_noti1"></i>
+</span>
+<span class="sub_noti4
+">
+<span class="sub_sub_noti4">{{r.user_name}}</span>
+<span class="sub_sub_noti3">{{r.review}}</span>
+<span class="sub_sub_noti2">{{r.posted_date}}</span>
+</span>
+</span>
+</a>
+<a href="{% url 'query_dashboard' %}">
+<span class="noti2">
+	<span class="sub_noti3
+	">
+	<i class="far fa-question-circle icon_noti2"></i>
+</span>
+<span class="sub_noti4
+">
+<span class="sub_sub_noti4">{{q.user_name}}</span>
+<span class="sub_sub_noti3">
+	<span class="d_ques_noti">
+		QUE
+	</span>
+	<span class="d_ques_text_noti">
+		{{q.question}}
+	</span>
+</span>
+<span class="sub_sub_noti2">{{q.publish_date}}</span>
+</span>
+
+</span>
+</a>
+{% endfor %}
+{% else %}
+{% if noti_review or noti_query %}
+{% if noti_review %}
+{% for r in noti_review %}
+<a href="{% url 'review_dashboard' %}">
+<span class="noti2">
+	<span class="sub_noti3
+	">
+	<i class="fas fa-comment-alt icon_noti1"></i>
+</span>
+<span class="sub_noti4
+">
+<span class="sub_sub_noti4">{{r.user_name}}</span>
+<span class="sub_sub_noti3">{{r.review}}</span>
+<span class="sub_sub_noti2">{{r.posted_date}}</span>
+</span>
+</span>
+</a>
+{% endfor %}
+{% endif %}
+{% if noti_query %}
+{% for r in noti_query %}
+<a href="{% url 'query_dashboard' %}">
+<span class="noti2">
+	<span class="sub_noti3
+	">
+	<i class="far fa-question-circle icon_noti2"></i>
+</span>
+<span class="sub_noti4
+">
+<span class="sub_sub_noti4">{{r.user_name}}</span>
+<span class="sub_sub_noti3">
+	<span class="d_ques_noti">
+		QUE
+	</span>
+	<span class="d_ques_text_noti">
+		{{r.question}}
+	</span>
+</span>
+<span class="sub_sub_noti2">{{r.publish_date}}</span>
+</span>
+
+</span>
+</a>
+{% endfor %}
+{% endif %}
+{% else %}
+<hr style="width:100%; float:left;">
+<span class="noti_not_found">
+	No other previous reviews or queries found 
+	</span>
+		<hr style="width:100%; float:left;">
+		{% endif %}
+		{% endif %}
+	</div>

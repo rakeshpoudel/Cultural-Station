@@ -1,0 +1,194 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title%}
+  <title>Products - Rent Station</title>
+{% endblock %}
+{% block css %}
+  <link rel="stylesheet" href="{% static '/css/product.css' %}">
+  <style>
+    .header{
+      background: #fff;
+      box-shadow:0 5px 6px 0 #ddd;
+    }
+    .menus ul a{
+      color:#000 !important;
+    }
+    #text2 a{
+      color:#000;
+    }
+  </style>
+{% endblock %}
+
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12" style="padding:0px;">
+        <div class="product_display_main_banner">
+            <div class="container">
+                <div class="col col-xl-3 col-lg-3 col-md-3">
+                    <div class="product_category_banner">
+                        <div class="category_list">
+                            <input type="hidden" class="click_cat" value="{{filter_prod}}">
+                            <input type="hidden" class="click_gender" value="{{filter_gender}}">
+                            <input type="hidden" class="click_tradition" value="{{filter_tradition}}">
+                            <span class="category_header">
+                                Gender
+                            </span>
+                            <hr style="float:left; width:100%; margin-top:5px;">
+                            <a href="/shop/filter_product/men/"><span class="cat_choice">
+                                <input type="checkbox" class="choice_check" id="checkmen" name="choice_check1" value="men"/>
+                                Men
+                            </span></a>
+                            <a href="/shop/filter_product/women/"><span class="cat_choice">
+                                <input type="checkbox" class="choice_check" id="checkwomen" name="choice_check2" value="men"/>
+                                Women
+                            </span></a>
+                        </div>
+                        <div class="category_list">
+                            <span class="category_header">
+                                Dresses
+                            </span>
+                            <hr style="float:left; width:100%; margin-top:5px;">
+                            {% for dress in dress_men %}
+                            <a href="/shop/filter_product_gender/{{dress.gender}}/{{dress.dress}}/"><span class="cat_choice">
+                                <input type="checkbox" class="choice_check" id="check{{dress.dress}}" name="choice_check1" value="men"/>
+                                {{dress.dress}} <span class="gender_tag">{{dress.gender}}</span>
+                            </span></a>
+                            {% endfor %}
+                            {% for dress_w in dress_women %}
+                            <a href="/shop/filter_product_gender/{{dress_w.gender}}/{{dress_w.dress}}/"><span class="cat_choice">
+                                <input type="checkbox" class="choice_check" id="check{{dress_w.dress}}" name="choice_check1" value="men"/>
+                                {{dress_w.dress}}<span class="gender_tag">{{dress_w.gender}}</span>
+                            </span></a>
+                            {% endfor %}
+                        </div>
+                        <div class="category_list">
+                            <span class="category_header">
+                                Traditional
+                            </span>
+                            <hr style="float:left; width:100%; margin-top:5px; margin-bottom:10px;">
+                            <span class="category_sub_header1">
+                                <span class="cat_sub_text">Men</span>
+                                <span class="cat_sub_icon"><i class="fa fa-chevron-down fa-xl chevron_icon_cat1"></i></span>
+                            </span>
+                            <div class="men_tradition">
+                                <a href="/shop/filter_product_gender/men/traditional/"><span class="cat_choice">
+                                    <input type="checkbox" class="choice_check" id="checkmentraditional" name="choice_check1" value="men"/>
+                                    All
+                                </span></a>
+                                {% for caste in caste %}
+                                <a href="/shop/filter_product_tradition/traditional/men/{{caste.caste}}/"><span class="cat_choice">
+                                    <input type="checkbox" class="choice_check" id="checkmen{{caste.caste}}" name="choice_check1"/>
+                                    {{caste.caste}}
+                                </span></a>
+                                {% endfor %}
+
+                            </div>
+                            <span class="category_sub_header2">
+                                <span class="cat_sub_text">Women</span>
+                                <span class="cat_sub_icon"><i class="fa fa-chevron-down fa-xl chevron_icon_cat2"></i></span>
+                            </span>
+                            <div class="women_tradition">
+                                <a href="/shop/filter_product_gender/women/traditional/"><span class="cat_choice">
+                                    <input type="checkbox" class="choice_check" id="checkwomentraditional" name="choice_check1" value="men"/>
+                                    All
+                                </span></a>
+                                {% for caste in caste %}
+                                <a href="/shop/filter_product_tradition/traditional/women/{{caste.caste}}/"><span class="cat_choice">
+                                    <input type="checkbox" class="choice_check" id="checkwomen{{caste.caste}}" name="choice_check1" value="men"/>
+                                    {{caste.caste}}
+                                </span></a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col col-xl-9 col-lg-9 col-md-9">
+                    <div class="product_display">
+                        <div class="display_cover">
+                            <i class="fa fa-spinner fa-pulse spinner_display"></i>
+                        </div>
+                        {% for prods, range in products %}
+                        {% if prods %}
+                        {% for product in prods %}
+                        <div class="col col-xl-4 col-lg-4 col-md-6 col-6">
+                            <div class="products_cover">
+                                <a href="{{product.get_absolute_url}}">
+                                <div class="card product-card">
+                                    <div class="col col-12" style="padding:0px">
+                                        <div class="card-images">
+                                            <img src="/static/{{product.main_image}}" class="card-img1" alt="...">
+                                            <!--                  <img src="/static/{{product.sub_image1}}" class="card-img2" alt="...">-->
+                                        </div>
+                                    </div>
+                                    <div class="col col-12" style="padding:0px">
+                                        <div class="card-body">
+                                            <p class="product-name">{{product.name}}</p>
+                                            {% if product.caste_category %}
+                                            <p class="product-cat">{{product.caste_category}}
+                                                {{product.element_category}}</p>
+                                            {% else %}
+                                            <p class="product-cat">{{product.dress_type}}</p>
+                                            {% endif %}
+                                            <p class="product-price">Rs {{product.rent_price}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <span id="page_numbers">
+                        {% if prods.has_other_pages %}
+                          <ul class="pagination">
+                            {% if prods.has_previous %}
+                              <li><a href="?page={{ prods.previous_page_number }}">&laquo;</a></li>
+                            {% else %}
+                              <li class="prev_disabled">&laquo;</li>
+                            {% endif %}
+                            {% for i in prods.paginator.page_range %}
+                              {% if prods.number == i %}
+                                <li class="">{{ i }}</li>
+                              {% else %}
+                                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                              {% endif %}
+                            {% endfor %}
+                            {% if prods.has_next %}
+                              <li><a href="?page={{ prods.next_page_number }}">&raquo;</a></li>
+                            {% else %}
+                              <li class="next_disabled">&raquo;</li>
+                            {% endif %}
+                          </ul>
+                        {% endif %}
+                        </span>
+                        {% else %}
+                        <div class="product_not_found">
+                            <h6>There is no product to show for "{{filter_prod}}". Please try selecting different category.</h6>
+                        </div>
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+
+{% block js %}
+    <script src="{% static '/js/product_display.js' %}"></script>
+
+
+<script>
+
+</script>
+
+
+{% endblock %}

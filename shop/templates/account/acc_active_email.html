@@ -1,0 +1,15 @@
+<html>
+<head></head>
+<body>
+	<h3>Verify Your Email</h3>
+	<span style="font-size:15px;">
+    Hi, {{user}}
+	</span>
+	<br>
+    <span style="font-size:15px; color:#fa8005;">
+        Please verify your email address by clicking verify below
+	</span>
+    <br>
+	<a href="http://{{ domain }}{% url 'activate' uidb64=uid token=token %}"><button type="button" style="font-size:14px; height:40px; width:120px; border:none; background:#d69f67; color:#fff; pointer:cursor; outline-width:0px;">VERIFY</button></a>
+</body>
+</html>

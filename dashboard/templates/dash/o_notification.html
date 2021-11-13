@@ -1,0 +1,49 @@
+<span class="noti1">
+	<span class="sub_noti1">
+		NOTIFICATIONS
+	</span>
+	<span class="sub_noti2">
+		{{noti_order_count}} NEW
+	</span>
+</span>
+<hr style="float:left; width:100%; margin-bottom:4px;">
+<div class="noti_area">
+	{% if noti_check_order %}
+	{% for o in noti_check_order %}
+	<a href="{% url 'order_dashboard' %}">
+		<span class="noti2_check">
+			<span class="sub_noti3
+			">
+				<i class="fas fa-cart-plus noti_cart_icon"></i>
+			</span>
+			<span class="sub_noti4
+		">
+				<span class="sub_sub_noti1">You have new order for {{o.total_items}} products from {{o.user_full_name}}</span>
+				<span class="sub_sub_noti2">{{o.ordered_date}}</span>
+			</span>
+		</span>
+	</a>
+	{% endfor %}
+	{% endif %}
+	{% if noti_order %}
+	{% for o in noti_order %}
+	<a href="{% url 'order_dashboard' %}">
+		<span class="noti2">
+			<span class="sub_noti3">
+				<i class="fas fa-check-circle noti_o_check"></i>
+			</span>
+			<span class="sub_noti4">
+				<span class="sub_sub_noti1">You have new order for {{o.total_items}} products from {{o.user_full_name}}</span>
+				<span class="sub_sub_noti2">{{o.ordered_date}}</span>
+			</span>
+		</span>
+	</a>
+	{% endfor %}
+	{% else %}
+	<hr style="width:100%; float:left;">
+	<span class="noti_not_found">
+		No other order history found
+	</span>
+	<hr style="width:100%; float:left;">
+	{% endif %}
+</div>

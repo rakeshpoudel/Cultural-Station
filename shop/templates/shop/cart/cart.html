@@ -1,0 +1,234 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%}
+  <title>Renting Cart - Rent Station</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/cart.css' %}">
+    <style>
+        .header{
+          background: #fff;
+          box-shadow:0 5px 6px 0 #ddd;
+        }
+        .menus ul a{
+          color:#000 !important;
+        }
+        #text2 a{
+          color:#000;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="cart_product_banner">
+            <div class="container">
+
+                {% if length != 0 %}
+                <div class="col col-xl-8 col-lg-8">
+                    <div class="cart_products">
+                        <h6>Renting Reservations ( {{cart_item.quantity__sum}} item(s))</h6>
+                        <hr style="margin-top:0px;">
+                        <div class="cart_text" id="text_hide">
+                            <div class="text_icon">
+                                <i class="far fa-check-square fa-lg icon" id="noterror"></i>
+                                <i class="fas fa-info-circle fa-lg" id="error"></i>
+                            </div>
+
+                            <div class="text">
+                                <span class="text_sub2">Continue to proceed to rent with selected products</span>
+                                <span class="text_sub">Please select item(s) to proceed</span>
+                                <span class="text_sub1">Select the product having same delivery dates.</span>
+                            </div>
+                        </div>
+                        <table class="cart_table">
+                            {% for products, range in all_cart_prods %}
+                            {% if products %}
+                            <tr id="cart_rows">
+                                <td style="float:left;">
+                                    <div id="prod_arrival">
+                                        Arrival: {{products.0.delivery_date}}
+                                    </div>
+
+                                </td>
+                            </tr>
+
+                            {% endif %}
+                            {% for prod in products %}
+
+                            <tr class="col-12">
+
+                                <td style="padding:50px 0px 50px 20px;">
+                                    <input type="checkbox" name="{{prod.delivery_date}}" id="{{prod.id}}" class="prod_check"
+                                           value="{{prod.renting_way}}"
+                                           size="{{prod.quantity}}">
+                                    <input type="hidden" name="refund" id="refund{{prod.id}}" value="{{prod.refund}}">
+                                </td>
+                                <td>
+                                    <a href="/shop/cart-product-view/{{prod.slug}}/{{prod.id}}/"><img
+                                            src="{{prod.image}}" id="cart_img"></a></td>
+                                <td>
+                                    <span id="prod_name">
+                                        {{prod.product_name}}
+                                    </span><br>
+                                    <span id="prod_category">
+                                        {% if prod.caste_type != 'none' %}
+                                        {{prod.caste_type}} <span id="element_type">{{prod.dress_type}}</span>
+                                        {% elif prod.designer != 'none' %}
+                                        {{prod.designer}} {{prod.dress_type}}
+                                        {% else %}
+                                        {{prod.dress_type}}
+                                        {% endif %}
+                                    </span><br>
+                                    <span id="refund">
+                                        Refund: Rs. {{prod.refund}} (for {{prod.quantity}} item)
+                                    </span><br>
+                                    <span id="prod_rent_way">
+                                        <span id="rent_way{{prod.id}}" class="r_way">{{prod.renting_way}}</span> ({{prod.renting_days}})
+                                    </span><br>
+                                    {% if prod.product_size != 'none' %}
+                                    <span id="prod_size">
+                                        Size: {{prod.product_size}},
+                                    </span>
+                                    {% endif %}
+                                    <span id="prod_count">
+                                        Item(s): <span id="items{{prod.id}}">{{prod.quantity}}</span>
+                                    </span>
+                                    <span id="prod_return">
+                                        Return on: {{prod.returning_date}}
+                                    </span>
+                                </td>
+                                <td id="price_td">
+                                    <span class="prod_rent_price">
+                                        Rs <span id="price{{prod.id}}">{{prod.amount}}</span>
+                                    </span>
+
+                                </td>
+                                <td id="op_td">
+                                    <span id="op_clicks">
+                                        <a href="/shop/cart_delete/{{prod.id}}/"><i class="far fa-trash-alt mx-1 d_cart" id="{{prod.id}}"></i></a>
+
+                                        <form method="POST" action="" class="wish_form" id="form{{prod.id}}">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="product_name" id="namep{{prod.id}}" value="{{prod.product_name}}">
+                                            <input type="hidden" name="element_type" id="elementp{{prod.id}}" value="{{prod.dress_type}}">
+                                            <input type="hidden" name="caste_type" id="castep{{prod.id}}" value="{{prod.caste_type}}">
+                                            <input type="hidden" name="product_size" id="sizep{{prod.id}}" value="{{prod.product_size}}">
+                                            <input type="hidden" name="image" id="imgp{{prod.id}}" value="{{prod.image}}">
+                                            <button type="submit" name="{{prod.product_id}}" class="wish_btn_add" id="{{prod.id}}"><i class="far fa-heart mx-1 wish" id="wish"></i></button>
+                                        </form>
+                                        <i class="fas fa-heart mx-1 wished" id="wish{{prod.id}}"></i>
+                                        <i class="fa fa-spinner fa-pulse mx-1 spinner1" id="spin{{prod.id}}"></i>
+                                    </span>
+                                </td>
+                            </tr>
+
+                            {% endfor %}
+                            <span id="page_numbers">
+                            {% if products.has_other_pages %}
+                              <ul class="pagination">
+                                {% if products.has_previous %}
+                                  <li><a href="?page={{ products.previous_page_number }}">&laquo;</a></li>
+                                {% else %}
+                                  <li class="prev_disabled">&laquo;</li>
+                                {% endif %}
+                                {% for i in products.paginator.page_range %}
+                                  {% if products.number == i %}
+                                    <li class="">{{ i }}</li>
+                                  {% else %}
+                                    <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                  {% endif %}
+                                {% endfor %}
+                                {% if products.has_next %}
+                                  <li><a href="?page={{ products.next_page_number }}">&raquo;</a></li>
+                                {% else %}
+                                  <li class="next_disabled">&raquo;</li>
+                                {% endif %}
+                              </ul>
+                            {% endif %}
+                            </span>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+                <div class="col col-xl-4 col-lg-4">
+                    <div class="cart_total_banner">
+                        <div class="total1">
+                            <h5>Rentals Summary</h5>
+                        </div>
+                        <hr style="float:left; width:100%; margin:0px;">
+                        <div class="cart_error2">
+                            <p>Select appropriate product(s) to proceed to rent</p>
+                        </div>
+                        <form method="POST" action="/shop/proceed-rent/">
+                            {% csrf_token %}
+                        <span class="amount_block">
+
+                            <div id="hidden_inputs">
+
+                            </div>
+                            <div class="total2">
+                                <span id="sub_total1">Subtotal (<input type="text" name="t_items" value="0" id="summary_items" readonly> items)</span>
+                                <span id="sub_total2">Rs. <input type="text" name="sub_total_amount" id="sub_total_amount"
+                                                                 value="0" readonly></span>
+                            </div>
+                            <div class="total3">
+                                <span id="refund1">Refund</span>
+                                <span id="refund2">Rs. <input type="text" name="refund_amount" id="refund_amount" value="0"
+                                                              readonly></span>
+                            </div>
+                            <div class="total4">
+                                <span id="total_text">Total</span>
+                                <span id="total_amount_text">Rs. <input type="text" name="total_amount" id="total_amount" value="0"
+                                                              readonly></span>
+                            </div>
+                        </span>
+                        <div class="total5">
+                            {% if order_stat == 'Returned' %}
+                            <button type="submit" name="submit" id="proceed_checkout_btn">PROCEED TO RENT</button>
+                            {% else %}
+                            <button type="button" id="proceed_checkout_btn_dis">PROCEED TO RENT</button>
+                            {% endif %}
+                        </div>
+                        </form>
+                    </div>
+                    <!-- <div class="item_error">
+                        <p>You are renting <span id="recent_item"></span> items</p>
+                        <p>You can only rent up to max <span id="rent_counter"></span> items for <span id="recent_rent_way"></span></p>
+                    </div> -->
+                    {% if order_stat != 'Returned' %}
+                    <div class="rental_error">
+                        <p>You have previous rentals on processing. You can rent others after returning them </p>
+                    </div>
+                    {% endif %}
+                </div>
+                {% else %}
+                <div class="no_products_banner">
+                    <p>There is no renting reservations in this cart!</p>
+                    <a href="{% url 'rent_dress' %}"><button type="button" id="home_link_btn">CONTINUE SHOPPING</button></a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+{% block js %}
+    <script src="{% static '/js/cart.js' %}"></script>
+
+
+<script>
+
+</script>
+
+
+{% endblock %}

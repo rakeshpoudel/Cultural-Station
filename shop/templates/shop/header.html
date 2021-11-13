@@ -1,0 +1,129 @@
+{% load static %}
+<div class="col col-xl-3 col-lg-3 col-md-3">
+    <div class="sub-header" style="background:;">
+        <sapn id="text2"><a href="/">RENT</a></sapn>
+        <span id="text3"><a href="/">STATION</a></span>
+        <!-- <img src="{% static 'img/logo1.png' %}" id="logo_image"> -->
+    </div>
+</div>
+<div class="col col-xl-6 col-lg-6 col-md-5 d-none d-md-inline">
+    <div class="menus">
+        <ul>
+            <a href="">ABOUT US</a>
+            <a class="drop-menu">RENT A DRESS<i class="fa fa-caret-down fa-xl chevron-menu"></i></a>
+            <a href="">RETURN CENTER</a>
+            <a href="">CONTACT</a>
+        </ul>
+    </div>
+
+</div>
+<div class="col col-xl-3 col-lg-3 col-md-4 d-none d-md-inline">
+    <div class="sub-header1" style="background:;">
+        <div class="sub-header-sub" style="background:;">
+            <button type="button" id="search-icon" data-toggle="modal" data-target="#SearchModal">
+                <i class="fas fa-search fa-lg mx-3 search_icon1"></i>
+            </button>
+
+
+            <span class="cart_badge">
+                     <a href="/shop/cart/">
+                  <i class="fa fa-shopping-cart fa-lg cart_icon1"></i>
+                  <span class="badge">
+                  {% include 'shop/cart/cart_count.html' %}
+                  </span>
+                </a>
+                   </span>
+
+            <span class="line"></span>
+            {% if user.is_authenticated %}
+            <div class="dropdown">
+                <button type="button" id="user-dropdown" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                    <i class="fas fa-user fa-xl mx-1 user_icon1"></i>
+                    <span id="user_name">{{user.username}}</span>
+                </button>
+
+                <div class="dropdown-menu" id="dropdown-user-menu">
+                    <div id="caret"></div>
+                    <ul id="user-menu">
+                        <li style="margin-top:20px;">
+                            <a href="{% url 'manage_account_personal' %}">
+                                <i class="far fa-smile"></i>
+                                Manage Account
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'my_order' %}">
+                                <i class="far fa-clipboard" style="padding-right:23px;"></i>
+                                My Orders
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'my_wishlist' %}">
+                                <i class="far fa-heart"></i>
+                                My Wishlist
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{% url 'notifications' %}">
+                                <i class="far fa-bell"></i>
+                                Order Updates
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="far fa-times-circle"></i>
+                                My Cancellations
+                            </a>
+                        </li>
+                        <li>
+                            <form method="post" action="/shop/account/logout/" id="logout_form">
+                                {% csrf_token %}
+                                <input name="next" type="hidden" value="{{ request.path }}">
+                                <a href="#" onclick="logout()">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Logout
+                                </a>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {% else %}
+            <div class="dropdown">
+                <button type="button" id="signin-dropdown" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                    <span id="sign-in">SIGN IN</span>
+                    <i class="fas fa-sign-in-alt fa-xl mx-1 sign-in-icon"></i>
+                </button>
+                <div class="dropdown-menu" id="dropdown-signin-menu">
+                    <div id="caret"></div>
+                    <form method="POST" action="/shop/account/login/" id="signin-form" class="py-2 px-4">
+                        {% csrf_token %}
+                        <div class="form-group" style="padding-top:8px;">
+                            <label for="email">Email address</label>
+                            <input type="email" id="email" name="email" placeholder="">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" placeholder="">
+                        </div>
+                        <a href="{% url 'reset_password' %}">Forgot password?</a>
+                        <input name="next" type="hidden" value="{{request.path}}">
+                        <button type="submit" name="submit" id="signin-btn">SIGN IN</button>
+                    </form>
+                    <div class="dropdown-divider"></div>
+                    <span class="log_cred_foot px-4">
+                        
+                              New around here?
+                              <a href="/shop/account/register/"><button type="button"
+                                                                        id="signup-btn">CREATE NEW ACCOUNT</button></a>
+                          </span>
+                </div>
+            </div>
+            {% endif %}
+
+        </div>
+
+    </div>
+</div>

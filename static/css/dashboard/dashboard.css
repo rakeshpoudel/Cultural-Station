@@ -1,0 +1,374 @@
+/* font family for Culture Station */
+
+@font-face {
+  font-family: Poppins-Regular;
+  src: url('../../fonts/Poppins/Poppins-Regular.ttf');
+}
+@font-face {
+  font-family: Poppins-Medium;
+  src: url('../../fonts/Poppins/Poppins-Medium.ttf');
+}
+@font-face {
+  font-family: Raleway-Regular;
+  src: url('../../fonts/Raleway/Raleway-Regular.ttf');
+}
+@font-face {
+  font-family: PlayfairDisplay-Regular;
+  src: url('../../fonts/PlayfairDisplay/PlayfairDisplay-Regular.ttf');
+}
+@font-face {
+  font-family: PlayfairDisplay-Black;
+  src: url('../../fonts/PlayfairDisplay/PlayfairDisplay-Black.ttf');
+}
+@font-face {
+  font-family: Merriweather-Regular;
+  src: url('../../fonts/Merriweather/Merriweather-Regular.ttf');
+}
+
+/* ------------------------------------- */
+/* colors used:
+#84b814
+#008ECC
+    #fa8005
+  #fc9730
+  #d69f67
+  #b8844f
+  #4c5454
+  #fff4e8
+  #faf9f7
+  #373c4a
+  #ff8000
+   errors: #fa2f2f */
+
+
+*{
+  font-family:Poppins-Regular;
+  color:#000;
+  padding:0px;
+  margin:0px;
+}
+body{
+    padding: 0px;
+    margin: 0px;
+    overflow-x: hidden;
+}
+
+input{
+    padding-left:10px !important;
+    font-size:14px !important;
+    font-family:Merriweather-Regular;
+}
+textarea:focus, input:focus, select:focus{
+    outline-width:0px !important;
+    outline:none !important;
+    box-shadow:none !important;
+}
+button:focus{
+    outline-width:0px !important;
+}
+.col{
+  float:left;
+}
+
+.dashboard-main-banner{
+	width:100%;
+	float:left;
+	background:rgba(0,0,0,.05);
+	overflow: hidden;
+  	position: relative;
+}
+.footer{
+  height: 70px;
+  width:100%;
+  float:left;
+  background:none;
+}
+.dashboard-head-banner{
+	width:100%;
+	float:left;
+	background:blue;
+	height:68px;
+	background:#fff;
+	box-shadow:0 5px 6px 0 #ddd;
+  position: relative;
+  z-index:99;
+}
+.dashboard-side-banner{
+	width:100%;
+	float:left;
+	background:#3f4261;
+  position: relative;
+  z-index: 999;
+}
+.scrollbar{
+  cursor:n-resize;
+  position:absolute;
+  overflow:auto;
+  top:0px;
+  right:0px;
+  z-index:2;
+  background:#7c7ea3;
+  width:10px;
+  border-radius:8px;
+  opacity:0;
+  transition: opacity .4s ease;
+  -moz-transition: opacity .4s ease;
+}
+.dashboard-banner{
+	width:100%;
+	float:left;
+	overflow-x: hidden;
+  overflow-y: scroll;
+  position:absolute;
+  padding:50px 20px 0px 0px;
+  z-index:8;
+}
+
+.side-head{
+  height:auto;
+  width:100%;
+  float:left;
+  background:#494b70;
+  padding:6px 0px 6px 20px;
+}
+.text1{
+  float:left;
+  width:100%;
+  font-size: 12px;
+}
+.text1 a{
+  color:#fff;
+  text-decoration: none;
+}
+.text2{
+  float:left;
+  width:100%;
+  font-size: 25px;
+}
+.sub_text1{
+  font-family: PlayfairDisplay-Regular;
+  color:#fff;
+}
+.sub_text2{
+  font-family: PlayfairDisplay-Regular;
+  color:#fa8005;
+}
+
+
+.side-links{
+  height:auto;
+  width:100%;
+  float:left;
+}
+.link_head{
+  font-size: 16px;
+  float:left;
+  width:100%;
+  color:#ddd;
+  padding: 20px 0px 0px 20px;
+}
+.link_way{
+  float:left;
+  width:100%;
+  height:inherit;
+}
+.links_btn{
+  height: 40px;
+  float:left;
+  width:100%;
+  text-align: left;
+  color:#ddd;
+  background: none;
+  border:none;
+  font-size: 14px;
+  padding-left:20px;
+  cursor: pointer;
+}
+.links_btn:hover{
+  background: #2b2e4a;
+}
+.dash_link_icon{
+  margin-right:10px;
+  color:#ddd;
+}
+
+.head_title{
+  float:left;
+  width:100%;
+  height: inherit;
+  text-align: left;
+  font-size: 20px;
+  color:#008ECC;
+  font-family: PlayfairDisplay-Regular;
+  line-height: 68px;
+}
+
+.head_content{
+  width:100%;
+  float:left;
+  height:inherit;
+  padding: 0px 20px;
+}
+
+#notify-dropdown,
+#msg-dropdown{
+  border:none;
+  background:none;
+  font-size: 20px;
+  line-height: 68px;
+  float:right;
+  cursor: pointer;
+  margin-right: 15px;
+}
+#notification i{
+  color:rgba(0,0,0,.7);
+}
+#message i{
+  color:rgba(0,0,0,.7);
+}
+.badge{
+  height: 22px;
+  width:22px;
+  background:#ff8000;
+  color: #fff;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+  border-radius: 100%;
+  position: relative;
+  top:-15px;
+  left: -10px;
+}
+#notification_dropdown,
+#message_dropdown{
+  width:60%;
+  padding: 20px 20px;
+  margin-right: 20px;
+}
+.noti1{
+  float:left;
+  width:100%;
+}
+.sub_noti1{
+  float:left;
+  font-size: 14px;
+  font-family: Merriweather-Regular;
+  color: rgba(0,0,0,.8);
+}
+.sub_noti2{
+  float:right;
+  font-size: 12px;
+  color: rgba(0,0,0,.8);
+  background:#fa8005;
+  color:#fff;
+  padding:2px 4px;
+}
+#msg1,
+#msg2{
+  color:#fff;
+}
+.noti_area{
+  width:100%;
+  float:left;
+  max-height: 300px;
+  overflow-y:scroll;
+}
+.noti2{
+  width:100%;
+  float:left;
+  background:;
+  padding:10px 0px;
+}
+.noti2_check{
+  width:100%;
+  float:left;
+  background:rgba(0,0,0,.05);
+  padding:10px 0px;
+}
+.sub_noti3{
+  width:20%;
+  float:left;
+  text-align: center;
+  line-height: 50px;
+}
+.noti_cart_icon{
+  color:#008ECC;
+  font-size: 20px;
+}
+.noti_o_check{
+  color:#ff8000;
+  font-size: 20px;
+}
+.sub_noti4{
+  width:80%;
+  float:left;
+  
+}
+.sub_sub_noti1{
+  width:100%;
+  float:left;
+  font-size: 14px;
+  color:#008ECC;
+}
+.sub_sub_noti4{
+  width:100%;
+  float:left;
+  font-size: 14px;
+  color:#008ECC;
+  text-transform: capitalize;
+}
+.sub_sub_noti3{
+  width:100%;
+  float:left;
+  font-size: 13px;
+  color: rgba(0,0,0,.8);
+}
+.sub_sub_noti2{
+  padding:5px 0px 0px 0px;
+  width:100%;
+  float:left;
+  font-size: 12px;
+  color:rgba(0,0,0,.7);
+}
+.message_img{
+  height: 50px;
+  width:40px;
+}
+
+.h_content1{
+  float:right;
+}
+.h_content1 i{
+  font-size: 20px;
+  color: rgba(0,0,0,.7);
+  line-height: 68px;
+}
+.icon_noti1{
+  color:#fcbb90;
+  font-size: 18px;
+}
+.icon_noti2{
+  color:#fc889c;
+  font-size: 20px;
+}
+.d_ques_noti{
+  float:left;
+  background:#ed4561;
+  color:azure;
+  font-size: 10px;
+  padding: 2px 2px;
+  border-radius: 5px;
+}
+.d_ques_text_noti{
+  float:left;
+  color:#ed4561;
+  font-size: 14px;
+  margin-left:8px; 
+}
+.noti_not_found{
+  width:100%;
+  float:left;
+  text-align: center;
+  font-size: 13px;
+  color:rgba(0,0,0,.7);
+}

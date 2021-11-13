@@ -1,0 +1,321 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    {% block title%}
+
+    {% endblock %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static '/css/index.css' %}">
+    <link rel="stylesheet" href="{% static '/css/loginRegister.css' %}">
+
+    {% block css %}
+
+    {% endblock %}
+
+
+  </head>
+  <body>
+    <div class="row">
+        <div class="col-xl-12" style="padding:0px;">
+          <div class="header">
+            {% include 'shop/header.html' %}
+          </div>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-xl-12" style="padding:0px;">
+          <div class="hidden_header">
+            {% include 'shop/header1.html' %}
+          </div>
+      </div>
+    </div>
+
+    <div class="row" style="position:relative;">
+      <div class="container">
+      <div class="col-12" style="padding:0px;">
+          <div class="menu-dropdown-banner">
+            {% include 'shop/dropdown.html' %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="position:relative;">
+      <div class="container">
+      <div class="col-12" style="padding:0px;">
+          <div class="hidden-menu-dropdown-banner">
+            {% include 'shop/dropdown.html' %}
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="chat_info">
+        <span style="width:175px;">Talk to our bot if you have any queries</span>
+        <span style="width:15px;"><i class="fas fa-caret-right chat_caret"></i></span>
+    </div>
+    <div class="chat">
+        <font id="dottext">...</font>
+        <i class="fas fa-comment-alt chaton"></i>
+        <!-- <i class="fab fa-rocketchat chaton"></i> -->
+    </div>
+    <div class="col-4">
+      <div class="main_chatbot"> 
+        <i class="fas fa-times mx-2" id="chat_icon2"></i>
+          <div class="chatbot" id="app">
+              <div class="chatbot_head"> 
+                <span style="float:left; width:80%;">
+                  <i class="fab fa-shopware mx-2 chat_icon1"></i>
+                  Rent Station
+                </span>
+                  
+              </div> 
+              <div class="app_data" id="scroll_data">
+              <div class="chatbot_convo">
+                <div class="conversation_head">
+                  Hi, I am a bot from rent station. Ask me anything you want to know about Rent Station. i will guide to the right direction according to your need.
+                </div> 
+                <div class="conversation" v-for="message in messages" v-bind:class="{ 'user-message': message.user,  'chat-message': message.chat_bot }">
+                  [[message.text]]
+                </div>
+
+              </div>
+            </div>
+              <div class="chatbot_msg">
+                <span style="width:85%; float:left;">
+                  <input type="text" id="chat_input" placeholder="Your message" v-model="input" v-bind:class="{ 'border-danger': send_blank}" v-on:change="check_content">
+                </span>
+                <span style="width:15%; float:left;">
+                  <button type="submit" class="send-btn" v-on:click="add_message">
+                    <i class="fas fa-paper-plane"></i>
+                  </button>
+                </span>
+              </div>
+          </div>  
+      </div>  
+    </div>
+    <!-- Search modal *********** -->
+
+                <div class="modal fade" id="SearchModal" tabindex="-1" role="dialog" aria-labelledby="title" aria-hidden="true">
+                  <div class="modal-dialog" role="document" style="text-align:center;">
+                    <div class="modal-content" style="background:#fff4e8;">
+                      <div class="modal-header">
+                        <h6 id="title" style="text-align:center; margin:0px auto;">Search Product to Rent</h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-left:0px;">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <form method="POST" action="{% url 'search' %}" id="searchForm" autocomplete="off">
+                        {% csrf_token %}
+                        <div class="modal-body">
+                          <input type="text" name="query" id="search-input" placeholder="Search Here.."/><br>
+                          <div id="related_search">
+                            {% include 'shop/search_related.html' %}
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" name="submit" id="search-btn">SEARCH</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+    <!-- ******************************* -->
+    <!--Chatbot----------------------->
+
+<!--     24*8 192
+    20*8 160
+    12*10 120
+    12*10 120
+
+    58,608 -->
+
+    
+
+    <!--===========================-->
+
+
+    {% block planbar %}
+
+    {% endblock %}
+
+    <!-- hidden menu banner -->
+
+    <div class="row">
+      <div class="d-md-none" style="padding:0px;">
+        <div class="footmenu-banner">
+          <div class="col col-sm-3 col-3" style="padding:0px;">
+            <div class="subfoot-menu">
+              <a href="">
+                <button type="button" id="menu-btn">
+                  <i class="fas fa-home fa-lg"></i><br>
+                  Home
+                </button>
+              </a>
+            </div>
+          </div>
+          <div class="col col-sm-3 col-3" style="padding:0px;">
+            <div class="subfoot-menu">
+              <a href="">
+                <button type="button" id="menu-btn">
+                  <i class="fas fa-tshirt fa-lg"></i><br>
+                  Rent
+                </button>
+              </a>
+            </div>
+          </div>
+          <div class="col col-sm-3 col-3" style="padding:0px;">
+            <div class="subfoot-menu">
+              <a href="">
+                <button type="button" id="menu-btn">
+                  <i class="fas fa-shopping-cart fa-lg"></i><br>
+                  Cart
+                </button>
+              </a>
+            </div>
+          </div>
+          <div class="col col-sm-3 col-3" style="padding:0px;">
+            <div class="subfoot-menu">
+              <a href="">
+                <button type="button" id="menu-btn">
+                  <i class="fas fa-user fa-lg"></i><br>
+                  Account
+                </button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ****************** -->
+
+    
+
+
+    <!-- <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">Culture Station</a>
+      <a href="/about/">About Us</a>
+      <a href="/contact/">Contact</a>
+      <a href="/tracker/">Tracker</a>
+
+      {% if user.is_authenticated %}
+        <h6 style="color:white;">Hello, {{user.username}}</h6>
+      {% else %}
+        <a href="/register/">Register</a>
+        <a href="/login/">Log In</a>
+      {% endif %}
+      <form method="POST" action="/search/" class="form-inline">
+        {% csrf_token %}
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="search" id="search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+      </form>
+      <button type="button" class="btn btn-secondary mx-2" id="popcart" data-trigger="click" data-container="body" data-toggle="popover" data-placement="bottom" data-html="true" data-content="Vivamus
+      sagittis lacus vel augue laoreet rutrum faucibus.">
+        Cart(<span id="cart">0</span>)
+    </button>
+    {% if user.is_authenticated %}
+      <a href="/logout/">Logout</a>
+    {% endif %}
+    </nav> -->
+
+    {% block content %}
+
+
+    {% endblock %}
+
+
+    <div class="row">
+        <div class="col-xl-12" style="padding:0px;">
+          <div class="footer">
+            <div class="container">
+              <div class="col col-xl-3 col-lg-3 col-md-3">
+                <div class="sub-footer">
+                  <h5>RENT DRESSES</h5>
+                  <ul class="mx-2">
+                    <li><a href="">Men Collection</a></li>
+                    <li><a href="">Women Collection</a></li>
+                    <li><a href="">Rent by Category</a></li>
+                    <li><a href="">Traditional</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col col-xl-3 col-lg-3 col-md-3">
+                <div class="sub-footer">
+                  <h5>CUSTOMER CARE</h5>
+                  <ul class="mx-2">
+                    <li><a href="">Contact Us</a></li>
+                    <li><a href="">How it Works</a></li>
+                    <li><a href="">Returning Your Rentals</a></li>
+                    <li><a href="">Delivery Information</a></li>
+                    <li><a href="">Renting Discounts</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col col-xl-3 col-lg-3 col-md-3">
+                <div class="sub-footer">
+                  <h5>TRADITIONAL</h5>
+                  <ul class="mx-2">
+                    <li><a href="">Newari</a></li>
+                    <li><a href="">Rai</a></li>
+                    <li><a href="">Limbu</a></li>
+                    <li><a href="">Magar</a></li>
+                    <li><a href="">Tamang</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col col-xl-3 col-lg-3 col-md-3">
+                <div class="sub-footer">
+                  <h5>BE SOCIAL</h5>
+                  <i class="fab fa-facebook-f fa-lg" style="margin-left:0px;"></i>
+                  <i class="fab fa-instagram fa-lg"></i>
+                  <i class="fab fa-twitter fa-lg"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="footer">
+            <div class="container">
+              <div class="copyright">
+                © 2020 Rent Station. All Rights Reserved.
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="{% static '/js/jquery.elevatezoom.js' %}"></script>
+    <script src="{% static '/js/jquery.fancybox.pack.js' %}"></script>
+    <script src="{% static '/js/jquery.fancybox-1.3.4.js' %}"></script>
+    <script src="{% static 'js/jquery.impulse.slider-0.4.js' %}"></script>
+    <script src="{% static 'js/dev-vue.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static '/js/index.js' %}"></script>
+    <script src="{% static '/js/search.js' %}"></script>
+
+    <script>
+      $('#chat_input').keyup(function(){
+        $('.send-btn').trigger("click");
+      });
+    </script>
+
+
+    <!-- javascrpt block -->
+    {% block js %}
+
+    {% endblock %}
+
+
+  </body>
+</html>

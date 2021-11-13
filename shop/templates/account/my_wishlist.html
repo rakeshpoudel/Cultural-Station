@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%}
+  <title>My Wishlist - Rent Station</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/manage_account.css' %}">
+    <style>
+        #active_manage3{
+            color:darkblue;
+        }
+        .header{
+          background: #fff;
+          box-shadow:0 5px 6px 0 #ddd;
+        }
+        .menus ul a{
+          color:#000 !important;
+        }
+        #text2 a{
+          color:#000;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="manage_main_banner">
+            <div class="container">
+                <div class="manage_banner1">
+                    <div class="col col-xl-2 col-lg-2" style="padding:0px;">
+                        {% include 'account/manage_account_menu.html' %}
+                    </div>
+                    <div class="col col-xl-10 col-lg-10" style="padding:0px;">
+                        <div class="sub_manage2">
+                            <div class="manage_head2">
+                                <h6>MY WISHLIST</h6>
+                            </div>
+                            <div class="manage_content">
+                                <span class="content_sub_head">Wishlist Collection</span>
+                                <hr style="float:left; width:100%; margin-top:0px;">
+                                <div class="container">
+                                    {% for wishlists, range in all_wishlist %}
+                                    {% if wishlists %}
+                                    {% for list in wishlists %}
+                                <div class="wish_items">
+                                    <span class="content_img">
+                                        <a href="/shop/product_view/{{list.caste_type}}/{{list.element_type}}/{{list.product_id}}/"><img src="{{list.image}}" id="content_img"></a>
+                                    </span>
+                                    <span class="content_text">
+                                        <span style="color:#000;">{{list.product_name}}</span><br>
+                                        {% if list.caste_type != 'none' %}
+                                        <span>{{list.caste_type}} {{list.dress_type}}</span><br>
+                                        {% else %}
+                                        <span>{{list.dress_type}}</span><br>
+                                        {% endif %}
+                                        {% if list.product_size != 'none' %}
+                                        <span>Size: {{list.product_size}}</span>
+                                        {% endif %}
+                                    </span>
+                                    <span class="delete_w">
+                                        <a href="/shop/delete_wishlist/{{list.id}}/"><i class="far fa-trash-alt fa-lg mx-1 d_wish" id="{{list.id}}"></i></a>
+                                    </span><br><br>
+                                    <i class="fa fa-spinner fa-pulse mx-1 spinner2" id="spin{{list.id}}"></i>
+                                </div>
+                                 {% endfor %}
+                                    <span id="page_numbers">
+                                        {% if wishlists.has_other_pages %}
+                                          <ul class="pagination">
+                                            {% if wishlists.has_previous %}
+                                              <li><a href="?page={{ wishlists.previous_page_number }}">&laquo;</a></li>
+                                            {% else %}
+                                              <li class="prev_disabled">&laquo;</li>
+                                            {% endif %}
+                                            {% for i in wishlists.paginator.page_range %}
+                                              {% if wishlists.number == i %}
+                                                <li class="">{{ i }}</li>
+                                              {% else %}
+                                                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                              {% endif %}
+                                            {% endfor %}
+                                            {% if wishlists.has_next %}
+                                              <li><a href="?page={{ wishlists.next_page_number }}">&raquo;</a></li>
+                                            {% else %}
+                                              <li class="next_disabled">&raquo;</li>
+                                            {% endif %}
+                                          </ul>
+                                        {% endif %}
+                                        </span>
+                                    {% else %}
+                                    <div class="wishlist_wrapper">
+                                        <h6>You have no wishlist</h6>
+                                    </div>
+                                    {% endif %}
+                                {% endfor %}
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+{% endblock %}
+
+
+{% block js %}
+
+
+<script>
+$('.d_wish').on('click', function(){
+    var idp = this.id;
+    $('#spin'+idp).show();
+});
+</script>
+
+
+{% endblock %}

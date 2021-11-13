@@ -1,0 +1,26 @@
+  {% load static %}
+{% if recent_order %}
+          {% for o in recent_order %}
+          <div class="order_list" data="{{o.order_number}}">
+            <span class="o_list1">
+              <i class="fas fa-shopping-bag"></i>
+            </span>
+            <span class="o_list2">
+              <span class="o_sublist1">
+                Order Number: {{o.order_number}}
+              </span>
+              <span class="o_sublist2">
+                Customer Name: {{o.user_full_name}}
+              </span>
+              <span class="o_sublist3">
+                {{o.ordered_date}}
+              </span>
+            </span>
+          </div>
+          {% endfor %}
+          {% else %}
+          <div class="d_not_found">
+              There are no orders from last 1 month
+          </div>
+          {% endif %}
+          <script src="{% static '/js/dashboard/order_dash.js' %}"></script>

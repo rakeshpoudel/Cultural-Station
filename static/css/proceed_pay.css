@@ -1,0 +1,261 @@
+.pay_main_banner{
+    height:inherit;
+    width:100%;
+    float:left;
+    background:rgba(0,0,0,.05);
+    padding:50px 0px;
+}
+.pay_submain_banner{
+    height:inherit;
+    width:100%;
+    float:left;
+    background:#fff;
+    padding-bottom:60px;
+}
+.pay_main_text{
+    height:inherit;
+    float:left;
+    width:100%;
+    background:#fc9730;
+}
+.pay_main_text h6{
+    margin:0px;
+    padding:5px 15px;
+    color:azure;
+}
+.pay_container1{
+    height:inherit;
+    float:left;
+    background:;
+    width:100%;
+    padding:20px 0px;
+
+}
+.sub_pay_container{
+    height:70px;
+    float:left;
+    width:100%;
+    margin:10px 0px;
+}
+.pay_button{
+    height:100%;
+    width:100%;
+    border:none;
+    background:rgba(0,0,0,.05);
+    font-size:14px;
+    cursor:pointer;
+
+}
+.pay_button:hover{
+    background:#ddd;
+}
+.select_cash{
+    color:#008ECC;
+    box-shadow:0px 0px 8px 0px #ddd;
+    background:#fff;
+
+}
+.cash4{
+    color:#008ECC;
+}
+
+
+.pay_container2{
+    float:left;
+    height:inherit;
+    background:#fff;
+    width:100%;
+    padding:30px 0px;
+
+}
+.sub_pay_container2{
+    height:inherit;
+    width:100%;
+    float:left;
+    background:;
+    padding:10px 30px 50px 30px;
+    box-shadow:0px 0px 5px 0px #ddd;
+}
+#pay_contain1,
+#pay_contain2,
+#pay_contain3,
+#pay_contain4,
+#pay_contain5,
+#pay_contain6{
+    display:none;
+}
+.khalti_icon{
+    height: 50px;
+    width:130px;
+}
+.sub_pay_container2 p{
+    color:;
+    font-size:14px;
+
+}
+.sub_pay_container2 span{
+    width:100%;
+    float:left;
+    margin-top:20px;
+}
+#order_confirm_btn{
+    float:left;
+}
+.spinner4,
+.spinner5,
+.spinner6{
+   font-size:25px;
+   float:left;
+   position:relative;
+   top:-8px;
+   color:#036894;
+   display:none;
+}
+.sub_pay_container2 span i{
+    color:#008ECC;
+    float:left;
+    width:7%;
+    margin-top:15px;
+}
+#shipping{
+    color:#4c5454;
+    width:90%;
+    float:left;
+    font-size:15px;
+    margin:0px;
+}
+#order_confirm_btn{
+    height:40px;
+    width:160px;
+    color:#fff;
+    background:#fc9730;
+    cursor:pointer;
+    border:none;
+    font-size:14px;
+    transition:all .4s ease;
+}
+#order_confirm_btn:hover{
+    background:#fa8005;
+}
+
+#icon_head,
+#pay_field1,
+#pay_field2{
+    width:100%;
+    float:left;
+}
+#icon_head i{
+    color:#fa8005;
+    font-size:30px;
+}
+#pay_field3{
+    width:35%;
+}
+#pay_field4{
+    width:60%;
+    margin-left:15px;
+}
+.sub_pay_container2 span{
+    margin-top:20px;
+}
+.sub_pay_container2 span label{
+    font-size:13px;
+    color:#4c5454;
+}
+.sub_pay_container2 span label a{
+    color:red;
+}
+.sub_pay_container2 span input{
+    height:45px;
+    width:60%;
+    border:1px solid #ddd;
+}
+#pay_field3 input{
+    width:100%;
+}
+#pay_field4 input{
+    width:40%;
+}
+#astrick{
+    color:red;
+}
+#pay_btn_wrapper{
+    margin-top:40px;
+}
+.pay_now_btn{
+    float:left;
+    height:40px;
+    width:200px;
+    color:#fff;
+    background:#fc9730;
+    cursor:pointer;
+    border:none;
+    font-size:14px;
+    transition:all .4s ease;
+}
+.pay_now_btn:hover{
+    background:#fa8005;
+}
+
+.pay_container3{
+    height:inherit;
+    float:left;
+    background:;
+    width:100%;
+
+}
+.pay_rental_summary{
+    height:inherit;
+    float:left;
+    background:;
+    width:100%;
+    margin-top:30px;
+    padding:10px 15px;
+    box-shadow:0px 0px 8px 0px #ddd;
+}
+#sub_pay_head{
+    width:100%;
+    float:left;
+    font-size:22px;
+    padding-bottom:10px;
+}
+#pay_sub{
+    width:100%;
+    float:left;
+    font-size:14px;
+    margin-bottom:10px;
+}
+#pay_sub_text{
+    float:left;
+    color:#4c5454;
+}
+#pay_sub_amt{
+    float:right;
+}
+#pay_sub_text1{
+    float:left;
+    font-size:17px;
+}
+#pay_sub_amt1{
+    float:right;
+    font-size:17px;
+    color:#fa8005;
+    font-family:Merriweather-Regular;
+}
+
+.config-info-ban{
+    width:100%;
+    float:left;
+    height:inherit;
+}
+.config-info{
+    width:100%;
+    float:left;
+    margin-bottom: 3px;
+    font-size: 14px;
+    color: rgba(0,0,0,.7);
+}
+#icon_head_config{
+    color: #008ECC;
+    font-size: 20px;
+}

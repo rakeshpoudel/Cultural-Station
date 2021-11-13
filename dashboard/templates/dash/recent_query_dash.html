@@ -1,0 +1,81 @@
+{% load static %}
+{% if not_ans_query %}
+        {% for r in not_ans_query %}
+        <div class="contain_list_ans">
+          <span class="list1">
+            <a href="/static/{{r.image}}" data-lightbox="qdash_q_r{{r.id}}">
+              <img src="/static/{{r.image}}" class="contain_img">
+            </a>
+          </span>
+          <span class="list2">
+            <span class="sublist1">
+              <i class="fas fa-user"></i>{{r.user_name}}
+            </span>
+            <span class="sublist4">
+              <span class="subques">
+                QUE
+              </span>
+              <span class="subquestext">
+                {{r.question}}
+              </span>
+            </span>
+            <span class="sublist5">
+              <span class="subans">
+                ANS
+              </span>
+              <span class="subanstext">
+                <form method="POST" action="">
+                  {% csrf_token %}
+                  <textarea rows="3" name="answer" placeholder="Answer here" id="ain{{r.id}}" class="ansinput"></textarea>
+                  <button type="submit" class="ans_btn" id="{{r.id}}">POST</button>
+                  <i class="fa fa-spinner fa-pulse mx-2 ans_spin" id="asp{{r.id}}"></i>
+                </form>
+              </span>
+            </span>
+            <span class="sublist3">
+              {{r.publish_date}}
+            </span>
+          </span>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% if recent_queries %}
+        {% for r in recent_queries %}
+        <div class="contain_list">
+          <span class="list1">
+            <a href="/static/{{r.image}}" data-lightbox="qdash_r_r_a{{r.id}}">
+              <img src="/static/{{r.image}}" class="contain_img">
+            </a>
+          </span>
+          <span class="list2">
+            <span class="sublist1">
+              <i class="fas fa-user"></i>{{r.user_name}}
+            </span>
+            <span class="sublist4">
+              <span class="subques">
+                QUE
+              </span>
+              <span class="subquestext">
+                {{r.question}}
+              </span>
+            </span>
+            <span class="sublist5">
+              <span class="subans">
+                ANS
+              </span>
+              <span class="subanstext">
+                {{r.answer}}
+              </span>
+            </span>
+            <span class="sublist3">
+              {{r.publish_date}}
+            </span>
+          </span>
+        </div>
+        {% endfor %}
+        {% else %}
+        <div class="re_not_found">
+          No queries avaiable from last 1 month
+        </div>
+        {% endif %}
+        <script src="{% static '/js/dashboard/review_dash.js' %}"></script>

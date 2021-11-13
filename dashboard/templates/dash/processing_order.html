@@ -1,0 +1,102 @@
+  {% load static %}
+  {% if new_orders %}
+  {% for o in new_orders %}
+          <div class="history_summary_content new_ord">
+            <span class="h_summary1">
+              <i class="fas fa-cart-plus"></i>
+            </span>
+            <span class="h_summary2">
+              <span class="new_order">
+                New Order!
+              </span>
+              <span class="h_sum_detail1">
+                Order Number: {{o.order_number}}
+              </span>
+              <span class="h_sum_detail2">
+                Total Items: {{o.total_items}}
+              </span>
+              <span class="h_sum_detail3">
+                Total Amount: RS {{o.grand_total}}
+              </span>
+              <span class="h_sum_detail3" style="color: green;">
+                Status: {{o.order_status}}<i class="fas fa-check-circle"></i>
+              </span>
+              <span class="h_sum_detail4">
+                {{o.ordered_date}}
+              </span>
+              <span class="h_summary4">
+                <input type="hidden" id="con{{o.order_number}}" value="{{o.order_number}}">
+                <form method="POST" action="">
+                  <input type="hidden" name="check" id="check{{o.order_number}}" value="checked">
+                  <button type="submit" class="view_new_detail" id="{{o.order_number}}">VIEW DETAIL</button>
+                </form>
+              </span>
+            </span>
+            <span class="h_summary3">
+              <span class="h_sum_detail5">
+                <i class="fas fa-user"></i>
+                {{o.user_full_name}}
+              </span>
+              <span class="h_sum_detail6">
+                Email: {{o.user_email}}
+              </span>
+              <span class="h_sum_detail7">
+                Contact: +977{{o.user_contact}}
+              </span>
+              <span class="h_sum_detail8">
+                Delivery Address: {{o.shipping_address}}
+              </span>
+            </span>
+          </div>
+          {% endfor %}
+          {% endif %}
+
+{% if order_processing %}
+          {% for o in order_processing %}
+          <div class="history_summary_content" id="s{{o.order_number}}">
+            <span class="h_summary1">
+              <i class="fas fa-cart-plus"></i>
+            </span>
+            <span class="h_summary2">
+              <span class="h_sum_detail1">
+                Order Number: {{o.order_number}}
+              </span>
+              <span class="h_sum_detail2">
+                Total Items: {{o.total_items}}
+              </span>
+              <span class="h_sum_detail3">
+                Total Amount: RS {{o.grand_total}}
+              </span>
+              <span class="h_sum_detail3" style="color: green;">
+                Status: {{o.order_status}}<i class="fas fa-check-circle"></i>
+              </span>
+              <span class="h_sum_detail4">
+                {{o.ordered_date}}
+              </span>
+              <span class="h_summary4">
+                <button type="button" class="view_detail" id="{{o.order_number}}">VIEW DETAIL</button>
+              </span>
+            </span>
+            <span class="h_summary3">
+              <span class="h_sum_detail5">
+                <i class="fas fa-user"></i>
+                {{o.user_full_name}}
+              </span>
+              <span class="h_sum_detail6">
+                Email: {{o.user_email}}
+              </span>
+              <span class="h_sum_detail7">
+                Contact: +977{{o.user_contact}}
+              </span>
+              <span class="h_sum_detail8">
+                Delivery Address: {{o.shipping_address}}
+              </span>
+            </span>
+          </div>
+          {% endfor %}
+          {% else %}
+          <div class="d_not_found_pro">
+            There are no other processing orders
+          </div>
+          {% endif %}
+          <script src="{% static '/js/dashboard/order_dash.js' %}"></script>

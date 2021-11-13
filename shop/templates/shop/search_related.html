@@ -1,0 +1,18 @@
+{% if prodquery %}
+  <ul>
+  {% for pqs, range in prodquery %}
+  {% for p in pqs %}
+    <li class="search_list">{{ p.name }}</li>
+  {% endfor %}
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No result found.</p>
+{% endif %}
+<script>
+	$('.search_list').click(function(){
+  var query = $(this).text();
+  console.log(query)
+  $('#search-input').val(query);
+});
+</script>

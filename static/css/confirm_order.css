@@ -1,0 +1,310 @@
+.confirm_main_banner{
+    height:auto;
+    float:left;
+    width:100%;
+    background:rgba(0,0,0,.05);
+    padding:50px 0px;
+}
+.confirm_banner1{
+    height:inherit;
+    width:100%;
+    float:left;
+    background:#fff;
+    text-align:center;
+    padding-bottom:50px;
+}
+.confirm_wrapper{
+    float:left;
+    width:100%;
+    height:inherit;
+    margin-bottom:10px;
+    background:#fff;
+    text-align:center;
+}
+.confirm_head{
+    height:inherit;
+    float:left;
+    width:100%;
+    padding:30px 0px 0px 0px;
+}
+.confirm_head h4{
+    margin:0px;
+    color:#fa8005;
+}
+.smile_icon{
+    padding-right:10px;
+    color:#fa8005;
+}
+
+.confirm_subbanner1{
+    height:inherit;
+    width:100%;
+    float:left;
+    padding:10px 0px 40px 0px;
+}
+.confirm_subbanner1 span{
+    font-size: 14px;
+    color:;
+}
+.confirm_subbanner2{
+    height:inherit;
+    float:left;
+    width:100%;
+
+}
+.confirm_sub{
+    height:inherit;
+    width:80%;
+    margin:0px auto;
+    text-align:left;
+}
+#order_head{
+    width:100%;
+    float:left;
+    font-size:16px;
+    padding:25px 0px 10px 0px;
+}
+#order_number{
+    float:left;
+    text-align:right;
+    width:100%;
+    font-size:14px;
+    color:#fa8005;
+}
+.confirm_sub1{
+    height:inherit;
+    width:100%;
+    float:left;
+    border:1px solid #ddd;
+    padding:10px 10px;
+    margin-bottom:13px;
+}
+.confirm_sub2{
+    width:100%;
+    float:left;
+    height:inherit;
+    background:;
+    margin-bottom:10px;
+}
+#image_sub{
+    float:left;
+}
+#confirm_prod_image{
+    height:100px;
+    width:85px;
+
+}
+.part1{
+    float:left;
+    padding-left:10px;
+}
+.part2{
+    float:right;
+}
+#prod_sub_name{
+    float:left;
+    font-size:15px;
+    text-transform:capitalize;
+}
+#prod_sub_rent_type,
+#prod_sub_refund{
+    float:left;
+    font-size:13px;
+    color:#4c5454;
+}
+#prod_sub_date1{
+    float:right;
+    font-size:13px;
+    color:rgba(0,0,0,.88);
+}
+#prod_sub_date2{
+    float:right;
+    font-size:13px;
+    color:rgba(0,0,0,.88);
+}
+#track_info{
+    width:100%;
+    float:left;
+    font-size:13px;
+    text-align:center;
+}
+#view_order_btn{
+    height:30px;
+    width:80px;
+    border:1px solid #fc9730;
+    background:none;
+    color:#fa8005;
+    font-size:12px;
+    cursor:pointer;
+}
+
+.mail_info{
+    height:inherit;
+    width:100%;
+    float:left;
+    border:1px solid #ddd;
+    padding:5px 70px;
+    text-align:center;
+}
+.mail_info p{
+    font-size:13px;
+    margin:0px;
+}
+.mail_icon{
+    padding-right: 10px;
+    color:#fc9730;
+}
+
+
+.confirm_subbanner3{
+    height:inherit;
+    width:100%;
+    float:left;
+    margin-top:50px;
+}
+#continue_rent_btn{
+    height:40px;
+    width:200px;
+    color:#fff;
+    background:#fc9730;
+    cursor:pointer;
+    border:none;
+    font-size:14px;
+    transition:all .4s ease;
+}
+#continue_rent_btn:hover{
+    background:#fa8005;
+}
+
+.confirm_recommend_banner{
+    height:inherit;
+    width:100%;
+    float:left;
+    text-align:left;
+    margin-top:30px;
+}
+.recommend_confirm{
+    width:80%;
+    height:inherit;
+    margin:0px auto;
+}
+#recommend_head{
+    width:100%;
+    font-size:16px;
+    float:left;
+    margin:20px 0px;
+}
+.rentals{
+    width:100%:
+    float:left;
+    height:inherit;
+}
+.rentals a{
+    text-decoration:none;
+}
+.card_rental{
+    border:none;
+}
+.card_rental:hover{
+    box-shadow:0px 0px 3px 0px gray;
+}
+.rental_img{
+    height:150px;
+    width:100%;
+}
+.rental-name{
+    margin:0px;
+    text-transform:capitalize;
+    font-size:14px;
+}
+.rental-price{
+    margin:0px;
+    font-size:13px;
+    font-family:Merriweather-Regular;
+    color:#fc9730;
+}
+.rental-price span{
+    font-size:11px;
+}
+
+
+
+.confirm_banner2{
+    height:inherit;
+    width:100%;
+    float:left;
+    background:#fff;
+    padding:10px 15px 20px 15px;
+}
+#order_head2{
+    width:100%;
+    float:left;
+    font-size:17px;
+    padding:10px 0px;
+
+}
+#order_detail1{
+    width:100%;
+    height:inherit;
+    float:left;
+    margin-bottom:10px;
+}
+#order_text{
+    float:left;
+    font-size:14px;
+    color:#4c5454;
+
+}
+#order_amt{
+    float:right;
+    font-size:14px;
+
+}
+#order_text1{
+    float:left;
+    font-size:16px;
+
+}
+#order_amt1{
+    float:right;
+    font-family:Merriweather-Regular;
+    font-size:17px;
+    color:#fc9730;
+}
+#refund_info{
+    width:100%;
+    float:left;
+    font-size:13px;
+    padding:5px 10px;
+    margin-top:5px;
+    text-align:center;
+    color:#008ECC;
+    border:1px solid #ddd;
+}
+#refund_info i{
+    color:#008ECC;
+}
+
+.confirm_banner3{
+    height:inherit;
+    width:100%;
+    float:left;
+    background:#fff;
+    margin-top:20px;
+    padding:10px 15px 20px 15px;
+}
+#ship_head{
+    width:100%;
+    float:left;
+    font-size:17px;
+    padding:10px 0px;
+
+}
+#ship_info{
+    width:100%;
+    float:left;
+    font-size:15px;
+}
+.ship_icon{
+    color:#008ECC;
+}

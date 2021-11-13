@@ -1,0 +1,647 @@
+
+/*---manage_account---------*/
+.manage_main_banner{
+    height:auto;
+    float:left;
+    width:100%;
+    background:rgba(0,0,0,.05);
+    padding:50px 0px;
+}
+.manage_banner1{
+    height:inherit;
+    width:100%;
+    background:#d69f67;
+    float:left;
+}
+.sub_manage1{
+    height:inherit;
+    width:100%;
+    float:left;
+    background:;
+
+}
+.manage_head1{
+    float:left;
+    height:inherit;
+    width:100%;
+    background:;
+    border-bottom:1px solid #ddd;
+}
+.manage_head1 h6{
+    font-size:16px;
+    color:#fff;
+    padding:7px 15px;
+    margin:0px;
+}
+.manage_link1{
+    float:left;
+    width:100%;
+    height:inherit;
+
+}
+.account_btn1{
+    height:50px;
+    width:100%;
+    border:none;
+    color:azure;
+    background:none;
+    font-size:15px;
+    text-align:left;
+    padding-left:15px;
+    cursor:pointer;
+}
+.account_btn1:hover{
+    color:#008ECC;
+}
+
+
+
+.sub_manage2{
+    height:inherit;
+    width:100%;
+    background:#fff;
+    float:left;
+    border-left:1px solid #ddd;
+    padding-bottom:30px;
+}
+.manage_head2{
+    height:inherit;
+    width:100%;
+    float:left;
+    text-align:left;
+    background:#d69f67;
+}
+.manage_head2 h6{
+    font-size:16px;
+    color:#fff;
+    padding:7px 15px;
+    margin:0px;
+}
+.manage_content{
+    height:inherit;
+    width:100%;
+    float:left;
+    padding:25px 15px;
+}
+.manage_account{
+    width:100%;
+    height:inherit;
+    float:left;
+}
+.manage_btn{
+    width:100%;
+    height:80px;
+    border:none;
+    text-align:left;
+}
+.btn_div1{
+    width:16%;
+    float:left;
+    background:;
+    line-height:80px;
+
+}
+.btn_div2{
+    width:75%;
+    float:left;
+    background:;
+    padding:16px 0px;
+}
+.content_icon{
+    padding-left:15px;
+    font-size:25px;
+    color:#008ECC;
+}
+.account_p{
+    font-size:16px;
+    color:#008ECC;
+}
+.account_t{
+    font-size:14px;
+    color:#000;
+}
+
+.personal_update_banner{
+    width:100%;
+    height:inherit;
+    float:left;
+    padding:0px 15px;
+}
+.update_head{
+    width:100%;
+    float:left;
+    font-size:18px;
+    color:#008ECC;
+    padding:30px 0px 15px 0px;
+}
+.p_details{
+    height:inherit;
+    width:100%;
+    float:left;
+}
+.p_info,
+.s_info{
+    width:100%;
+    float:left;
+    font-size:15px;
+    margin-bottom:10px;
+    text-transform:capitalize;
+}
+.p_info_invalid,
+.s_info_invalid{
+    width:100%;
+    float:left;
+    font-size:15px;
+    margin-bottom:10px;
+}
+.p_info input{
+    height:40px;
+    width:230px;
+    border:1px solid #ccc;
+}
+.s_info select{
+    height:40px;
+    width:42%;
+    border:1px solid #ccc;
+}
+.s_info input{
+    height:40px;
+    width:42%;
+    border:1px solid #ccc;
+}
+.s_info select > option{
+    border:none;
+}
+.s_info select > option:checked {
+    background: #ddd !important;
+}
+
+.p_info_btn,
+.s_info_btn{
+    width:100%;
+    float:left;
+    font-size:15px;
+    margin:10px 0px 20px 0px;
+}
+.p_info label,
+.p_info_invalid label{
+    font-weight:bold;
+    padding-right:15px;
+    width:12%;
+}
+.p_info_invalid span,
+.s_info_invalid span{
+    color:#fa2f2f;
+
+}
+.s_info label,
+.s_info_invalid label{
+    font-weight:bold;
+    padding-right:15px;
+    width:15%;
+}
+.colon{
+    color:#000;
+    padding-right:10px;
+}
+.p_button{
+    float:left;
+    height:40px;
+    width:140px;
+    font-size:14px;
+    background:#008ECC;
+    color:azure;
+    border:none;
+    cursor:pointer;
+    transition: all .4s ease;
+}
+.p_button:hover{
+    background:#036894;
+}
+.p_error,
+.s_error{
+    color:red;
+}
+
+/*-----------end---------------*/
+
+
+/*---------my orders---------------*/
+
+.content1{
+    height:inherit;
+    float:left;
+    width:100%;
+}
+.content_sub_head{
+    font-size:19px;
+    width:100%;
+    float:left;
+    color: #008ECC;
+    margin:0px 0px 15px 0px;
+
+}
+#sub_content1{
+    float:left;
+    font-size:15px;
+}
+#sub_content2{
+    float:right;
+    font-size:15px;
+}
+
+.content_progress{
+    float:left;
+    width:100%;
+    height:inherit;
+}
+#content_delivery{
+    float:left;
+    width:100%;
+    font-size:15px;
+}
+.progress_wrapper{
+    float:left;
+    width:100%;
+    height:inherit;
+    text-align:center;
+}
+
+/* Progress Tracker v2 */
+.progress_status{
+    list-style:none;
+    background:;
+    display:inline-block;
+    margin:20px auto 100px auto;
+}
+
+.progress_status li{
+    float:left;
+    margin-left:100px;
+    font-size:14px;
+}
+.progress_status li .heading{
+    display:table-cell;
+    padding:10px 0px;
+    color:#ccc;
+}
+.progress_status li .head_active{
+    color:#000;
+}
+.progress_status li .bubble{
+    padding:5px 10px;
+    border-radius:50%;
+    background:#ccc;
+    position:relative;
+    z-index:2;
+    color:rgba(255,255,255,0);
+}
+.progress_status li .bubble_active{
+    background:#84b814 !important;
+    color:rgba(255,255,255,1);
+}
+.divider{
+    height:10px;
+    width:160px;
+    position:absolute;
+    margin-top:6px;
+    margin-left:-5px;
+    background:#ccc;
+    z-index:1;
+}
+.divider_active{
+    background:#84b814;
+}
+.tooltip-inner {
+    background-color: #fff;
+    color:#000;
+    font-family:verdana;
+    font-size:13px;
+    border: 1px solid #84b814;
+}
+.bs-tooltip-auto[x-placement^=bottom] .arrow::before,
+.bs-tooltip-bottom .arrow::before {
+  border-bottom-color: #84b814;
+}
+
+.order_content{
+    float:left;
+    width:100%;
+    height:inherit;
+}
+.order_items{
+    float:left;
+    height:inherit;
+    width:100%;
+    font-size:14px;
+    margin-bottom:15px;
+    text-transform:capitalize;
+}
+.order_items:last-child{
+    margin-bottom:30px;
+}
+.content_img{
+    float:left;
+}
+#content_img{
+    height:80px;
+    width:70px;
+}
+.content_text{
+    float:left;
+    padding-left:10px;
+}
+.content_date{
+    float:right;
+}
+.order_status{
+    float:right;
+    color:#84b814;
+}
+.order_status i{
+    color:#84b814;
+    position:relative;
+    top:1px;
+}
+.cancel{
+    float:right;
+}
+.cancel a{
+    color:#008ECC;
+    text-decoration:none;
+}
+.cancel_info{
+    font-size:12px;
+    float:right;
+    color:#aaa;
+}
+.spinner3{
+    display:none;
+}
+.message_order{
+    font-size:15px;
+    color:#008ECC;
+    float:left;
+    width:100%;
+    margin-bottom:15px;
+}
+
+.content_shipping{
+    float:left;
+    width:100%;
+    height:inherit;
+    padding:10px 15px;
+    background:#eee;
+}
+#content_ship_head{
+    font-size:16px;
+    width:100%;
+    float:left;
+    padding-bottom:8px;
+    color:#008ECC;
+}
+#content_ship_detail{
+    float:left;
+    width:100%;
+    text-align:left;
+    font-size:14px;
+}
+
+.content_total{
+    float:left;
+    width:100%;
+    height:inherit;
+    padding:10px 15px;
+    background:#eee;
+}
+#content_total_head{
+    font-size:16px;
+    width:100%;
+    float:left;
+    padding-bottom:8px;
+    color:#008ECC;
+}
+.content_total_detail1{
+    float:left;
+    width:100%;
+    font-size:14px;
+}
+.sub_detail1{
+    float:left;
+
+}
+.sub_detail2{
+    float:right;
+}
+.sub_detail3{
+    font-size:15px;
+    float:right;
+}
+.payment_info{
+    font-size:14px;
+    width:100%;
+    float:left;
+}
+
+.content_wrapper{
+    height:inherit;
+    width:100%;
+    text-align:center;
+    float:left;
+    padding:40px 0px;
+}
+.content_wrapper h6{
+    color:#4c5454;
+}
+.content_btn{
+    height:40px;
+    width:220px;
+    font-size:14px;
+    background:#008ECC;
+    color:azure;
+    border:none;
+    cursor:pointer;
+    transition: all .4s ease;
+    margin-top:10px;
+}
+.content_btn:hover{
+    background:#036894;
+}
+
+.manage_content2{
+    height:inherit;
+    width:100%;
+    float:left;
+    padding:25px 15px;
+}
+.manage_head3{
+    font-size:19px;
+    width:100%;
+    float:left;
+    color: #008ECC;
+    margin:0px 0px 15px 0px;
+}
+.return_wrapper{
+    height:inherit;
+    width:100%;
+    float:left;
+    padding:20px 0px;
+    text-align:center;
+}
+.return_wrapper h6{
+    color:#4c5454;
+}
+
+
+
+/*------------end---------------------*/
+
+
+/*-----------my wishlist-------------------*/
+
+
+.wish_items{
+    float:left;
+    height:inherit;
+    width:100%;
+    font-size:14px;
+    margin-bottom:15px;
+    text-transform:capitalize;
+    padding:5px 10px;
+    border:1px solid #ddd;
+}
+.wish_items:last-child{
+    margin-bottom:30px;
+}
+.wish_items .content_text span{
+    color:#4c5454;
+}
+.delete_w{
+    float:right;
+}
+.d_wish{
+    color:#aaa;
+    padding-top:10px;
+}
+.spinner2{
+    float:right;
+    font-size:18px;
+    color:#aaa;
+    display:none;
+}
+.wishlist_wrapper{
+    height:inherit;
+    width:100%;
+    float:left;
+    padding:50px 0px;
+    text-align:center;
+}
+.wishlist_wrapper h6{
+    color:#4c5454;
+}
+
+/*-------------------------------------------*/
+
+
+/*--------notifications---------------*/
+
+.notice_content{
+    padding-bottom:90px;
+}
+
+.notification_banner{
+    height:inherit;
+    width:100%;
+    float:left;
+    margin-bottom:15px;
+    background:;
+}
+.notification_banner:last-child{
+    margin-bottom:25px;
+}
+.not_dates{
+    float:left;
+    width:100%;
+    font-size:15px;
+    color:#008ECC;
+    text-align:left;
+}
+.not_dates i{
+    color:#036894;
+    padding-right:8px;
+}
+.notifications{
+    float:left;
+    width:100%;
+    font-size:14px;
+    text-align:left;
+    padding:0px 12px;
+}
+.o_num{
+    color:#008ECC;
+    font-size:15px;
+}
+.track_order_btn{
+    height:30px;
+    width:80px;
+    border:1px solid #fc9730;
+    background:none;
+    color:#fa8005;
+    font-size:12px;
+    cursor:pointer;
+    transition: all .4s ease;
+}
+.track_order_btn:hover{
+    background:#fc9730;
+    color:#fff;
+}
+.notice_wrapper{
+    height:inherit;
+    width:100%;
+    float:left;
+    padding:50px 0px;
+    text-align:center;
+}
+.notice_wrapper h6{
+    color:#4c5454;
+}
+
+/*======================================*/
+
+
+/*-------my cancellations-----------------*/
+
+.cancel_items{
+    float:left;
+    height:inherit;
+    width:100%;
+    font-size:14px;
+    margin-bottom:15px;
+    text-transform:capitalize;
+    padding:5px 10px;
+    border:1px solid #ddd;
+}
+.cancel_items:last-child{
+    margin-bottom:30px;
+}
+.cancel_items .content_text span{
+    color:#4c5454;
+}
+
+.cancelled{
+    float:right;
+    color:#008ECC;
+    font-size:15px;
+}
+.cancel_wrapper{
+    height:inherit;
+    width:100%;
+    float:left;
+    padding:50px 0px;
+    text-align:center;
+}
+.cancel_wrapper h6{
+    color:#4c5454;
+}
+
+/*=================================================*?

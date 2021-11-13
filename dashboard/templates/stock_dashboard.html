@@ -1,0 +1,259 @@
+{% extends 'dash_base.html' %}
+{% load static %}
+
+{% block title%}
+  <title>Dashboard - Rent Station</title>
+{% endblock %}
+{% block css %}
+  <style>
+    #dashboard_link6{
+      background: #2b2e4a;
+    }
+  </style>
+  <link rel="stylesheet" href="{% static '/css/dashboard/review_dash.css' %}">
+{% endblock %}
+
+
+{% block head_title %}
+Reviews
+{% endblock %}
+{% block content %}
+<div class="content3">
+  <div class="col col-md-7">
+    <div class="xreview_container1">
+      <span class="order_head">
+          View Stock
+          
+      </span>
+      <div class="xsubcontainer1">
+        <span class="contain_text">
+          Select the product to view its stocks
+        </span>
+        <span class="contain_btn">
+          <button type="button" class="select_btn">SELECT PRODUCT</button>
+        </span>
+      </div>
+      <div class="product_contain">
+        <span class="order_head">
+          Select Product
+          <i class="far fa-times-circle close_contain" style="font-size: 20px;"></i>
+        </span>
+        <div class="stocksearch">
+          <input type="text" name="stock_search" id="stock_search" class="form-control search_stock_input" placeholder="Search products.." autocomplete="off">
+        </div>
+        <div class="pcover">
+          {% include 'dash/stock_result.html' %}
+          {% if all_prods %}
+          {% for p in all_prods %}
+          <a href="{% url 'stock_session' p.id %}">
+          <div class="p_content">
+              <span class="pcontent1">
+                <img src="/static/{{p.main_image}}" class="p_img">
+              </span>
+              <span class="pcontent2">
+                <span class="p_name">
+                  {{p.name}}
+                </span>
+                <span class="p_type">
+                  {{p.dress_type}}
+                </span>
+              </span>
+          </div>
+          </a>
+          {% endfor %}
+          {% else %}
+          <div class="re_not_found">
+            No products available
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="xreview_container2">
+      <div class="foot_cover"></div>
+      <span class="order_head">
+          Stock Update
+          <i class="fas fa-redo contain_refresh1"></i>
+      </span>
+      <div class="xsubcontainer2">
+        {% if messages %}
+          <span class="messages">
+            {% for m in messages %}
+            {{m}}
+            {% endfor %}
+          </span>
+        {% endif %}
+        {% if sprod %}
+        <div class="contain_list">
+          <span class="list1">
+            <a href="/static/{{sprod.main_image}}" data-lightbox="rerev_r_r{{sprod.id}}">
+              <img src="/static/{{sprod.main_image}}" class="contain_img">
+            </a>
+          </span>
+          <span class="list2">
+            <span class="sublist2">
+              <form method="POST" action="{% url 'stock_update' %}">
+                {% csrf_token %}
+                <input type="hidden" name="pid" value="{{sprod.id}}">
+                <span>
+                  Stock S: <input type="number" name="stocks" class="form-control" value="{{sprod.stock_size_s}}">
+                </span>
+                <span>
+                  Stock M: <input type="number" name="stockm" class="form-control" value="{{sprod.stock_size_m}}">
+                </span>
+                <span>
+                  Stock L: <input type="number" name="stockl" class="form-control" value="{{sprod.stock_size_l}}">
+                </span>
+                <span>
+                  Stock XL: <input type="number" name="stockxl" class="form-control" value="{{sprod.stock_size_xl}}">
+                </span>
+                <span>
+                  Stock XXL: <input type="number" name="stockxxl" class="form-control" value="{{sprod.stock_size_xxl}}">
+                </span>
+                <span>
+                  Stock 3XL: <input type="number" name="stock3xl" class="form-control" value="{{sprod.stock_size_3xl}}">
+                </span>
+                <br>
+                <span>
+                  <button type="submit" class="btn btn-primary stock_btn">UPDATE</button>
+                </span>
+              </form>
+            </span>
+          </span>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="col col-md-5">
+    <div class="xreview_container3">
+      <div class="foot_cover"></div>
+      <span class="order_head">
+          Product Stocks
+          <i class="fas fa-redo contain_refresh2"></i>
+      </span>
+      <div class="xsubcontainer3">
+        {% if stock_prod %}
+        {% for p in stock_prod %}
+        <a href="{% url 'stock_session' p.id %}">
+        <div class="p_content">
+              <span class="pcontent1">
+                <img src="/static/{{p.main_image}}" class="p_img">
+              </span>
+              <span class="pcontent2">
+                <span class="p_name">
+                  {{p.name}}
+                </span>
+                <span class="p_type">
+                  {% if p.stock_size_s <= 5 %}
+                  Stock S: {{p.stock_size_s}}
+                  {% endif %}
+                  {% if p.stock_size_m <= 5 %}
+                  Stock M: {{p.stock_size_m}}
+                  {% endif %}
+                  {% if p.stock_size_l <= 5 %}
+                  Stock L: {{p.stock_size_l}}
+                  {% endif %}
+                  {% if p.stock_size_xl <= 5 %}
+                  Stock XL: {{p.stock_size_xl}}
+                  {% endif %}
+                  {% if p.stock_size_xxl <= 5 %}
+                  Stock XXL: {{p.stock_size_xxl}}
+                  {% endif %}
+                  {% if p.stock_size_3xl <= 5 %}
+                  Stock 3XL: {{p.stock_size_3xl}}
+                  {% endif %}
+                </span>
+              </span>
+          </div>
+        </a>
+        {% endfor %}
+        {% else %}
+        <div class="re_not_found">
+          No products with low stock avaiable
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <div class="review_popup_banner">
+    <div class="col col-md-5"></div>
+    <div class="col col-md-4">
+      <div class="content_pop">
+        <div class="foot_cover"></div>
+        <span class="order_head o_head">
+          Reviews
+          <i class="far fa-times-circle pop_close"></i>
+        </span>
+        <div class="show_content">
+          {% include 'dash/review_filter.html' %}
+        </div>
+      </div>
+    </div>
+    <div class="col col-md-3"></div>
+  </div> -->
+
+{% endblock %}
+
+{% block js %}
+<script>
+
+$('.select_btn').click(function(){
+  $('.product_contain').show();
+});
+$('.close_contain').click(function(){
+  $('.product_contain').hide();
+});
+
+const user_input = $("#stock_search")
+// const search_icon = $('#search-icon')
+const artists_div = $('.pcover')
+const endpoint = '/dashboard/search-stock/'
+const delay_by_in_ms = 100
+let scheduled_function = false
+
+let ajax_call = function (endpoint, request_parameters) {
+    $.getJSON(endpoint, request_parameters)
+        .done(response => {
+            // fade out the artists_div, then:
+            artists_div.promise().then(() => {
+                // replace the HTML contents
+                artists_div.html(response['html_from_view'])
+                // fade-in the div with new contents
+                // artists_div.fadeTo('fast', 1)
+                // stop animating search icon
+                // search_icon.removeClass('blink')
+            })
+        })
+}
+
+
+user_input.on('keyup', function () {
+
+
+    const request_parameters = {
+        q: $(this).val() // value of user_input: the HTML element with ID user-input
+    }
+
+    // start animating the search icon with the CSS class
+    // search_icon.addClass('blink')
+
+    // if scheduled_function is NOT false, cancel the execution of the function
+    if (scheduled_function) {
+        clearTimeout(scheduled_function)
+    }
+
+    // var val1 = $(this).val();
+    // if(val1 != ''){
+    //     $('.result_order').show();
+    // }else{
+    //     $('.result_order').hide();
+    // }
+    // setTimeout returns the ID of the function to be executed
+    scheduled_function = setTimeout(ajax_call, delay_by_in_ms, endpoint, request_parameters)
+});
+</script>
+{% endblock %}

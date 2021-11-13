@@ -1,0 +1,336 @@
+.proceed_banner{
+    height:auto;
+    width:100%;
+    float:left;
+    background:rgba(0,0,0,.05);
+    padding:50px 0px;
+}
+
+.rentals_details{
+    height:inherit;
+    width:100%;
+    float:left;
+    background:#fff;
+    padding-bottom:30px;
+}
+.rental_product1{
+    height:inherit;
+    float:left;
+    width:100%;
+    background:#fc9730;
+    padding:5px 20px;
+    margin-bottom:20px;
+}
+.rental_product1 h6{
+    margin:0px;
+    color:azure;
+}
+.rental_product2{
+    height:inherit;
+    float:left;
+    width:100%;
+    background:;
+}
+.rental_product2:last-child hr{
+    display:none;
+}
+.rental1{
+    height:inherit;
+    width:100%;
+    background:;
+}
+#rental_image{
+    height:180px;
+    width:100%;
+    float:left;
+}
+.rental1 span{
+    float:left;
+    width:100%;
+    text-transform:capitalize;
+}
+#rental_name{
+    font-size:17px;
+
+}
+#rental_cats{
+    font-size:15px;
+}
+#rental_way{
+    font-size:14px;
+}
+#rental_size_qty{
+    font-size:13px;
+}
+#rental_price{
+    font-size:17px;
+    color:#fc9730;
+}
+#rental_dates{
+
+}
+#rental_dates span{
+    float:left;
+    font-size:13px;
+    color:#008ECC;
+}
+
+.rentals_summary{
+    height:inherit;
+    float:left;
+    width:100%;
+    background:#fff;
+}
+.personal_form{
+    height:inherit;
+    float:left;
+    width:100%;
+    display:;
+
+}
+.shipping_form{
+    height:inherit;
+    float:left;
+    width:100%;
+    display:;
+}
+.shipping_form1{
+    height:inherit;
+    float:left;
+    width:100%;
+    display:none;
+}
+.shipping_form span,
+.shipping_form1 span,
+.personal_form span{
+    float:left;
+    width:100%;
+    margin-top:10px;
+}
+.shipping_form span label,
+.shipping_form1 span label,
+.personal_form span label{
+    font-size:14px;
+
+}
+.shipping_form span input,
+.shipping_form1 span input,
+.personal_form span input{
+    width:100%;
+    height:33px;
+}
+.c_code{
+    width:15% !important;
+    float:left;
+    height:33px;
+    background:#ddd;
+    margin:0px !important;
+    line-height: 33px;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #aaa;
+}
+.n_input{
+    width:85% !important;
+    float: left;
+}
+.n_label{
+    width:100%;
+}
+.code_verify{
+    height: 45px !important;
+}
+.shipping_form span select,
+.shipping_form1 span select{
+    width:100%;
+    font-size:13px;
+    height:33px;
+    size:10;
+}
+.shipping_form span select > option:checked,
+.shipping_form1 span select > option:checked {
+    background: #ddd !important;
+}
+#personal_btn,
+#ship_btn,
+#ship_btn1,
+#verify_btn{
+    height:35px;
+    width:120px;
+    font-size:14px;
+    color:azure;
+    background:#fc9730;
+    border:none;
+    margin-top:10px;
+    float:right;
+    cursor:pointer;
+    transition:all .4s ease;
+}
+.ship_close{
+    float: right;
+    font-size:19px;
+    color:azure;
+    cursor:pointer;
+    position: relative;
+    top: 3px;
+}
+#personal_btn:hover,
+#ship_btn:hover,
+#ship_btn1:hover{
+    background:#fa8005;
+}
+.personal_fields,
+.shipping_fields{
+    width:100%:
+    height:inherit;
+    float:left;
+    padding:20px 10px;
+}
+.personal_fields p,
+.shipping_fields p{
+    font-size:14px;
+    color:#008ECC;
+    border:1px solid #ddd;
+    margin:0px 0px 10px 0px;
+    padding:5px 10px;
+}
+#form_head{
+    background:#fc9730;
+    padding:3px 20px;
+    margin:0px;
+    color:azure;
+}
+.help_label{
+    font-size:13px;
+    color:#aaa;
+}
+
+
+.proceed_pay_banner{
+    float:left;
+    width:100%;
+    height:inherit;
+    padding:;
+
+}
+.pay_cover{
+    float: width;
+    width:100%;
+    height: inherit;
+}
+.pay-banner1{
+    height:inherit;
+    width:100%;
+    float:left;
+    background:#fc9730;
+}
+.pay-banner2,
+.pay-banner3{
+    height:inherit;
+    width:100%;
+    float:left;
+    padding:0px 10px;
+}
+.pay-banner3{
+    padding:5px 10px 20px 10px;
+}
+.pay-banner1 h6{
+    margin:0px;
+    padding:3px 10px;
+    color:azure;
+}
+.pay-banner2 span{
+    float:left;
+    width:100%;
+    font-size:14px;
+    text-align:left;
+    padding:10px 0px;
+}
+#sub-pay1{
+    text-transform:capitalize;
+}
+#pay_head{
+    font-size:17px;
+    width:100%;
+}
+.pay_icon{
+    color:#008ECC;
+}
+#edit_link{
+    float:right;
+    font-size:14px;
+    color:#008ECC;
+    cursor: pointer;
+}
+
+#sub_pay3{
+    width:100%;
+    float:left;
+    height:inherit;
+}
+#sub_pay3 span{
+    padding:8px 0px;
+}
+#sub_pay_text{
+    font-size:14px;
+    color:#4c5454;
+    float:left;
+}
+#sub_pay_amt{
+    font-size:14px;
+    float:right;
+}
+#sub_pay_total_text{
+    float:left;
+    font-sze:14px;
+
+}
+#sub_pay_total_amt{
+    font-size:18px;
+    color:#fc9730;
+    float:right;
+}
+#g_total{
+    font-size:18px !important;
+    color:#fc9730;
+    width:60px;
+    padding:0px !important;
+    border:none;
+    background:none;
+}
+#help_refund_text{
+    float:left;
+    width:100%;
+    text-align:right;
+    font-size:13px;
+    color:#4c5454;
+    padding:0px 0px 10px 0px;
+}
+#proceed_pay_btn{
+    width:100%;
+    height:45px;
+    border:none;
+    background:#fc9730;
+    font-size:14px;
+    color:#fff;
+    cursor:pointer;
+    transition:all .4s ease;
+}
+#proceed_pay_btn:hover{
+    background:#fa8005;
+}
+.p_error{
+    font-size:14px;
+    color:red !important;
+    display:none;
+}
+.spinner_proceed1,
+.spinner_proceed2,
+.spinner_proceed3,
+.spinner_proceed4{
+    display:none;
+    font-size: 22px;
+    color:#008ECC;
+    float:left;
+    margin-top:20px;
+}

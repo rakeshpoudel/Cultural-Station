@@ -1,0 +1,40 @@
+  {% load static %}
+{% if recent_returns %}
+          {% for r in recent_returns %}
+          <div class="order_list" data="{{r.order_number}}">
+            <span class="o_list1">
+              <img src="/static/{{r.prod_image}}" class="return_img">
+            </span>
+            <span class="return_list1" style="padding: 0px 0px 0px 10px;">
+              <span class="o_sublist1">
+                Order Number: {{r.order_number}}
+              </span>
+              <span class="o_sublist2">
+                Items: {{r.quantity}}
+              </span>
+              <span class="o_sublist2">
+                Refunded <i class="fas fa-check-circle"></i>
+              </span>
+              <span class="o_sublist4">
+                {{r.payment_status}}
+              </span>
+            </span>
+            <span class="return_list2">
+              <span class="r_sublist1">
+                {{r.customer_name}}
+              </span>
+              <span class="r_sublist2">
+                Contact: +977{{r.customer_contact}}
+              </span>
+              <span class="r_sublist2">
+                Email: {{r.customer_email}}
+              </span>
+            </span>
+          </div>
+          {% endfor %}
+          {% else %}
+          <div class="d_not_found">
+              There are no rental returns avaiable from last 1 month
+          </div>
+          {% endif %}
+          <script src="{% static '/js/dashboard/order_dash.js' %}"></script>

@@ -1,0 +1,58 @@
+
+{% for prod in products %}
+<tr id="cart_rows">
+    <td style="float:left;">
+        <div id="prod_arrival">
+            Arrival: {{prod.delivery_date}}
+        </div>
+
+    </td>
+    <td style="float:right;">
+        <div id="prod_return">
+            Return: {{prod.returning_date}}
+        </div>
+
+    </td>
+</tr>
+
+<tr class="col-12">
+
+    <td style="padding:50px 0px 50px 20px;">
+        <input type="checkbox" name="checkbox" id="pr{{prod.id}}" class="prod_check" value="{{prod.renting_way}}"
+               size="{{prod.quantity}}">
+        <input type="hidden" name="refund" id="refundpr{{prod.id}}" value="{{prod.refund}}">
+    </td>
+    <td><a href="/shop/cart_product_view/{{prod.caste_type}}/{{prod.element_type}}/{{prod.product_id}}/{{prod.id}}/"><img src="{{prod.image}}" id="cart_img"></a></td>
+    <td>
+                                    <span id="prod_name">
+                                        {{prod.product_name}}
+                                    </span><br>
+        <span id="prod_category">
+                                        {{prod.caste_type}} {{prod.element_type}}
+                                    </span><br>
+        <span id="prod_rent_way">
+            <span id="rent_waypr{{prod.id}}" class="r_way">{{prod.renting_way}}</span> ({{prod.renting_days}})
+                                    </span><br>
+        <span id="prod_size">
+                                        Size: {{prod.product_size}},
+                                    </span>
+        <span id="prod_count">
+            Item(s): <span id="itemspr{{prod.id}}">{{prod.quantity}}</span>
+                                    </span>
+    </td>
+    <td id="price_td">
+                                    <span class="prod_rent_price">
+                                        Rs <span id="pricepr{{prod.id}}">{{prod.amount}}</span>
+                                    </span>
+
+    </td>
+    <td id="op_td">
+                                    <span id="op_clicks">
+                                        <i class="far fa-heart mx-1 wish" id="wish"></i>
+                        <a href="/shop/cart_delete/{{prod.id}}/"><i class="far fa-trash-alt mx-1"></i></a>
+
+                                    </span>
+    </td>
+</tr>
+
+{% endfor %}

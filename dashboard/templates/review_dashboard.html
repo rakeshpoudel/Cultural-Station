@@ -1,0 +1,165 @@
+{% extends 'dash_base.html' %}
+{% load static %}
+
+{% block title%}
+  <title>Dashboard - Rent Station</title>
+{% endblock %}
+{% block css %}
+  <style>
+    #dashboard_link3{
+      background: #2b2e4a;
+    }
+  </style>
+  <link rel="stylesheet" href="{% static '/css/dashboard/review_dash.css' %}">
+{% endblock %}
+
+
+{% block head_title %}
+Reviews
+{% endblock %}
+{% block content %}
+<div class="content3">
+  <div class="col col-md-7">
+    <div class="xreview_container1">
+      <span class="order_head">
+          Select Reviews
+          
+      </span>
+      <div class="xsubcontainer1">
+        <span class="contain_text">
+          Select the product to view its reviews
+        </span>
+        <span class="contain_btn">
+          <button type="button" class="select_btn">SELECT PRODUCT</button>
+        </span>
+      </div>
+      <div class="product_contain">
+        <span class="order_head">
+          Select Product
+          <i class="far fa-times-circle close_contain" style="font-size: 20px;"></i>
+        </span>
+        <div class="pcover">
+          {% if all_prods %}
+          {% for p in all_prods %}
+          <div class="p_content" id="{{p.id}}">
+            <span class="pcontent1">
+              <img src="/static/{{p.main_image}}" class="p_img">
+            </span>
+            <span class="pcontent2">
+              <span class="p_name">
+                {{p.name}}
+              </span>
+              <span class="p_type">
+                {{p.dress_type}}
+              </span>
+            </span>
+          </div>
+          {% endfor %}
+          {% else %}
+          <div class="re_not_found">
+            No products avaiable
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="xreview_container2">
+      <div class="foot_cover"></div>
+      <span class="order_head">
+          Recent Reviews
+          <i class="fas fa-redo contain_refresh1"></i>
+      </span>
+      <div class="xsubcontainer2">
+        {% include 'dash/recent_review_dash.html' %}
+      </div>
+    </div>
+  </div>
+  <div class="col col-md-5">
+    <div class="xreview_container3">
+      <div class="foot_cover"></div>
+      <span class="order_head">
+          Reviews
+          <i class="fas fa-redo contain_refresh2"></i>
+      </span>
+      <div class="xsubcontainer3">
+        {% include 'dash/review_dash.html' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="review_popup_banner">
+    <div class="col col-md-5"></div>
+    <div class="col col-md-4">
+      <div class="content_pop">
+        <div class="foot_cover"></div>
+        <span class="order_head o_head">
+          Reviews
+          <i class="far fa-times-circle pop_close"></i>
+<!--           <span>|</span>
+          <i class="fas fa-redo contain_refresh3"></i> -->
+        </span>
+        <div class="show_content">
+          {% include 'dash/review_filter.html' %}
+        </div>
+      </div>
+    </div>
+    <div class="col col-md-3"></div>
+  </div>
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static '/js/dashboard/review_dash.js' %}"></script>
+<script>
+  {% for r_cal, ids in review_rates %}
+  var avg_rate = $('#rate1{{ids}}').val();
+  if(avg_rate == 1.0){
+      $('#rate_stars{{ids}} i:nth-child(1)').css({"color": "#faae16"});
+      $('#star_avg2{{ids}}').css({"display": "inline"});
+      $('#star_avg1half{{ids}}').css({"display": "none"});
+  }
+  if(avg_rate == 2.0){
+      $('#rate_stars{{ids}} i:nth-child(-n+3)').css({"color": "#faae16"});
+      $('#star_avg3{{ids}}').css({"display": "inline"});
+      $('#star_avg2half{{ids}}').css({"display": "none"});
+  }
+  if(avg_rate == 3.0){
+      $('#rate_stars{{ids}} i:nth-child(-n+5)').css({"color": "#faae16"});
+      $('#star_avg4{{ids}}').css({"display": "inline"});
+      $('#star_avg3half{{ids}}').css({"display": "none"});
+  }
+  if(avg_rate == 4.0){
+      $('#rate_stars{{ids}} i:nth-child(-n+7)').css({"color": "#faae16"});
+      $('#star_avg5{{ids}}').css({"display": "inline"});
+      $('#star_avg4half{{ids}}').css({"display": "none"});
+  }
+  if(avg_rate == 5.0){
+      $('#rate_stars{{ids}} i:nth-child(n)').css({"color": "#faae16"});
+      $('#star_avg5{{ids}}').css({"display": "inline"});
+      $('#star_avg4half{{ids}}').css({"display": "none"});
+  }
+  if(avg_rate > 1 && avg_rate < 2){
+      $('#rate_stars{{ids}} i:nth-child(-n+2)').css({"color": "#faae16"});
+      $('#star_avg2{{ids}}').css({"display": "none"});
+      $('#star_avg1half{{ids}}').css({"display": "inline"});
+  }
+  if(avg_rate > 2 && avg_rate < 3){
+      $('#rate_stars{{ids}} i:nth-child(-n+5)').css({"color": "#faae16"});
+      $('#star_avg3{{ids}}').css({"display": "none"});
+      $('#star_avg2half{{ids}}').css({"display": "inline"});
+  }
+  if(avg_rate > 3 && avg_rate < 4){
+      $('#rate_stars{{ids}} i:nth-child(-n+6)').css({"color": "#faae16"});
+      $('#star_avg4{{ids}}').css({"display": "none"});
+      $('#star_avg3half{{ids}}').css({"display": "inline"});
+  }
+  if(avg_rate > 4 && avg_rate < 5){
+      $('#rate_stars{{ids}} i:nth-child(n)').css({"color": "#faae16"});
+      $('#star_avg5{{ids}}').css({"display": "none"});
+      $('#star_avg4half{{ids}}').css({"display": "inline"});
+  }
+  {% endfor %}
+</script>
+{% endblock %}

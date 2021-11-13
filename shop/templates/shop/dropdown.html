@@ -1,0 +1,37 @@
+<div class=" col col-xl-4 col-lg-4 d-none d-lg-inline">
+              <div class="menu-dropdown1">
+                <span class="dropdown-content1">
+                  Men Collections
+                </span>
+                <span class="dropdown-content2">
+                  <ul>
+                      {% for dress in dress_men %}
+                    <li><a href="/shop/filter_product_gender/{{dress.gender}}/{{dress.dress}}/">{{dress.dress}}</a></li>
+                      {% endfor %}
+                      <li><a href="/shop/filter_product_gender/men/traditional/">Traditional</a></li>
+                  </ul>
+                </span>
+              </div>
+            </div>
+            <div class=" col col-xl-4 col-lg-4 d-none d-lg-inline">
+              <div class="menu-dropdown2">
+                <span class="menu-text1">
+                  We offer you the dress of your choice. Feel free to explore
+                </span>
+              </div>
+            </div>
+            <div class=" col col-xl-4 col-lg-4 d-none d-lg-inline">
+              <div class="menu-dropdown3">
+                <span class="dropdown-content1">
+                  Women Collections
+                </span>
+                <span class="dropdown-content2">
+                  <ul>
+                    {% for dress in dress_women %}
+                    <li><a href="/shop/filter_product_gender/{{dress.gender}}/{{dress.dress}}/">{{dress.dress}}</a></li>
+                      {% endfor %}
+                      <li><a href="/shop/filter_product_gender/women/traditional/">Traditional</a></li>
+                  </ul>
+                </span>
+              </div>
+            </div>

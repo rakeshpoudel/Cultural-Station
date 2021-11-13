@@ -1,0 +1,126 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%}
+  <title>Notifications - Rent Station</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/manage_account.css' %}">
+    <style>
+        #active_manage4{
+            color:darkblue;
+        }
+        .header{
+          background: #fff;
+          box-shadow:0 5px 6px 0 #ddd;
+        }
+        .menus ul a{
+          color:#000 !important;
+        }
+        #text2 a{
+          color:#000;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="manage_main_banner">
+            <div class="container">
+                <div class="manage_banner1">
+                    <div class="col col-xl-2 col-lg-2" style="padding:0px;">
+                        {% include 'account/manage_account_menu.html' %}
+                    </div>
+                    <div class="col col-xl-10 col-lg-10" style="padding:0px;">
+                        <div class="sub_manage2">
+                            <div class="manage_head2">
+                                <h6>ORDER UPDATES</h6>
+                            </div>
+                            <div class="manage_content notice_content">
+                                <span class="content_sub_head">Recent Updates</span>
+                                <div class="container">
+                                    {% for notice_list, range in notification %}
+                                    {% if notice_list %}
+                                    {% for n in notice_list %}
+                                    <div class="notification_banner">
+                                        <span class="not_dates">
+                                            <i class="fa fa-caret-right"></i>{{n.order_status_date}}
+                                        </span>
+                                        <span class="notifications">
+                                            {% if n.order_status == 'Processing' %}
+                                                Your order for {{n.total_items}} items is placed and is processing. Your order number is <span class="o_num">{{n.order_number}}</span>.
+                                                You can track your order in My Account > My orders > <a href="{% url 'my_order' %}"><button type="button" class="track_order_btn">View Order</button></a>
+                                            {% endif %}
+                                            {% if n.order_status == 'Shipping' %}
+                                                Your order number <span class="o_num">{{n.order_number}}</span> item(s) is in its way to your shipping address. You will shortly be noticed by delivery personnel.
+                                            {% endif %}
+                                            {% if n.order_status == 'Delivered' %}
+                                                Your order item(s) with order number <span class="o_num">{{n.order_number}}</span> is delivered to your shipping address. You can return the rentals on your returning dates.
+                                                Get details here: <a href="{% url 'my_order' %}"><button type="button" class="track_order_btn">View Order</button></a>
+                                            {% endif %}
+                                            {% if n.order_status == 'Returned' %}
+                                                You have returned the rental item(s) of order number <span class="o_num">{{n.order_number}}</span>.
+                                                See your order history: <a href="{% url 'my_order' %}"><button type="button" class="track_order_btn">View Order</button></a>
+                                            {% endif %}
+                                        </span>
+                                    </div>
+                                    {% endfor %}
+                                        <span id="page_numbers">
+                                        {% if notice_list.has_other_pages %}
+                                          <ul class="pagination">
+                                            {% if notice_list.has_previous %}
+                                              <li><a href="?page={{ notice_list.previous_page_number }}">&laquo;</a></li>
+                                            {% else %}
+                                              <li class="prev_disabled">&laquo;</li>
+                                            {% endif %}
+                                            {% for i in notice_list.paginator.page_range %}
+                                              {% if notice_list.number == i %}
+                                                <li class="">{{ i }}</li>
+                                              {% else %}
+                                                <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                              {% endif %}
+                                            {% endfor %}
+                                            {% if notice_list.has_next %}
+                                              <li><a href="?page={{ notice_list.next_page_number }}">&raquo;</a></li>
+                                            {% else %}
+                                              <li class="next_disabled">&raquo;</li>
+                                            {% endif %}
+                                          </ul>
+                                        {% endif %}
+                                        </span>
+                                        {% else %}
+                                        <div class="notice_wrapper">
+                                            <h6>You have no notifications</h6>
+                                        </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+{% block js %}
+
+
+<script>
+$('.d_wish').on('click', function(){
+    var idp = this.id;
+    $('#spin'+idp).show();
+});
+</script>
+
+
+{% endblock %}

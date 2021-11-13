@@ -1,0 +1,115 @@
+{% extends 'dash_base.html' %}
+{% load static %}
+
+{% block title%}
+  <title>Dashboard - Rent Station</title>
+{% endblock %}
+{% block css %}
+  <style>
+    #dashboard_link4{
+      background: #2b2e4a;
+    }
+  </style>
+  <link rel="stylesheet" href="{% static '/css/dashboard/review_dash.css' %}">
+{% endblock %}
+
+
+{% block head_title %}
+Reviews
+{% endblock %}
+{% block content %}
+<div class="content3">
+  <div class="col col-md-7">
+    <div class="xreview_container1">
+      <span class="order_head">
+          Select Queries
+          
+      </span>
+      <div class="xsubcontainer1">
+        <span class="contain_text">
+          Select the product to view its queries
+        </span>
+        <span class="contain_btn">
+          <button type="button" class="select_btn">SELECT PRODUCT</button>
+        </span>
+      </div>
+      <div class="product_contain">
+        <span class="order_head">
+          Select Product
+          <i class="far fa-times-circle close_contain" style="font-size: 20px;"></i>
+        </span>
+        <div class="pcover">
+          {% if all_prods %}
+          {% for p in all_prods %}
+          <div class="q_content" id="{{p.id}}">
+            <span class="pcontent1">
+              <img src="/static/{{p.main_image}}" class="p_img">
+            </span>
+            <span class="pcontent2">
+              <span class="p_name">
+                {{p.name}}
+              </span>
+              <span class="p_type">
+                {{p.dress_type}}
+              </span>
+            </span>
+          </div>
+          {% endfor %}
+          {% else %}
+          <div class="re_not_found">
+            No products avaiable
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="xreview_container2">
+      <div class="foot_cover"></div>
+      <span class="order_head">
+          Recent Queries
+          <i class="fas fa-redo contain_refresh4"></i>
+      </span>
+      <div class="xsubcontainer2 xsub2">
+        {% include 'dash/recent_query_dash.html' %}
+      </div>
+    </div>
+  </div>
+  <div class="col col-md-5">
+    <div class="xreview_container3">
+      <div class="foot_cover"></div>
+      <span class="order_head">
+          Queries
+          <i class="fas fa-redo contain_refresh5"></i>
+      </span>
+      <div class="xsubcontainer3 xsub3">
+        {% include 'dash/query_dash.html' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="review_popup_banner">
+    <div class="col col-md-5"></div>
+    <div class="col col-md-4">
+      <div class="content_pop">
+        <div class="foot_cover"></div>
+        <span class="order_head o_head">
+          Queries
+          <i class="far fa-times-circle pop_close"></i>
+<!--           <span>|</span>
+          <i class="fas fa-redo contain_refresh6"></i> -->
+        </span>
+        <div class="show_content query_detail">
+         {% include 'dash/query_filter.html' %}
+        </div>
+      </div>
+    </div>
+    <div class="col col-md-3"></div>
+  </div>
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static '/js/dashboard/review_dash.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,114 @@
+{% extends 'dash_base.html' %}
+{% load static %}
+
+{% block title%}
+  <title>Dashboard - Rent Station</title>
+{% endblock %}
+{% block css %}
+  <style>
+    #dashboard_link5{
+      background: #2b2e4a;
+    }
+    .d_event_content{
+      background:linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.2)),url(/static/{{event.event_image}});
+      background-position:center center;
+      background-size:cover;
+      background-repeat:no-repeat;
+    }
+  </style>
+
+  <link rel="stylesheet" href="{% static '/css/dashboard/event.css' %}">
+{% endblock %}
+
+
+{% block head_title %}
+Manage Events
+{% endblock %}
+{% block content %}
+
+<div class="event_content">
+    <div class="col col-md-8">
+      <div class="event1">
+        <span class="event_head">
+          <span style="float:right;">
+          <font style="float:right; font-size: 14px; color: rgba(0,0,0,.7);">Last Updated on {{event.event_posted}}</font><br>
+          {% if expire == 1 %}
+          <font style="float:right; font-size: 14px; color: rgba(0,0,0,.7);">Expired</font>
+          {% else %}
+          <font style="float:right; font-size: 14px; color: rgba(0,0,0,.7);">Expires on {{expire_d}}</font>
+          {% endif %}
+          </span>
+          <span style="float:left;">
+          Event Post<br>
+          {% if event_status == 'active' %}
+          {% if expire == 1 %}
+          <font style="font-size: 14px; color: green;">Inactive</font>
+          {% else %}
+          <font style="font-size: 14px; color: green;">Active</font>
+          {% endif %}
+          {% else %}
+          <font style="font-size: 14px; color: green;">Inactive</font>
+          {% endif %}
+        </span>
+        </span>
+        <div class="d_event_content">
+          <span>
+            {{event.event_text}}
+          </span>
+          <span>
+            <button type="button" class="event_btn">RENT NOW</button>
+          </span>
+        </div>
+        <span class="change_event">
+          {% if event_status == 'active' %}
+          {% if expire == 0 %}
+          <a href="/dashboard/deactive-event/{{event.id}}/">DEACTIVATE</a>
+          {% else %}
+          <a href="/dashboard/active-event/{{event.id}}/{{event.event_days}}/">ACTIVATE</a>
+          {% endif %}
+          {% else %}
+          <a href="/dashboard/active-event/{{event.id}}/{{event.event_days}}/">ACTIVATE</a>
+          {% endif %}
+        </span>
+      </div>
+    </div>
+    <div class="col col-md-4">
+      <div class="event2">
+        <span class="event_head">
+          Update Event
+        </span>
+        <div class="event_post">
+          <form method="POST" action="/dashboard/event-update/" enctype="multipart/form-data" autocomplete="off">
+            {% csrf_token %}
+            <span class="event_fields">
+              <label for="etext">Event Text</label>
+              <input type="text" name="etext" id="etext" class="form-control">
+            </span>
+            <span class="event_fields">
+              <label for="eimage">Event Image</label>
+              <input type="file" class="form-control" name="eimage" id="eimage">
+            </span>
+            <span class="event_fields">
+              <label for="eday">Event Active Days</label><br>
+              <input type="number" name="eday" id="eday"> <font style="color: rgba(0,0,0,.8); font-size: 14px;">Days</font>
+            </span>
+            <span class="event_error">
+              {% for m in messages %}
+              {{m}}
+              {% endfor %}
+            </span>
+            <span class="event_field_btn">
+              <button type="submit" name="submit" id="event_btn_update">UPDATE</button>
+            </span>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block js %}
+<script src="{% static '/js/dashboard/event.js' %}"></script>
+{% endblock %}

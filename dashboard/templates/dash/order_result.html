@@ -1,0 +1,44 @@
+{% if prodquery %}
+  {% for p in prodquery %}
+    <div class="results" id="{{p.order_number}}">
+    	<span class="result1">
+    		<span class="sub_result1">
+    			<span class="s_rel1">
+    				<i class="fas fa-gem"></i>Order Number: {{p.order_number}}
+    			</span>
+    			<span class="s_rel2">
+    				Order Status: {{p.order_status}}
+    			</span>
+    			<span class="s_rel3">
+    				{{p.ordered_date}}
+    			</span>
+    		</span>
+    		<span class="sub_result2">
+    			<span class="s_subrel1">
+    				Customer Name: {{p.user_full_name}}
+    			</span>
+    			<span class="s_subrel2">
+    				Username: {{p.user_name}}
+    			</span>
+    			<span class="s_subrel2">
+    				Email: {{p.user_email}}
+    			</span>
+    			<span class="s_subrel2">
+    				Email: {{p.user_contact}}
+    			</span>
+    		</span>
+    	</span>
+    </div>
+  {% endfor %}
+{% else %}
+  <span class="not_result">No orders found</span>
+{% endif %}
+<script>
+	$('.results').on('click', function(){
+	var idstr = this.id.toString();
+	$('.history_content').hide();
+	$('#o'+idstr).show();
+	$('.detail_popup_banner').fadeIn();
+	$('.details_pop').css({"transform": "scale(1)", "opacity": "1"});
+});
+</script>

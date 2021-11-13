@@ -1,0 +1,465 @@
+<div class="sub_dash_ban1">
+            <div class="bar_horizon">
+              <input type="hidden" id="t_count" value="{{prod_rent_len.quantity__sum}}">
+              <span class="bar_count" id="count1">
+                {{prod_rent_len.quantity__sum}}
+              </span>
+              <div class="bar_line"></div>
+            </div>
+            <div class="bar_horizon">
+              <span class="bar_count" id="count2">
+                
+              </span>
+              <div class="bar_line"></div>
+            </div>
+            <div class="bar_horizon">
+              <span class="bar_count" id="count3">
+                
+              </span>
+              <div class="bar_line"></div>
+            </div>
+            <div class="bar_horizon">
+              <span class="bar_count" id="count4">
+                
+              </span>
+              <div class="bar_line"></div>
+            </div>
+            <div class="bar_horizon">
+              <span class="bar_count" id="count5">
+                
+              </span>
+              <div class="bar_line"></div>
+            </div>
+            <div class="bar_horizon">
+              <span class="bar_count" id="count6">
+                0
+              </span>
+              <div class="bar_line"></div>
+            </div>
+          </div>
+          <div class="sub_dash_ban2">
+            <div class="col col-1">
+              <div class="bar_vertical">
+                <span class="men_pop" id="men_pop_jan">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Jan</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Men</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_men_jan_len.quantity__sum}}</font>
+                </span>
+                <span class="women_pop" id="women_pop_jan">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Jan</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Women</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_women_jan_len.quantity__sum}}</font>
+                </span>
+                <div class="bar_men" id="bar_men_jan_line"></div>
+                <div class="bar_women" id="bar_women_jan_line"></div>
+                <div class="bar_height"></div>
+                <span class="bar_month">
+                  <input type="hidden" id="man_jan" value="{{prod_men_jan_len.quantity__sum}}">
+                  <input type="hidden" id="woman_jan" value="{{prod_women_jan_len.quantity__sum}}">
+                  Jan
+                </span>
+              </div>
+            </div>
+            <div class="col col-1">
+              <div class="bar_vertical">
+                <span class="men_pop" id="men_pop_feb">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Feb</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Men</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_men_feb_len.quantity__sum}}</font>
+                </span>
+                <span class="women_pop" id="women_pop_feb">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Feb</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Women</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_women_feb_len.quantity__sum}}</font>
+                </span>
+                <div class="bar_men" id="bar_men_feb_line"></div>
+                <div class="bar_women" id="bar_women_feb_line"></div>
+                <div class="bar_height"></div>
+                <span class="bar_month">
+                  <input type="hidden" id="man_feb" value="{{prod_men_feb_len.quantity__sum}}">
+                  <input type="hidden" id="woman_feb" value="{{prod_women_feb_len.quantity__sum}}">
+                  Feb
+                </span>
+              </div>
+            </div>
+            <div class="col col-1">
+              <div class="bar_vertical">
+                <span class="men_pop" id="men_pop_mar">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Mar</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Men</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_men_mar_len.quantity__sum}}</font>
+                </span>
+                <span class="women_pop" id="women_pop_mar">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Mar</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Women</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_women_mar_len.quantity__sum}}</font>
+                </span>
+                <div class="bar_men" id="bar_men_mar_line"></div>
+                <div class="bar_women" id="bar_women_mar_line"></div>
+                <div class="bar_height"></div>
+                <span class="bar_month">
+                  <input type="hidden" id="man_mar" value="{{prod_men_mar_len.quantity__sum}}">
+                  <input type="hidden" id="woman_mar" value="{{prod_women_mar_len.quantity__sum}}">
+                  Mar
+                </span>
+              </div>
+            </div>
+            <div class="col col-1">
+              <div class="bar_vertical">
+                <span class="men_pop" id="men_pop_apr">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Apr</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Men</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_men_apr_len.quantity__sum}}</font>
+                </span>
+                <span class="women_pop" id="women_pop_apr">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Apr</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Women</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_women_apr_len.quantity__sum}}</font>
+                </span>
+                <div class="bar_men" id="bar_men_apr_line"></div>
+                <div class="bar_women" id="bar_women_apr_line"></div>
+                <div class="bar_height"></div>
+                <span class="bar_month">
+                  <input type="hidden" id="man_apr" value="{{prod_men_apr_len.quantity__sum}}">
+                  <input type="hidden" id="woman_apr" value="{{prod_women_apr_len.quantity__sum}}">
+                  Apr
+                </span>
+              </div>
+            </div>
+            <div class="col col-1">
+              <div class="bar_vertical">
+                <span class="men_pop" id="men_pop_may">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>May</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Men</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_men_may_len.quantity__sum}}</font>
+                </span>
+                <span class="women_pop" id="women_pop_may">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>May</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Women</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_women_may_len.quantity__sum}}</font>
+                </span>
+                <div class="bar_men" id="bar_men_may_line"></div>
+                <div class="bar_women" id="bar_women_may_line"></div>
+                <div class="bar_height"></div>
+                <span class="bar_month">
+                  <input type="hidden" id="man_may" value="{{prod_men_may_len.quantity__sum}}">
+                  <input type="hidden" id="woman_may" value="{{prod_women_may_len.quantity__sum}}">
+                  May
+                </span>
+              </div>
+            </div>
+            <div class="col col-1">
+              <div class="bar_vertical">
+                <span class="men_pop" id="men_pop_jun">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Jun</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Men</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_men_jun_len.quantity__sum}}</font>
+                </span>
+                <span class="women_pop" id="women_pop_jun">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Jun</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Women</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_women_jun_len.quantity__sum}}</font>
+                </span>
+                <div class="bar_men" id="bar_men_jun_line"></div>
+                <div class="bar_women" id="bar_women_jun_line"></div>
+                <div class="bar_height"></div>
+                <span class="bar_month">
+                  <input type="hidden" id="man_jun" value="{{prod_men_jun_len.quantity__sum}}">
+                  <input type="hidden" id="woman_jun" value="{{prod_women_jun_len.quantity__sum}}">
+                  Jun
+                </span>
+              </div>
+            </div>
+            <div class="col col-1">
+              <div class="bar_vertical">
+                <span class="men_pop" id="men_pop_jul">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Jul</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Men</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_men_jul_len.quantity__sum}}</font>
+                </span>
+                <span class="women_pop" id="women_pop_jul">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Jul</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Women</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_women_jul_len.quantity__sum}}</font>
+                </span>
+                <div class="bar_men" id="bar_men_jul_line"></div>
+                <div class="bar_women" id="bar_women_jul_line"></div>
+                <div class="bar_height"></div>
+                <span class="bar_month">
+                  <input type="hidden" id="man_jul" value="{{prod_men_jul_len.quantity__sum}}">
+                  <input type="hidden" id="woman_jul" value="{{prod_women_jul_len.quantity__sum}}">
+                  Jul
+                </span>
+              </div>
+            </div>
+            <div class="col col-1">
+              <div class="bar_vertical">
+                <span class="men_pop" id="men_pop_aug">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Aug</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Men</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_men_aug_len.quantity__sum}}</font>
+                </span>
+                <span class="women_pop" id="women_pop_aug">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Aug</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Women</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_women_aug_len.quantity__sum}}</font>
+                </span>
+                <div class="bar_men" id="bar_men_aug_line"></div>
+                <div class="bar_women" id="bar_women_aug_line"></div>
+                <div class="bar_height"></div>
+                <span class="bar_month">
+                  <input type="hidden" id="man_aug" value="{{prod_men_aug_len.quantity__sum}}">
+                  <input type="hidden" id="woman_aug" value="{{prod_women_aug_len.quantity__sum}}">
+                  Aug
+                </span>
+              </div>
+            </div>
+            <div class="col col-1">
+              <div class="bar_vertical">
+                <span class="men_pop" id="men_pop_sep">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Sep</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Men</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_men_sep_len.quantity__sum}}</font>
+                </span>
+                <span class="women_pop" id="women_pop_sep">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Sep</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Women</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_women_sep_len.quantity__sum}}</font>
+                </span>
+                <div class="bar_men" id="bar_men_sep_line"></div>
+                <div class="bar_women" id="bar_women_sep_line"></div>
+                <div class="bar_height"></div>
+                <span class="bar_month">
+                  <input type="hidden" id="man_sep" value="{{prod_men_sep_len.quantity__sum}}">
+                  <input type="hidden" id="woman_sep" value="{{prod_women_sep_len.quantity__sum}}">
+                  Sep
+                </span>
+              </div>
+            </div>
+            <div class="col col-1">
+              <div class="bar_vertical">
+                <span class="men_pop" id="men_pop_oct">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Oct</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Men</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_men_oct_len.quantity__sum}}</font>
+                </span>
+                <span class="women_pop" id="women_pop_oct">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Oct</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Women</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_women_oct_len.quantity__sum}}</font>
+                </span>
+                <div class="bar_men" id="bar_men_oct_line"></div>
+                <div class="bar_women" id="bar_women_oct_line"></div>
+                <div class="bar_height"></div>
+                <span class="bar_month">
+                  <input type="hidden" id="man_oct" value="{{prod_men_oct_len.quantity__sum}}">
+                  <input type="hidden" id="woman_oct" value="{{prod_women_oct_len.quantity__sum}}">
+                  Oct
+                </span>
+              </div>
+            </div>
+            <div class="col col-1">
+              <div class="bar_vertical">
+                <span class="men_pop" id="men_pop_nov">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Nov</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Men</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_men_nov_len.quantity__sum}}</font>
+                </span>
+                <span class="women_pop" id="women_pop_nov">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Nov</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Women</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_women_nov_len.quantity__sum}}</font>
+                </span>
+                <div class="bar_men" id="bar_men_nov_line"></div>
+                <div class="bar_women" id="bar_women_nov_line"></div>
+                <div class="bar_height"></div>
+                <span class="bar_month">
+                  <input type="hidden" id="man_nov" value="{{prod_men_nov_len.quantity__sum}}">
+                  <input type="hidden" id="woman_nov" value="{{prod_women_nov_len.quantity__sum}}">
+                  Nov
+                </span>
+              </div>
+            </div>
+            <div class="col col-1">
+              <div class="bar_vertical">
+                <span class="men_pop" id="men_pop_dec">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Dec</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Men</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_men_dec_len.quantity__sum}}</font>
+                </span>
+                <span class="women_pop" id="women_pop_dec">
+                  <font style="font-size:13px; padding: 2px 0px; color:#000;"><b>Dec</b></font><br>
+                  <font style="font-size:14px; padding: 0px 0px; color:#008ECC;">Women</font><br>
+                  <font style="font-size:13px; padding: 0px 0px; color:#008ECC;">Dress: {{prod_women_dec_len.quantity__sum}}</font>
+                </span>
+                <div class="bar_men" id="bar_men_dec_line"></div>
+                <div class="bar_women" id="bar_women_dec_line"></div>
+                <div class="bar_height"></div>
+                <span class="bar_month">
+                  <input type="hidden" id="man_dec" value="{{prod_men_dec_len.quantity__sum}}">
+                  <input type="hidden" id="woman_dec" value="{{prod_women_dec_len.quantity__sum}}">
+                  Dec
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <script>
+            round();
+            bar();
+            $('#bar_men_jan_line').mouseenter(function(){
+  $('#men_pop_jan').show();
+});
+$('#bar_men_jan_line').mouseleave(function(){
+  $('#men_pop_jan').hide();
+});
+$('#bar_women_jan_line').mouseenter(function(){
+  $('#women_pop_jan').show();
+});
+$('#bar_women_jan_line').mouseleave(function(){
+  $('#women_pop_jan').hide();
+});
+
+$('#bar_men_feb_line').mouseenter(function(){
+  $('#men_pop_feb').show();
+});
+$('#bar_men_feb_line').mouseleave(function(){
+  $('#men_pop_feb').hide();
+});
+$('#bar_women_feb_line').mouseenter(function(){
+  $('#women_pop_feb').show();
+});
+$('#bar_women_feb_line').mouseleave(function(){
+  $('#women_pop_feb').hide();
+});
+
+$('#bar_men_mar_line').mouseenter(function(){
+  $('#men_pop_mar').show();
+});
+$('#bar_men_mar_line').mouseleave(function(){
+  $('#men_pop_mar').hide();
+});
+$('#bar_women_mar_line').mouseenter(function(){
+  $('#women_pop_mar').show();
+});
+$('#bar_women_mar_line').mouseleave(function(){
+  $('#women_pop_mar').hide();
+});
+
+$('#bar_men_apr_line').mouseenter(function(){
+  $('#men_pop_apr').show();
+});
+$('#bar_men_apr_line').mouseleave(function(){
+  $('#men_pop_apr').hide();
+});
+$('#bar_women_apr_line').mouseenter(function(){
+  $('#women_pop_apr').show();
+});
+$('#bar_women_apr_line').mouseleave(function(){
+  $('#women_pop_apr').hide();
+});
+
+$('#bar_men_may_line').mouseenter(function(){
+  $('#men_pop_may').show();
+});
+$('#bar_men_may_line').mouseleave(function(){
+  $('#men_pop_may').hide();
+});
+$('#bar_women_may_line').mouseenter(function(){
+  $('#women_pop_may').show();
+});
+$('#bar_women_may_line').mouseleave(function(){
+  $('#women_pop_may').hide();
+});
+
+$('#bar_men_jun_line').mouseenter(function(){
+  $('#men_pop_jun').show();
+});
+$('#bar_men_jun_line').mouseleave(function(){
+  $('#men_pop_jun').hide();
+});
+$('#bar_women_jun_line').mouseenter(function(){
+  $('#women_pop_jun').show();
+});
+$('#bar_women_jun_line').mouseleave(function(){
+  $('#women_pop_jun').hide();
+});
+
+$('#bar_men_jul_line').mouseenter(function(){
+  $('#men_pop_jul').show();
+});
+$('#bar_men_jul_line').mouseleave(function(){
+  $('#men_pop_jul').hide();
+});
+$('#bar_women_jul_line').mouseenter(function(){
+  $('#women_pop_jul').show();
+});
+$('#bar_women_jul_line').mouseleave(function(){
+  $('#women_pop_jul').hide();
+});
+
+$('#bar_men_aug_line').mouseenter(function(){
+  $('#men_pop_aug').show();
+});
+$('#bar_men_aug_line').mouseleave(function(){
+  $('#men_pop_aug').hide();
+});
+$('#bar_women_aug_line').mouseenter(function(){
+  $('#women_pop_aug').show();
+});
+$('#bar_women_aug_line').mouseleave(function(){
+  $('#women_pop_aug').hide();
+});
+
+$('#bar_men_sep_line').mouseenter(function(){
+  $('#men_pop_sep').show();
+});
+$('#bar_men_sep_line').mouseleave(function(){
+  $('#men_pop_sep').hide();
+});
+$('#bar_women_sep_line').mouseenter(function(){
+  $('#women_pop_sep').show();
+});
+$('#bar_women_sep_line').mouseleave(function(){
+  $('#women_pop_sep').hide();
+});
+
+$('#bar_men_oct_line').mouseenter(function(){
+  $('#men_pop_oct').show();
+});
+$('#bar_men_oct_line').mouseleave(function(){
+  $('#men_pop_oct').hide();
+});
+$('#bar_women_oct_line').mouseenter(function(){
+  $('#women_pop_oct').show();
+});
+$('#bar_women_oct_line').mouseleave(function(){
+  $('#women_pop_oct').hide();
+});
+
+$('#bar_men_nov_line').mouseenter(function(){
+  $('#men_pop_nov').show();
+});
+$('#bar_men_nov_line').mouseleave(function(){
+  $('#men_pop_nov').hide();
+});
+$('#bar_women_nov_line').mouseenter(function(){
+  $('#women_pop_nov').show();
+});
+$('#bar_women_nov_line').mouseleave(function(){
+  $('#women_pop_nov').hide();
+});
+
+$('#bar_men_dec_line').mouseenter(function(){
+  $('#men_pop_dec').show();
+});
+$('#bar_men_dec_line').mouseleave(function(){
+  $('#men_pop_dec').hide();
+});
+$('#bar_women_dec_line').mouseenter(function(){
+  $('#women_pop_dec').show();
+});
+$('#bar_women_dec_line').mouseleave(function(){
+  $('#women_pop_dec').hide();
+});
+          </script>

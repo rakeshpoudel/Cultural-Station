@@ -1,0 +1,284 @@
+.login-form-banner{
+    height:inherit;
+    float:left;
+    width:100%;
+    background:rgba(0,0,0,.05);
+}
+.login-form{
+    margin:50px 0px 60px 0px;
+    padding-bottom:50px;
+    height:auto;
+    width:100%;
+    background:#fff;
+    box-shadow:0px 0px 10px 0px rgba(0,0,0,.2);
+}
+.login-form h4{
+    color:#fc9730;
+    font-family:PlayfairDisplay-Regular;
+}
+#login-user-form{
+    padding:50px 50px 0px 50px;
+}
+#login-user-form input{
+    border:1px solid #d69f67;
+}
+#login-user-btn{
+  background:#d69f67;
+  color:azure;
+  border:1px solid #d69f67;
+  height:40px;
+  width:100px;
+  margin-bottom:10px;
+  font-size:13px;
+  cursor:pointer;
+}
+#login-user-btn:hover{
+  background:#b8844f;
+}
+#login-user-btn:focus{
+    outline-width:0px;
+}
+
+.error-message h5{
+    font-size:14px;
+    color:#fa2f2f;
+}
+
+.login-form a{
+    font-size:14px;
+    padding:0px 50px;
+    color:#b8844f;
+    text-decoration:none;
+}
+.login-form span{
+    padding:0px 0px 0px 50px;
+    font-size:14px;
+    color:#373c4a;
+}
+.login-form span a{
+    padding:0px 0px;
+    color:#ff8000;
+}
+
+.label {
+  line-height:0.1;
+}
+.label span {
+  display: inline-block;
+  position: relative;
+  left:20px;
+  color:#ff8000;
+    font-size:15px;
+    padding:0px;
+}
+.label span:before{
+    content: "";
+  position: absolute;
+  height: 10px;
+  border-top: 1px solid #d69f67;
+  border-left: 1px solid #d69f67;
+  border-top-left-radius:5px;
+  top: 4px;
+  left:-25px;
+  width: 18px;
+}
+.label span:after{
+    content: "";
+  position: absolute;
+  height: 5px;
+  border-top: 1px solid #d69f67;
+  top: 4px;
+  width: 80%;
+}
+.label span:before {
+  right: 100%;
+  margin-right: 15px;
+}
+.label span:after {
+  left: 100%;
+  margin-left: 15px;
+}
+.social_log_pg{
+  width:100%;
+  float:left;
+}
+.fb_soc_pg{
+  color:#fff;
+}
+.social_head_log{
+  width:100%;
+  float:left;
+  margin-top:6px;
+}
+.social_icon_btn_pg{
+  float:left;
+  border-right:1px solid #ddd;
+}
+.social_btn_pg{
+  background:#d69f67;
+  border:none;
+  color:#fff;
+  height:40px;
+  width:85%;
+  padding:0px 0px;
+  font-size:13px;
+  transition:all .2s ease;
+  line-height: 39px;
+  margin-bottom: 8px;
+  cursor:pointer;
+}
+.social_btn_pg:hover{
+  background:#b8844f;
+}
+
+/*-- Register page styles----------------*/
+
+.register-form-banner{
+    height:inherit;
+    float:left;
+    width:100%;
+    background:rgba(0,0,0,.05);
+}
+.register-form{
+    margin:50px 0px 60px 0px;
+    padding:50px 50px;
+    height:auto;
+    width:100%;
+    background:#fff;
+    box-shadow:0px 0px 10px 0px rgba(0,0,0,.2);
+}
+#register-user-form input{
+    border:1px solid #d69f67;
+
+}
+#register-user-form label{
+    color:#fc9730;
+    font-size:15px;
+
+}
+.register-form span{
+    padding:0px 0px 0px 0px;
+    font-size:14px;
+    color:#373c4a;
+}
+.register-form a{
+    font-size:14px;
+    padding:0px 0px;
+    color:#ff8000;
+    text-decoration:none;
+}
+.register-form h4{
+    color:#fc9730;
+    font-family:PlayfairDisplay-Regular;
+}
+#register-user-btn{
+  background:#d69f67;
+  color:azure;
+  border:1px solid #d69f67;
+  height:40px;
+  width:100px;
+  margin-bottom:10px;
+  font-size:13px;
+  cursor:pointer;
+}
+#register-user-btn:hover{
+  background:#b8844f;
+}
+#register-user-btn:focus{
+    outline-width:0px;
+}
+
+/*----------------------------------------*/
+
+/*--------styles for reset password---------*/
+
+.password-reset-banner{
+    height:inherit;
+    float:left;
+    width:100%;
+    background:rgba(0,0,0,.05);
+}
+.reset-email-form, .reset-pwd-form{
+    margin:50px 0px 60px 0px;
+    padding:50px 50px;
+    height:auto;
+    width:100%;
+    background:#fff;
+    box-shadow:0px 0px 10px 0px rgba(0,0,0,.2);
+}
+.reset-email-form h4, .reset-pwd-form h4{
+    color:#fc9730;
+    font-family:PlayfairDisplay-Regular;
+}
+.reset-email-form p, .reset-pwd-form p{
+    font-size:13px;
+    color:#b8844f;
+}
+.reset-pwd-form ul{
+    font-size:13px;
+    list-style:none;
+}
+.reset-pwd-form ul li{
+    color:#b8844f;
+}
+#reset_email_user_form input{
+    border:1px solid #d69f67;
+
+}
+#reset_email_user_form label{
+    color:#fc9730;
+    font-size:15px;
+
+}
+#reset_email_btn, #reset_pwd_btn{
+  background:#d69f67;
+  color:azure;
+  border:1px solid #d69f67;
+  height:40px;
+  width:100px;
+  margin-top:;
+  font-size:13px;
+  cursor:pointer;
+}
+#reset_email_btn:hover, #reset_pwd_btn:hover{
+  background:#b8844f;
+}
+#reset_email_btn:focus, #reset_pwd_btn:focus{
+    outline-width:0px;
+}
+
+#reset_pwd_user_form input{
+    border:1px solid #d69f67;
+    margin-bottom:20px;
+    height:30px;
+    width:100%;
+}
+
+.label_pwd {
+  line-height:0.1;
+}
+.label_pwd span {
+  display: inline-block;
+  position: relative;
+  left:20px;
+  color:#ff8000;
+    font-size:15px;
+    padding:0px;
+}
+.label_pwd span:before{
+    content: "";
+  position: absolute;
+  height: 10px;
+  border-top: 1px solid #d69f67;
+  border-left: 1px solid #d69f67;
+  border-top-left-radius:5px;
+  top: 4px;
+  left:-25px;
+  width: 18px;
+}
+.label_pwd span:before {
+  right: 100%;
+  margin-right: 15px;
+}
+
+/*-------------------------------------------*/

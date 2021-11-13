@@ -1,0 +1,309 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <style>
+    	.col{
+    		float:left;
+    	}
+    	.mail_banner{
+    		float:left;
+    		width:100%;
+    		height: inherit;
+    	}
+    	.mail_header{
+    		float:left;
+    		width:100%;
+    		height: inherit;
+    		background: #fff;
+    		margin-bottom: 20px;
+    		padding: 30px 0px;
+    	}
+    	/*.confirm_banner2{
+    		float:left;
+    		width:100%;
+    		height: inherit;
+    		background: #fff;
+    	}*/
+    	.header1{
+    		float:left;
+    		width:100%;
+    		font-size: 20px;
+    		text-align: center;
+    		color: green;
+    	}
+    	.header2{
+    		float:left;
+    		width:100%;
+    		font-size: 15px;
+    		text-align: center;
+    		color: #0262c9;
+    	}
+    	.body1{
+    		float:left;
+    		width:100%;
+    		background: #ddd;
+    		margin-bottom: 20px;
+    	}
+    	.body1 h3{
+    		color:#000;
+    		margin:0px;
+    		padding:10px 15px;
+    	}
+    	.body2{
+    		float:left;
+    		width:100%;
+    		height: inherit;
+    		padding: 0px 20px 20px 20px;
+    	}
+    	.order_img{
+    		float:left;
+    		width:20%;
+
+    	}
+    	.o_img{
+    		height: 100px;
+    		width:100px;
+    	}
+    	.o_detail{
+    		float:left;
+    		width:80%;
+    	}
+    	.u_detail{
+    		float:left;
+    		width:100%;
+    	}
+    	.detail1{
+    		float:left;
+    		width:100%;
+    		color:#0262c9;
+    		font-size: 17px;
+    		text-transform: capitalize;
+    	}
+    	.detail2{
+    		float:left;
+    		width:100%;
+    		color:rgba(0,0,0,.8);
+    		font-size: 14px;
+    		text-transform: capitalize;
+    	}
+    	.detail3{
+    		float:left;
+    		width:100%;
+    		color:#fa8005;
+    		font-size: 14px;
+    	}
+    	.udetail1{
+    		float:left;
+    		width:100%;
+    		color:#0262c9;
+    		font-size: 17px;
+    	}
+    	.udetail2{
+    		float:left;
+    		width:100%;
+    		color:rgba(0,0,0,.8);
+    		font-size: 14px;
+    	}
+    	.udetail3{
+    		float:left;
+    		width:100%;
+    		color:rgba(0,0,0,.8);
+    		font-size: 14px;
+    	}
+    	.invoices{
+			float:left;
+			width:100%;
+			height: inherit;
+			
+		}
+    	.invoice_detail{
+    		float:left;
+    		width:100%;
+    		padding: 0px 0px;
+    	}
+    	.invoice1{
+    		float:left;
+    		color: rgba(0,0,0,.8);
+    		font-size: 15px;
+    	}
+    	.invoice2{
+    		float:right;
+    		color: rgba(0,0,0,.8);
+    		font-size: 15px;
+
+    	}
+    	.invoice3{
+    		float:left;
+    		color: #000;
+    		font-size: 17px;
+    	}
+    	.invoice4{
+    		float:right;
+    		color: #0262c9;
+    		font-size: 17px;
+    	}
+    	.delivery_info{
+    		font-size: 15px;
+    		color: rgba(0,0,0,.8);
+    		width:100%;
+    		float:left;
+    		margin-top: 8px;
+    	}
+    	.payment_info{
+    		font-size: 15px;
+    		color: rgba(0,0,0,.8);
+    		width:100%;
+    		float:left;
+    	}
+    </style>
+
+</head>
+<body>
+
+	<div class="col-12">
+		<div class="mail_banner">
+			<div class="container">
+				<div class="col-12">
+					<div class="mail_header">
+						<span class="header1">
+							New Order
+						</span>
+						<span class="header2">
+							Order Number: {{invoice.order_number}}
+						</span>
+					</div>
+				</div>
+				<div class="col col-4">
+					<div class="mail_header">
+						<span class="body1">
+							<h3>Product Details</h3>
+						</span>
+						{% for p in order_prods %}
+						<div class="body2">
+							<span class="order_img">
+								<img src="{{domain}}/static/{{p.prod_image}}" class="o_img">
+								
+							</span>
+							<span class="o_detail">
+								<span class="detail1">
+									{{p.product_name}}
+								</span>
+                                <span class="detail2">
+                                    Dress Type: {{p.dress_type}}
+                                </span>
+                                {% if p.caste_type != 'none' %}
+                                <span class="detail2">
+                                    Caste Type: {{p.caste_type}}
+                                </span>
+                                {% endif %}
+                                {% if p.designer != 'none' %}
+                                <span class="detail2">
+                                    Designer: {{p.designer}}
+                                </span>
+                                {% endif %}
+								<span class="detail2">
+									Price: $ {{p.amount}}
+								</span>
+								<span class="detail2">
+									gender: {{p.gender}}, person: {{p.person}}, 
+								</span>
+								<span class="detail3">
+									Size: {{p.product_size}},
+                                    Qty: {{p.quantity}},
+									Renting Type: {{p.renting_way}}
+								</span>
+							</span>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="col col-4">
+					<div class="mail_header">
+						<span class="body1">
+							<h3>Invoice</h3>
+						</span>
+						<div class="invoices">
+							<span class="invoice_detail">
+								<span class="invoice1">
+									Sub Total
+								</span>
+								<span class="invoice2">
+									RS {{invoice.sub_total_amount}}
+								</span>
+							</span>
+							<span class="invoice_detail">
+								<span class="invoice1">
+									Shipping Charge
+								</span>
+								<span class="invoice2">
+									RS {{invoice.shipping_charge}}
+								</span>
+							</span>
+                            <span class="invoice_detail">
+                                <span class="invoice1">
+                                    Refund
+                                </span>
+                                <span class="invoice2">
+                                    RS {{invoice.refund}}
+                                </span>
+                            </span>
+							<hr style="width:100%; float:left;">
+							<span class="invoice_detail">
+								<span class="invoice3">
+									Total
+								</span>
+								<span class="invoice4">
+									RS {{invoice.grand_total}}
+								</span>
+							</span>
+						</div>
+						<span class="delivery_info">
+							Delivery Location: {{invoice.shipping_address}}
+						</span>
+                        <span class="delivery_info">
+                            Delivery Date: {{invoice.delivery_date}}
+                        </span>
+						<span class="payment_info">
+							Payment Status: <font style="color:green;">{{invoice.payment_status}} </font><br>
+							Payment Method: <font style="color:green;">{{invoice.payment_method}} </font>
+						</span>
+					</div>
+				</div>
+				<div class="col col-4">
+					<div class="mail_header">
+						<span class="body1">
+							<h3>Customer Detail</h3>
+						</span>
+						
+						<div class="body2">
+							<span class="u_detail">
+								<span class="udetail1">
+									{{invoice.user_full_name}}
+								</span>
+								<span class="udetail2">
+									Username: {{invoice.user_name}}
+								</span>
+								<span class="udetail2">
+									Email: {{invoice.user_email}}
+								</span>
+								<span class="udetail2">
+									Contact: {{invoice.user_contact}} 
+								</span>
+							</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

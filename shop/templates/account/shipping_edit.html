@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title%}
+  <title>Update Shipping Information - Rent Station</title>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static '/css/manage_account.css' %}">
+    <style>
+        .btn_p{
+            background:#eee;
+            cursor:pointer;
+        }
+        .btn_s{
+            background:#eee;
+            cursor:pointer;
+        }
+        .btn_s:hover{
+            background:#ddd;
+        }
+        .btn_p:hover{
+            background:#ddd;
+        }
+        #active_manage1{
+            color:darkblue;
+        }
+        .header{
+          background: #fff;
+          box-shadow:0 5px 6px 0 #ddd;
+        }
+        .menus ul a{
+          color:#000 !important;
+        }
+        #text2 a{
+          color:#000;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-12">
+        <div class="manage_main_banner">
+            <div class="container">
+                <div class="manage_banner1">
+                    <div class="col col-xl-2 col-lg-2 col-md-3" style="padding:0px;">
+                        {% include 'account/manage_account_menu.html' %}
+                    </div>
+                    <div class="col col-xl-10 col-lg-10 col-md-10" style="padding:0px;">
+                        <div class="sub_manage2">
+                            <div class="manage_head2">
+                                <h6>MANAGE ACCOUNT</h6>
+                            </div>
+                            <div class="manage_content">
+                                <div class="manage_account">
+                                    <div class="col col-xl-6 col-lg-6 col-md-6">
+                                        <a href="{% url 'manage_account_personal' %}"><button type="button" class="manage_btn btn_p">
+                                            <span class="btn_div1">
+                                                <i class="fas fa-user-shield mx-2 content_icon"></i>
+                                            </span>
+                                            <span class="btn_div2">
+                                                <span class="account_p">Personal Information</span><br>
+                                                <span class="account_t">Update your personal information</span>
+                                            </span>
+
+                                        </button></a>
+                                    </div>
+                                    <div class="col col-xl-6 col-lg-6 col-md-6">
+                                       <a href="{% url 'manage_account_shipping' %}"><button type="button" class="manage_btn btn_s">
+                                            <span class="btn_div1">
+                                                <i class="fas fa-shipping-fast mx-2 content_icon"></i>
+                                            </span>
+                                            <span class="btn_div2">
+                                                <span class="account_p">Shipping Information</span><br>
+                                                <span class="account_t">Update your shipping address</span>
+                                            </span>
+
+                                       </button></a>
+                                    </div>
+                                </div>
+                                <div class="personal_update_banner">
+                                    <span class="update_head">Shipping Detail</span>
+                                    <div class="p_details">
+                                        {% if u_ship %}
+                                        <form method="POST" action="">
+                                            {% csrf_token %}
+                                        <span class="s_info">
+                                            <label>Shipping City</label><span class="colon">:</span>
+                                            <select class="city" name="city">
+                                            <option value="{{user_s.shipping_city}}">{{user_s.shipping_city}}</option>
+                                            {% for city in city_list %}
+                                                <option value="{{city.city}}">{{city.city}}</option>
+                                            {% endfor %}
+                                            </select>
+                                        </span>
+                                        <span class="s_info">
+                                            <label>Shipping Area</label><span class="colon">:</span>
+                                            {% include 'shop/shipping_area.html' %}
+                                        </span>
+                                        <span class="s_info">
+                                            <label>Shipping Address</label><span class="colon">:</span>
+                                            <input type="text" name="shipping_address" value="{{user_s.shipping_address}}">
+                                        </span>
+                                        <span class="s_info_btn">
+                                            <span class="s_error">
+                                                All fields are required!
+                                            </span><br>
+                                            <input type="hidden" name="pathnext" value="{{pathnext}}">
+                                            <button type="submit" name="submit" class="p_button">SAVE</button>
+                                            <i class="fa fa-spinner fa-pulse spinner"></i>
+                                        </span>
+                                        </form>
+                                        {% else %}
+                                        <form method="POST" action="">
+                                            {% csrf_token %}
+                                            <span class="s_info">
+                                            <label>Shipping City</label><span class="colon">:</span>
+                                            <select class="city" name="city">
+                                            <option value="" disabled selected hidden id="disabled">Choose your city</option>
+                                            {% for city in city_list %}
+                                                <option value="{{city.city}}">{{city.city}}</option>
+                                            {% endfor %}
+                                            </select>
+                                        </span>
+                                        <span class="s_info">
+                                            <label>Shipping Area</label><span class="colon">:</span>
+                                            {% include 'shop/shipping_area.html' %}
+                                        </span>
+                                        <span class="s_info">
+                                            <label>Shipping Address</label><span class="colon">:</span>
+                                            <input type="text" name="shipping_address" value="">
+                                        </span>
+                                            <span class="s_info_btn">
+                                                <span class="s_error">
+                                                    All fields are required!
+                                                </span><br>
+                                                <input type="hidden" name="pathnext" value="{{pathnext}}">
+                                                <button type="submit" name="submit" class="p_button">SAVE</button>
+                                                <i class="fa fa-spinner fa-pulse spinner"></i>
+                                            </span>
+                                        </form>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+{% block js %}
+    <script src="{% static '/js/manage_account.js' %}"></script>
+
+
+<script>
+$('[data-toggle="tooltip"]').tooltip('show');
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% if recent_order %}
+              {% for o in recent_order %}
+              <tr>
+                <td>{{o.order_number}}</td>
+                <td class="invoice_code">INV-0010{{o.id}}</td>
+                <td class="o_name">Amish Singh</td>
+                <td>
+                  {% if o.payment_status == 'Pending' %}
+                    <label class="s_label2">{{o.payment_status}}</label>
+                  {% endif %}
+                  {% if o.payment_status == 'Paid' %}
+                    <label class="s_label">{{o.payment_status}}</label>
+                  {% endif %}
+                  {% if o.payment_status == 'Paid With Esewa' %}
+                    <label class="s_label">{{o.payment_status}}</label>
+                  {% endif %}
+                  {% if o.payment_status == 'Paid With Khalti' %}
+                    <label class="s_label">{{o.payment_status}}</label>
+                  {% endif %}
+                </td>
+                <td>RS {{o.grand_total}}</td>
+              </tr>
+              {% endfor %}
+              {% else %}
+            <span class="d_not_order">
+                There are no orders from last 1 month
+            </span>
+            {% endif %}

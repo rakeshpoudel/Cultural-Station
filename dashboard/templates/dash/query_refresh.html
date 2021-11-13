@@ -1,0 +1,41 @@
+{% if recent_queries %}
+          {% for q in recent_queries %}
+          <div class="d_review">
+            <span class="d_review_img">
+              <a href="/static/{{q.image}}" data-lightbox="dash_q_r{{q.id}}">
+                <img src="/static/{{q.image}}" class="d_r_img">
+              </a>
+            </span>
+            <span class="d_review_text">
+              <span class="d_text1">
+                {{q.user_name}}
+              </span>
+              <span class="d_text2">
+                <span class="d_ques">
+                  QUE
+                </span>
+                <span class="d_ques_text">
+                  {{q.question}}
+                </span>
+              </span>
+              <span class="d_text4">
+                {% if q.answer %}
+                <span class="d_ans">
+                  ANS
+                </span>
+                <span class="d_ans_text">
+                  {{q.answer}}
+                </span>
+                {% endif %}
+              </span>
+              <span class="d_text3">
+                {{q.publish_date}}
+              </span>
+            </span>
+          </div>
+          {% endfor %}
+          {% else %}
+          <div class="d_not_found">
+            There are no queries from last 1 month
+          </div>
+          {% endif %}
