@@ -4,9 +4,13 @@ Rent Station focuses on a dress renting system with a well-made interface for cu
 The system lets customer choose maximum of 4 dresses to rent at a time with a 4 day and 8 day plan.
 
 Currently Focuses on :
+
 •	Customers can choose dresses from a list of categories and rent them online
+
 •	Customers can add items to the cart and and proceed to pay using various payment methods
+
 •	Customers can give reviews for various products and the system updates rating according to the review
+
 •	There is a return station feature that stores information about various transactions and notifies customers about their return dates.
 
 ##Homepage
